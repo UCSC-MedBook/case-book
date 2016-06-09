@@ -8,5 +8,8 @@ Template.cases.onRendered(function () {
 Template.cases.events({
   'click .createCase'(event, instance) {
     $('.ui.modal').modal('show');
-  }
+  },
+  "click .go-to-case-page"(event, instance) {
+    FlowRouter.go("showCase");
+  },
 });
