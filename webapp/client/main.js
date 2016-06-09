@@ -5,3 +5,10 @@ import './main.html';
 Template.body.onRendered(function () {
   $(".ui.dropdown").dropdown();
 });
+Template.body.events({
+  'click .createCase': function (event, instance) {
+    $('.ui.modal')
+      .modal('show')
+    ;
+  }
+});
