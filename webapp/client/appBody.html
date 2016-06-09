@@ -1,0 +1,94 @@
+<head>
+  <title>MedBook</title>
+</head>
+
+<template name="appBody">
+  <div class="ui container">
+    {{> topMenu}}
+
+    {{> Template.dynamic template=content data=params}}
+  </div>
+</template>
+
+<template name="topMenu">
+  <div class="ui menu">
+    <a href={{pathFor "home"}} class="header item">
+      <h3>MedBook</h3>
+    </a>
+    <a href={{pathFor "cases"}} class="ui dropdown item">
+      Cases
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="dropdown item">
+          Recent Cases
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">Case 443</div>
+            <div class="item">Case 842</div>
+          </div>
+        </div>
+
+        <div class="dropdown item">
+          Starred Cases
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">No starred cases</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="item">All Cases</div>
+        <div class="item">Organization Cases</div>
+        <div class="item">My Cases</div>
+
+        <div class="divider"></div>
+        <div class="item createCase">Create a new case...</div>
+      </div>
+    </a>
+
+
+    <a href={{pathFor "projects"}} class="ui dropdown item">
+      Projects
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">Recent Projects</div>
+        <div class="item">Starred Projects</div>
+
+        <div class="divider"></div>
+        <div class="item">My Projects</div>
+        <div class="item">Collaborations</div>
+
+        <div class="divider"></div>
+        <div class="item">Create a new project...</div>
+      </div>
+    </a>
+
+    <a class="item">
+      Insights
+    </a>
+    <a class="item">
+      Apps
+    </a>
+
+
+    <div class="right menu">
+      <a class="icon item">
+        <i class="comments large icon"></i>
+      </a>
+
+      <a class="icon item">
+        <i class="lightbulb large icon"></i>
+        <div class="floating ui red label">3</div>
+      </a>
+
+      <a class="ui dropdown item">
+        Dr. John Doe
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">Change password</div>
+          <div class="item">Logout</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</template>

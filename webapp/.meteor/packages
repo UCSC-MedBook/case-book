@@ -22,3 +22,11 @@ http
 
 semantic:ui
 flemay:less-autoprefixer
+jquery
+
+# flow router
+kadira:flow-router
+kadira:blaze-layout
+arillo:flow-router-helpers
+
+mokolodi1:helpers
