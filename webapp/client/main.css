@@ -1,2 +1,8 @@
 /* CSS declarations go here */
 body {margin: 5px;}
+
+/* table is darker on hover */
+.ui.table tr:hover {
+  background-color: #F3F3F3!important;
+  cursor: pointer;
+}
