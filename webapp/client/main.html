@@ -4,206 +4,12 @@
 
 <body>
   <div class="ui container">
-    <div class="ui menu">
-      <div class="header item">
-        <h3>MedBook </h3>
-      </div>
-      <a class="ui dropdown item">
-        Cases
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item">Recent Cases</div>
-            <div class="menu">
-              <div class="item">a</div>
-              <div class="item">b</div>
-            </div>
-          <div class="dropdown item">
-            Starred Cases
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              <div class="item">Recent Cases</div>
-            </div>
-          </div>
-          <div clase="ui horizontal divider"></div>
-          <div class="item">All Cases</div>
-          <div class="item">Organization Cases</div>
-          <div class="item">My Cases</div>
-          <div class="item createCase">Create a new case...</div>
-        </div>
-      </a>
-      <a class="ui dropdown item">
-        Projects
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item">Recent Projects</div>
-          <div class="item">Starred Projects</div>
-          <div clase="ui horizontal divider"></div>
-          <div class="item">My Projects</div>
-          <div class="item">Collaborations</div>
-          <div class="item">Create a new project...</div>
-        </div>
-      </a>
-      <a class="item">
-        Insights
-      </a>
-      <a class="item">
-        Apps
-      </a>
-      <a class="ui dropdown right item">
-        Comments
-      </a>
-      <div class="ui mini statistics">
-        <div class="statistic">
-          <div class="value">
-            <i class="lightbulb small icon">3</i>
-          </div>
-        </div>
-      </div>
-      <a class="ui dropdown right item">
-        Dr. John Doe
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item">Change password</div>
-          <div class="item">Logout</div>
-        </div>
-      </a>
-    </div>
+    {{> topMenu}}
 
-    <div class="ui divided grid">
-      <div class="four wide column">
-        <a class="ui dropdown item">
-        Case Search
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item">
-            [List of Saved Searches]
-          </div>
-          <div class="item">
-            Edit searches
-          </div>
-          <div class="item">
-            Save search set as ...
-          </div>
-        </div>
-      </a>
-      <div class="ui right dropdown item">
-      </div>
-      <div class="ui right dropdown item">
-        <u>Clear</u>
-      </div>
-      <form class="ui form">
-          <div class="field ui search">
-            <label>Narrative</label>
-            <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Enter search terms ...">
-            <i class="search icon"></i>
-          </div>
-          <div class="results"></div>
-        </div>
-        <div class="field">
-          <label>Cancer Type</label>
-          <select name="cancer-type" multiple="" class="ui fluid dropdown">
-            <option value="">Cancer Type</option>
-            <option value="LUAD">Lung</option>
-            <option value="BRCA">Breast</option>
-            <option value="PRAD">Prostate</option>
-            <option value="GBM">GBM</option>
-            <option value="PRAN">Pancreas</option>
-            <option value="HDNC">Head and Neck</option>
-            <option value="SKIM">Melanoma</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Stage</label>
-          <select name="cancer-stage" multiple="" class="ui fluid dropdown">
-            <option value="">Stage</option>
-            <option value="0">0</option>
-            <option value="1">I</option>
-            <option value="2">II</option>
-            <option value="3">III</option>
-            <option value="4">IV</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Histology Type</label>
-          <select name="histology-type" multiple="" class="ui fluid dropdown">
-            <option value="">Histology</option>
-            <option value="Ad">Adenocarimoma</option>
-            <option value="Sc">Small Cell</option>
-          </select>
-        </div>
-        <a class="ui dropdown item">
-          Add more criteria
-          <i class="dropdown icon"></i>
-          <div class="menu">
-          <div class="item">
-            Prior treatment
-          </div>
-          <div class="item">
-            weeks since diagnosis
-          </div>
-          </div>
-        </a>
-      </form>
-      </div>
-      <div clase="ui grid">
-        <table class="ui structured table">
-          <thead>
-            <tr>
-              <th>Gender</th>
-              <th>Age</th>
-              <th>Case ID</th>
-              <th colspan="3">Summary</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr>
-                <td>Male</td>
-                <td>60</td>
-                <td>DTB-005</td>
-                <td>Gleason:9, treated with Abiraterone</td>
-              </tr>
-              <tr class="active">
-                <td>Male</td>
-                <td>70</td>
-                <td>DTB-121</td>
-                <td>athletic, non-smoker, 11 nos. Tarceva, progressed, 4 mos. Carboplatin + Alimta</td>
-              </tr>
-              <tr>
-                <td>Fmeale</td>
-                <td>75</td>
-                <td>BRC-031</td>
-                <td>athletic, non-smoker, mets to pleura, 6 mos. Carboplatin, Pemetrexed w/...</td>
-              </tr>
-              <tr>
-                <td>Male</td>
-                <td>64</td>
-                <td>DTB-105</td>
-                <td>Gleason:9, treated with Abiraterone</td>
-              </tr>
-          </tbody>
-          <tfoot>
-            <tr><th colspan="5">
-              <div class="ui right floated pagination menu">
-                <a class="icon item">
-                  <i class="left chevron icon"></i>
-                </a>
-                <a class="item">1</a>
-                <a class="item">2</a>
-                <a class="item">3</a>
-                <a class="item">4</a>
-                <a class="icon item">
-                  <i class="right chevron icon"></i>
-                </a>
-              </div>
-            </th>
-          </tr></tfoot>
-        </table>
-      </div>
-    </div>
+    {{> mainPage}}
   </div>
 
-    <div class="ui modal">
+  <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
       New Case
@@ -290,3 +96,241 @@
     </div>
   </div>
 </body>
+
+<template name="topMenu">
+  <div class="ui menu">
+    <div class="header item">
+      <h3>MedBook</h3>
+    </div>
+    <a class="ui dropdown item">
+      Cases
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="dropdown item">
+          Recent Cases
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">Case 443</div>
+            <div class="item">Case 842</div>
+          </div>
+        </div>
+
+        <div class="dropdown item">
+          Starred Cases
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">No starred cases</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="item">All Cases</div>
+        <div class="item">Organization Cases</div>
+        <div class="item">My Cases</div>
+
+        <div class="divider"></div>
+        <div class="item createCase">Create a new case...</div>
+      </div>
+    </a>
+
+
+    <a class="ui dropdown item">
+      Projects
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">Recent Projects</div>
+        <div class="item">Starred Projects</div>
+
+        <div class="divider"></div>
+        <div class="item">My Projects</div>
+        <div class="item">Collaborations</div>
+
+        <div class="divider"></div>
+        <div class="item">Create a new project...</div>
+      </div>
+    </a>
+
+
+    <a class="item">
+      Insights
+    </a>
+    <a class="item">
+      Apps
+    </a>
+    <a class="ui dropdown right item">
+      Comments
+    </a>
+
+    <div class="ui mini statistics">
+      <div class="statistic">
+        <div class="value">
+          <i class="lightbulb small icon">3</i>
+        </div>
+      </div>
+    </div>
+
+    <a class="ui dropdown right item">
+      Dr. John Doe
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">Change password</div>
+        <div class="item">Logout</div>
+      </div>
+    </a>
+  </div>
+</template>
+
+<template name="mainPage">
+  <div class="ui divided grid">
+    <div class="four wide column">
+      <div class="ui grid">
+        <div class="row">
+          <div class="twelve wide column">
+            <div class="ui header">
+              <div class="ui dropdown">
+                Case Search
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item">
+                    [List of Saved Searches]
+                  </div>
+                  <div class="item">
+                    Edit searches
+                  </div>
+                  <div class="item">
+                    Save search set as ...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="four wide column">
+            <a href="#" style="color: black;">
+              <u>Clear</u>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            {{> searchFields}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="twelve wide column">
+      <div clase="ui grid">
+        <table class="ui structured table">
+          <thead>
+            <tr>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Case ID</th>
+              <th colspan="3">Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>Male</td>
+                <td>60</td>
+                <td>DTB-005</td>
+                <td>Gleason:9, treated with Abiraterone</td>
+              </tr>
+              <tr class="active">
+                <td>Male</td>
+                <td>70</td>
+                <td>DTB-121</td>
+                <td>athletic, non-smoker, 11 nos. Tarceva, progressed, 4 mos. Carboplatin + Alimta</td>
+              </tr>
+              <tr>
+                <td>Fmeale</td>
+                <td>75</td>
+                <td>BRC-031</td>
+                <td>athletic, non-smoker, mets to pleura, 6 mos. Carboplatin, Pemetrexed w/...</td>
+              </tr>
+              <tr>
+                <td>Male</td>
+                <td>64</td>
+                <td>DTB-105</td>
+                <td>Gleason:9, treated with Abiraterone</td>
+              </tr>
+          </tbody>
+          <tfoot>
+            <tr><th colspan="5">
+              <div class="ui right floated pagination menu">
+                <a class="icon item">
+                  <i class="left chevron icon"></i>
+                </a>
+                <a class="item active">1</a>
+                <a class="item">2</a>
+                <a class="item">3</a>
+                <a class="item">4</a>
+                <a class="icon item">
+                  <i class="right chevron icon"></i>
+                </a>
+              </div>
+            </th>
+          </tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="searchFields">
+  <form class="ui form">
+      <div class="field ui search">
+        <label>Narrative</label>
+        <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Enter search terms ...">
+        <i class="search icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+    <div class="field">
+      <label>Cancer Type</label>
+      <select name="cancer-type" multiple="" class="ui fluid dropdown">
+        <option value="">Cancer Type</option>
+        <option value="LUAD">Lung</option>
+        <option value="BRCA">Breast</option>
+        <option value="PRAD">Prostate</option>
+        <option value="GBM">GBM</option>
+        <option value="PRAN">Pancreas</option>
+        <option value="HDNC">Head and Neck</option>
+        <option value="SKIM">Melanoma</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Stage</label>
+      <select name="cancer-stage" multiple="" class="ui fluid dropdown">
+        <option value="">Stage</option>
+        <option value="0">0</option>
+        <option value="1">I</option>
+        <option value="2">II</option>
+        <option value="3">III</option>
+        <option value="4">IV</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Histology Type</label>
+      <select name="histology-type" multiple="" class="ui fluid dropdown">
+        <option value="">Histology</option>
+        <option value="Ad">Adenocarimoma</option>
+        <option value="Sc">Small Cell</option>
+      </select>
+    </div>
+    <a class="ui dropdown item">
+      Add more criteria
+      <i class="dropdown icon"></i>
+      <div class="menu">
+      <div class="item">
+        Prior treatment
+      </div>
+      <div class="item">
+        weeks since diagnosis
+      </div>
+      </div>
+    </a>
+  </form>
+</template>
