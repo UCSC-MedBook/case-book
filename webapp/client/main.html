@@ -1,12 +1,12 @@
 <head>
-  <title>CaseBook</title>
+  <title>MedBook Case</title>
 </head>
 
 <body>
   <div class="ui container">
     <div class="ui menu">
       <div class="header item">
-        CaseBook
+        <h3>MedBook </h3>
       </div>
       <a class="ui dropdown item">
         Cases
@@ -53,15 +53,105 @@
 
     <div class="ui divided grid">
       <div class="four wide column">
-        <p>
-          yop
-        </p>
+        <a class="ui dropdown item">
+        Case Search
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">
+            [List of Saved Searches]
+          </div>
+          <div class="item">
+            Edit searches
+          </div>
+          <div class="item">
+            Save search set as ...
+          </div>
+        </div>
+      </a>
+      <div class="ui right dropdown item">
+      </div>
+      <div class="ui right dropdown item">
+        <u>Clear</u>
+      </div>
+      <form class="ui form">
+        <div class="field">
+          <label>Narrative</label>
+          <input type="text" name="narrative" placeholder="Enter Search Terms">
+        </div>
+        <div class="field">
+          <label>Cancer Type</label>
+          <select name="cancer-type" multiple="" class="ui fluid dropdown">
+            <option value="">Cancer Type</option>
+            <option value="LUAD">Lung</option>
+            <option value="BRCA">Breast</option>
+            <option value="PRAD">Prostate</option>
+            <option value="GBM">GBM</option>
+            <option value="PRAN">Pancreas</option>
+            <option value="HDNC">Head and Neck</option>
+            <option value="SKIM">Melanoma</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Stage</label>
+          <select name="cancer-stage" multiple="" class="ui fluid dropdown">
+            <option value="">Stage</option>
+            <option value="0">0</option>
+            <option value="1">I</option>
+            <option value="2">II</option>
+            <option value="3">III</option>
+            <option value="4">IV</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Histology Type</label>
+          <select name="histology-type" multiple="" class="ui fluid dropdown">
+            <option value="">Histology</option>
+            <option value="Ad">Adenocarimoma</option>
+            <option value="Sc">Small Cell</option>
+          </select>
+        </div>
+        <a class="ui dropdown item">
+          Add more criteria
+          <i class="dropdown icon"></i>
+          <div class="menu">
+          <div class="item">
+            Prior treatment
+          </div>
+          <div class="item">
+            weeks since diagnosis
+          </div>
+          </div>
+        </a>
+      </form>
       </div>
       <div class="twelve wide column">
         <p>
           yop
+          asldkfas ldfjasldf lkasdfj lask fdjkls flasfd
+          kalsdfkjsldfj askldfjlkas flsk fjlksf laskfd j
+          ksldjflaksjdf lsjdflkas jfdls dflk asldkfalsf
+          kljdlf asldf jslfd
         </p>
       </div>
     </div>
   </div>
+  <div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Modal Title
+  </div>
+  <div class="image content">
+    <div class="image">
+      An image can appear on left or an icon
+    </div>
+    <div class="description">
+      A description can appear on the right
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">Cancel</div>
+    <div class="ui button">OK</div>
+  </div>
+</div>
+
 </body>
