@@ -49,11 +49,13 @@
       <a class="item">
         Apps
       </a>
-      <div class="ui mini statistics right floated item">
+      <a class="ui dropdown right item">
+        Comments
+      </a>
+      <div class="ui mini statistics">
         <div class="statistic">
           <div class="value">
-            <img src="/images/lit_bulb.png" class="ui circular inline image">
-            42
+            <i class="lightbulb small icon">3</i>
           </div>
         </div>
       </div>
@@ -151,7 +153,7 @@
               <th>Gender</th>
               <th>Age</th>
               <th>Case ID</th>
-              <th>Summary</th>
+              <th colspan="3">Summary</th>
             </tr>
           </thead>
           <tbody>
@@ -159,7 +161,7 @@
                 <td>Male</td>
                 <td>60</td>
                 <td>DTB-005</td>
-                <td>Stuff</td>
+                <td>Gleason:9, treated with Abiraterone</td>
               </tr>
               <tr>
                 <td>Male</td>
@@ -168,6 +170,22 @@
                 <td>Stuff</td>
               </tr>
           </tbody>
+          <tfoot>
+            <tr><th colspan="3">
+              <div class="ui right floated pagination menu">
+                <a class="icon item">
+                  <i class="left chevron icon"></i>
+                </a>
+                <a class="item">1</a>
+                <a class="item">2</a>
+                <a class="item">3</a>
+                <a class="item">4</a>
+                <a class="icon item">
+                  <i class="right chevron icon"></i>
+                </a>
+              </div>
+            </th>
+          </tr></tfoot>
         </table>
       </div>
     </div>
