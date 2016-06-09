@@ -6,3 +6,8 @@ body {margin: 5px;}
   background-color: #F3F3F3!important;
   cursor: pointer;
 }
+
+/* make floating label not too high */
+.ui.menu .ui.floating.label {
+  top: -0.4em;
+}
