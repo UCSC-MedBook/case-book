@@ -144,14 +144,31 @@
         </a>
       </form>
       </div>
-      <div class="twelve wide column">
-        <p>
-          yop
-          asldkfas ldfjasldf lkasdfj lask fdjkls flasfd
-          kalsdfkjsldfj askldfjlkas flsk fjlksf laskfd j
-          ksldjflaksjdf lsjdflkas jfdls dflk asldkfalsf
-          kljdlf asldf jslfd
-        </p>
+      <div clase="ui grid">
+        <table class="ui structured table">
+          <thead>
+            <tr>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Case ID</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>Male</td>
+                <td>60</td>
+                <td>DTB-005</td>
+                <td>Stuff</td>
+              </tr>
+              <tr>
+                <td>Male</td>
+                <td>70</td>
+                <td>DTB-121</td>
+                <td>Stuff</td>
+              </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -216,7 +233,9 @@
             <a class="item" data-tab="third">Example Text</a>
           </div>
           <div class="ui bottom attached tab segment active" data-tab="first">
+            <textarea>
             Male, 64, [Ethnicity], Text
+          </textarea>
           </div>
           <div class="ui bottom attached tab segment" data-tab="second">
             Second
