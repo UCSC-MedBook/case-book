@@ -1,6 +1,0 @@
-[submodule "webapp/packages/primary-collections"]
-	path = webapp/packages/primary-collections
-	url = http://github.com/UCSC-MedBook/primary-collections
-[submodule "webapp/packages/collaborations"]
-	path = webapp/packages/collaborations
-	url = http://github.com/UCSC-MedBook/collaborations
