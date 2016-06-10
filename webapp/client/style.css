@@ -11,3 +11,5 @@ body {margin: 5px;}
 .ui.menu .ui.floating.label {
   top: -0.4em;
 }
+
+.confinedSpace textarea { height: 50px; resize:vertical; max-height:50px; min-height:50px; }
