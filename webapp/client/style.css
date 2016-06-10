@@ -13,3 +13,7 @@ body {margin: 5px;}
 }
 
 .confinedSpace textarea { height: 50px; resize:vertical; max-height:50px; min-height:50px; }
+
+.rail {
+  width: 200px;
+}
