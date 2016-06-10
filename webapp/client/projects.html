@@ -50,7 +50,7 @@
             <th>Last Activity</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="go-to-case-page">
             <tr>
               <td>
                 <i class="empty star icon"></i>
@@ -120,55 +120,63 @@
 </template>
 
 <template name="projectSearchFields">
+
   <form class="ui form">
       <div class="field ui search">
         <label>Name</label>
         <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Enter search terms ...">
-        <i class="search icon"></i>
+          <input class="prompt" type="text" placeholder="Enter search terms ...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
       </div>
-      <div class="results"></div>
-    </div>
       <div class="field ui search">
         <label>Description</label>
         <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Enter search terms ...">
-        <i class="search icon"></i>
+          <input class="prompt" type="text" placeholder="Enter search terms ...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
       </div>
-      <div class="results"></div>
-    </div>
-    <div class="field">
-      <label>Cancer Type</label>
-      <select name="cancer-type" multiple="" class="ui fluid dropdown">
-        <option value="">Cancer Type</option>
-        <option value="LUAD">Lung</option>
-        <option value="BRCA">Breast</option>
-        <option value="PRAD">Prostate</option>
-        <option value="GBM">GBM</option>
-        <option value="PRAN">Pancreas</option>
-        <option value="HDNC">Head and Neck</option>
-        <option value="SKIM">Melanoma</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Stage</label>
-      <select name="cancer-stage" multiple="" class="ui fluid dropdown">
-        <option value="">Stage</option>
-        <option value="0">0</option>
-        <option value="1">I</option>
-        <option value="2">II</option>
-        <option value="3">III</option>
-        <option value="4">IV</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Histology Type</label>
-      <select name="histology-type" multiple="" class="ui fluid dropdown">
-        <option value="">Histology</option>
-        <option value="Ad">Adenocarimoma</option>
-        <option value="Sc">Small Cell</option>
-      </select>
-    </div>
+      <div class="field">
+        <label>Type</label>
+        <select name="project-type" multiple="" class="ui fluid dropdown">
+          <option value="">Type</option>
+          <option value="ds">Discussion</option>
+          <option value="cs">Case Series</option>
+          <option value="rs">Research</option>
+          <option value="tb">Tumor Board</option>
+          <option value="nb">Notebook</option>
+          <option value="ct">Clinical Trial</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Tags</label>
+        <select name="tags" multiple="" class="ui fluid dropdown">
+          <option value="">tags</option>
+          <option value="0">0</option>
+          <option value="1">I</option>
+          <option value="2">II</option>
+          <option value="3">III</option>
+          <option value="4">IV</option>
+        </select>
+      </div>
+      <div class="field ui search">
+        <label>Notebook text</label>
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Enter search terms ...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+      <div class="field ui search">
+        <label>Collaborators</label>
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Enter search terms ...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
     <a class="ui dropdown item">
       Add more criteria
       <i class="dropdown icon"></i>

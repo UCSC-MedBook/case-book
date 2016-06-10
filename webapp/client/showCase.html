@@ -40,4 +40,102 @@
   </h1>
   <b>Created:</b> March 1, 2015 9:10pm
   <b>Updated:</b> May 5, 2015 3:15pm
+  <div class="field">
+  <div class="ui top attached tabular menu">
+    <a class="item active" data-tab="case1">Case</a>
+    <a class="item" data-tab="case2">Notebook</a>
+    <a class="item" data-tab="case3">Insights (1)</a>
+    <a class="item" data-tab="case4">Collaborators (3)</a>
+  </div>
+  <div class="ui bottom attached tab segment active" data-tab="case1">
+    <a href={{pathFor "tags"}} class="ui dropdown item">
+      Tags
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="dropdown item">
+          stuff
+        </div>
+      </div>
+    </a>
+
+      <a class="ui red label">Pediatric</a>
+      <a class="ui blue label">Molecular</a>
+      <a class="ui yellow label">QA</a>
+
+    <h4>Summary</h4>
+    Male, 64, stage III lung cancer, athletic, non-smoker, 11 mos. Tarceva, progressed, 4 mos. Carboplatin + Alimta, Clovis trial, cyberknife
+    <h4>Narrative</h4>
+    Male, 64, athletic, non-smoker. Zip 93456, Dr. OL Young Diagnosed June 2013 with NSCLC, adenocarcinoma. Stage III, mets to pleura. EGFR G719A. Tarceva started in 2013-07 until 2014-06. Clear benefit. No side effects, but progressed 2014-06. Carboplatin + Alimta, 2014-07 to 2014-11. Stable disease, side effects mild. Clovis Trial (CO-1686) 2015-01, stopped 2015-04 due to small brain metastases. Cyberknife. Currently receiving Docetaxel.
+  </div>
+  <div class="ui bottom attached tab segment" data-tab="case2">
+    <button class="ui button">
+      All
+    </button>
+    <button class="ui button">
+      Media
+    </button>
+    <button class="ui button">
+      Data
+    </button>
+    <button class="ui button">
+      Comments
+    </button>
+    <button class="ui button">
+      Insights
+    </button>
+    <button class="ui left labeled icon button">
+      Newest
+      <i class="angle up left icon"></i>
+    </button>
+    <button class="ui left labeled icon button">
+      Oldest
+      <i class="angle down left icon"></i>
+    </button>
+    <div class="field ui search">
+      <div class="ui icon input">
+      <input class="prompt" type="text" placeholder="Search Notebook ...">
+      <i class="search icon"></i>
+      </div>
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Drag and Drop a Notebook Entry here">
+    </div>
+    <button class="ui button">
+      Add Entry
+    </button>
+    <div clase="ui grid">
+      <table class="ui structured table">
+        <tbody class="go-to-case-page">
+          <tr>
+            <td>May 5</td>
+            <td></td>
+            <td>
+              <div class="ui tiny images">
+                <img class="ui top left floated tiny image" src="/images/xray1.png">xray1.png
+                <img class="ui top left floated tiny image" src="/images/xray2.png">xray2.png
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>May 1</td>
+            <td><i class="bulb icon"></i></td>
+            <td>INCB24360 has shown efficacy both as a single agent, and in combination with immune checkpoint drugs</td>
+          </tr>
+          <tr>
+            <td>Apr 25</td>
+            <td></td>
+            <td>Do any of the other collaborators have any insights on this case?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="ui bottom attached tab segment" data-tab="case3">
+    Third
+  </div>
+  <div class="ui bottom attached tab segment" data-tab="case4">
+    Fourth
+  </div>
+</div>
+
 </template>
