@@ -36,7 +36,7 @@
       <a class="item" data-tab="proj2">Notebook</a>
       <a class="item" data-tab="proj3">Insights (2)</a>
       <a class="item" data-tab="proj4">Cases (4)</a>
-      <a class="item" data-tab="proj5">Collaborators (4)</a>
+      <a class="item" data-tab="proj5">Collaborators (2)</a>
     </div>
     <div class="ui bottom attached tab segment active" data-tab="proj1">
       <a href={{pathFor "tags"}} class="ui dropdown item">
@@ -376,8 +376,56 @@ cervical CA require testing for HPV presence in head and neck tumors.
         </div>
       </div>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="proj5">
-      Fifth
+    <div class="ui top attached tab segment" data-tab="proj5">
+      <div class="ui segment">
+        <h3>Add Collaborators</h3>
+          <button class="ui right floated labeled icon button">
+            Remove selected collaborators
+            <i class="trash icon"></i>
+          </button>
+        <textarea></textarea>
+        <button class="ui top floated right button">
+          Add
+        </button>
+      </div>
+      <div class="ui segment">
+        <h3>Collaborators</h3>
+        <div class="ui celled grid">
+          <div class="row">
+            <div class="four wide column">
+            <b>Name</b>
+            </div>
+            <div class="three wide column">
+            <b>Organization</b>
+            </div>
+            <div class="three wide column">
+            <b>Permissions</b>
+            </div>
+          </div>
+          <div class="row">
+            <div class="four wide column">
+            Dr. Bill Strangelove
+            </div>
+            <div class="three wide column">
+            Stanford Hospital
+            </div>
+            <div class="three wide column">
+            Notebook discussion and case editing
+            </div>
+          </div>
+          <div class="row">
+            <div class="four wide column">
+            Dr. Dudley Feldermeyerstein
+            </div>
+            <div class="three wide column">
+            Stanford Hospital
+            </div>
+            <div class="three wide column">
+            Notebook discussion
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
