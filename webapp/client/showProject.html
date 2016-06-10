@@ -1,0 +1,72 @@
+<template name="showProject">
+  <button class="ui left labeled icon button">
+    All Projects
+    <i class="angle double left icon"></i>
+  </button>
+  <button class="ui left labeled icon button">
+    Previous Project
+    <i class="angle left arrow icon"></i>
+  </button>
+  <button class="ui right floated icon button open-in-new-window"
+      data-content="Open in new window">
+    <i class="external icon"></i>
+  </button>
+  <button class="ui right floated labeled icon button">
+    Next Project
+    <i class="angle right arrow icon"></i>
+  </button>
+
+  <h1>
+    Long-Term NIH Study Fall 2016
+    <i class="pencil icon"></i>
+    <i class="empty star icon"></i>
+
+    <button class="ui right floated icon button">
+      ...
+    </button>
+    <button class="ui right floated labeled icon button">
+      Apps
+      <i class="fork icon"></i>
+    </button>
+  </h1>
+  Trial
+  <div class="field">
+    <div class="ui top attached tabular menu">
+      <a class="item active" data-tab="proj1">Project</a>
+      <a class="item" data-tab="proj2">Notebook</a>
+      <a class="item" data-tab="proj3">Insights (2)</a>
+      <a class="item" data-tab="proj4">Cases (4)</a>
+      <a class="item" data-tab="proj5">Collaborators (4)</a>
+    </div>
+    <div class="ui bottom attached tab segment active" data-tab="proj1">
+      <a href={{pathFor "tags"}} class="ui dropdown item">
+        Tags
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="dropdown item">
+            stuff
+          </div>
+        </div>
+      </a>
+
+        <a class="ui red label">Pediatric</a>
+        <a class="ui blue label">Molecular</a>
+        <a class="ui yellow label">QA</a>
+
+      <h4>Description</h4>
+        This study compares two ways of detecting lung cancer: low-dose helical computed tomography (CT)—often referred to as spiral CT—and standard chest X-ray. Helical CT uses X-rays to obtain a multiple-image scan of the entire chest, while a standard chest X-ray produces a single image of the whole chest in which anatomic structures overlie one another.
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="proj2">
+      second
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="proj3">
+      Third
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="proj4">
+      Fourth
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="proj5">
+      Fifth
+    </div>
+  </div>
+</template>
