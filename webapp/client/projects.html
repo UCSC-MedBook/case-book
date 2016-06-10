@@ -1,9 +1,47 @@
 <template name="projects">
-  <h1>My Projects</h1>
-  9 Projects
+  <div class="ui divided grid">
+    <div class="four wide column">
+      <div class="ui grid">
+        <div class="row">
+          <div class="twelve wide column">
+            <div class="ui header">
+              <div class="ui dropdown">
+                Project Search
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item">
+                    [List of Saved Searches]
+                  </div>
+                  <div class="item">
+                    Edit searches
+                  </div>
+                  <div class="item">
+                    Save search set as ...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="four wide column">
+            <a href="#" style="color: black;">
+              <u>Clear</u>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            {{> projectSearchFields}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="twelve wide column">
+  <h3>My Projects</h3>
+  9 Projects
     <div clase="ui grid">
-      <table class="ui structured table">
+      <table class="ui structured compact table">
         <thead>
           <tr>
             <th>Star</th>
@@ -79,4 +117,69 @@
       </table>
     </div>
   </div>
+</template>
+
+<template name="projectSearchFields">
+  <form class="ui form">
+      <div class="field ui search">
+        <label>Name</label>
+        <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Enter search terms ...">
+        <i class="search icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+      <div class="field ui search">
+        <label>Description</label>
+        <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Enter search terms ...">
+        <i class="search icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+    <div class="field">
+      <label>Cancer Type</label>
+      <select name="cancer-type" multiple="" class="ui fluid dropdown">
+        <option value="">Cancer Type</option>
+        <option value="LUAD">Lung</option>
+        <option value="BRCA">Breast</option>
+        <option value="PRAD">Prostate</option>
+        <option value="GBM">GBM</option>
+        <option value="PRAN">Pancreas</option>
+        <option value="HDNC">Head and Neck</option>
+        <option value="SKIM">Melanoma</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Stage</label>
+      <select name="cancer-stage" multiple="" class="ui fluid dropdown">
+        <option value="">Stage</option>
+        <option value="0">0</option>
+        <option value="1">I</option>
+        <option value="2">II</option>
+        <option value="3">III</option>
+        <option value="4">IV</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Histology Type</label>
+      <select name="histology-type" multiple="" class="ui fluid dropdown">
+        <option value="">Histology</option>
+        <option value="Ad">Adenocarimoma</option>
+        <option value="Sc">Small Cell</option>
+      </select>
+    </div>
+    <a class="ui dropdown item">
+      Add more criteria
+      <i class="dropdown icon"></i>
+      <div class="menu">
+      <div class="item">
+        Prior treatment
+      </div>
+      <div class="item">
+        weeks since diagnosis
+      </div>
+      </div>
+    </a>
+  </form>
 </template>
