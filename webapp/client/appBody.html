@@ -13,11 +13,11 @@
 </template>
 
 <template name="topMenu">
-  <div class="ui menu">
-    <a href={{pathFor "home"}} class="header item">
-      <h3>MedBook</h3>
+  <div class="ui menu inverted topmenu">
+    <a href={{pathFor "home"}} class="header item topmenu">
+      <h3 class="topmenu">MedBook</h3>
     </a>
-    <a href={{pathFor "cases"}} class="ui dropdown item">
+    <a href={{pathFor "cases"}} class="ui dropdown item topmenu">
       Cases
       <i class="dropdown icon"></i>
       <div class="menu">
@@ -49,7 +49,7 @@
     </a>
 
 
-    <a href={{pathFor "projects"}} class="ui dropdown item">
+    <a href={{pathFor "projects"}} class="ui dropdown item inverted topmenu">
       Projects
       <i class="dropdown icon"></i>
       <div class="menu">
@@ -68,7 +68,7 @@
     <a class="item">
       Insights
     </a>
-    <a class="item">
+    <a href={{pathFor "apps"}} class="item">
       Apps
     </a>
 
@@ -181,6 +181,7 @@
     <div class="actions">
       <div class="ui button">Cancel</div>
       <div class="ui button">Create Case</div>
+      <div class="ui button">Create Case and Search</div>
     </div>
   </div>
 </template>

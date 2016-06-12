@@ -5,8 +5,14 @@ Template.appBody.onRendered(function () {
   $(".ui.menu .ui.dropdown").dropdown({ on: "hover" });
 });
 
+Meteor.startup(function() {
+  console.log('suscribe case.list');
+  Meteor.subscribe('cases.list');
+});
+
+
 Template.appBody.events({
   "click .createCase"(event, instance) {
     $(".ui.modal").modal("show");
   },
-})
+});

@@ -46,6 +46,7 @@
     <a class="item" data-tab="case2">Notebook</a>
     <a class="item" data-tab="case3">Insights (2)</a>
     <a class="item" data-tab="case4">Collaborators (2)</a>
+    <a class="item" data-tab="case5">Scribe</a>
   </div>
   <div class="ui bottom attached tab segment active" data-tab="case1">
     <a href={{pathFor "tags"}} class="ui dropdown item">
@@ -97,12 +98,18 @@
       Oldest
       <i class="angle down left icon"></i>
     </button>
-    <div class="field">
-      <input type="text" placeholder="Drag and Drop a Notebook Entry here">
+    <div class="ui right labeled input">
+      <input type="text" class="widetext" placeholder="Enter new notebook text">
+      <div class="ui label">
+        Add Entry
+      </div>
     </div>
-    <button class="ui floated right button">
-      Add Entry
-    </button>
+    <div class="ui right labeled input">
+      <input type="text" class="widetext" placeholder="Drag and Drop a Notebook Entry here">
+      <div class="ui label">
+        Upload
+      </div>
+    </div>
     <div class="ui segment">
       <div class="ui left rail">
         <div class="ui segment">
@@ -306,6 +313,18 @@ cervical CA require testing for HPV presence in head and neck tumors.
           </div>
         </div>
       </div>
+  </div>
+  <div class="ui bottom attached tab segment" data-tab="case5">
+    <div class="ui segment large">
+      <h3>Add to notebook using markdown</h3>
+      === starts a new entry<br>
+      name:amanda starts a new discussion<br>
+      i: starts and insight<br>
+      <button class="ui floated right button">
+        Post to Notebook
+      </button>
+      <textarea class="largetext"></textarea>
+    </div>
   </div>
 </div>
 

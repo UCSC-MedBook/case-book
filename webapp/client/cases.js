@@ -7,3 +7,10 @@ Template.cases.events({
     FlowRouter.go("showCase");
   },
 });
+
+Template.cases.helpers({
+  cases: function() {
+    c = Cases.find({});
+    return c;
+  }
+});

@@ -4,7 +4,7 @@ function defaultAction(templateName, params) {
 }
 
 function sameNameAndAction(name) {
-  return { name, action: _.partial(defaultAction, name) }
+  return { name, action: _.partial(defaultAction, name) };
 }
 
 FlowRouter.route("/", sameNameAndAction("home"));
@@ -16,3 +16,5 @@ FlowRouter.route("/cases", sameNameAndAction("cases"));
 FlowRouter.route("/cases/showCase", sameNameAndAction("showCase"));
 
 FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
+
+FlowRouter.route("/apps", sameNameAndAction("apps"));
