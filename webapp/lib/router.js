@@ -18,3 +18,5 @@ FlowRouter.route("/cases/showCase", sameNameAndAction("showCase"));
 FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
 
 FlowRouter.route("/apps", sameNameAndAction("apps"));
+
+FlowRouter.route("/insights", sameNameAndAction("insights"));
