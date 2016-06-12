@@ -4,6 +4,8 @@ Template.cases.onRendered(function () {
 
 Template.cases.events({
   "click .go-to-case-page"(event, instance) {
+    console.log('event',event);
+    console.log('instance',instance);
     FlowRouter.go("showCase");
   },
 });
