@@ -17,8 +17,6 @@ Template.showCase.events({
         var parent = selection.anchorNode.parentNode;
         console.log('parentNode', parent);
         parent.style.backgroundColor = 'yellow';
-        //var affordance = '<button class="ui icon button"> <i class="cloud icon"></i> </button>';
         Blaze.render(Template.affordance, parent);
-        //, Template.showCase);
     }
   });
