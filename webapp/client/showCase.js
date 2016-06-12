@@ -13,6 +13,13 @@ Template.showCase.events({
         } else if (document.selection) {
           selection = document.selection.createRange();
         }
-        selection.toString() !== '' && alert('"' + selection.toString() + '" was selected at ' + event.pageX + '/' + event.pageY);
+        console.log('selection', selection);
+        var parent = selection.anchorNode.parentNode;
+        console.log('parentNode', parent);
+        selection.toString() !== '' && alert(' Insignt created: "' + selection.toString() + '"       at ' + event.pageX + '/' + event.pageY);
+        parent.style.backgroundColor = 'yellow';
+        //var affordance = '<button class="ui icon button"> <i class="cloud icon"></i> </button>';
+        Blaze.render(Template.affordance, parent);
+        //, Template.showCase);
     }
   });
