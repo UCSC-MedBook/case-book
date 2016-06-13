@@ -1,17 +1,47 @@
 Cases = new Mongo.Collection("cases");
 Cases.attachSchema({
+  // NOTE: fullNarrative, firstName, lastName, publishToNanopub
+  // only optional so that we can insert seed data
+
   // private organization information
-  firstName: { type: String },
-  lastName: { type: String },
+  firstName: { type: String, optional: true },
+  lastName: { type: String, optional: true },
   caseLabel: { type: String, optional: true },
 
   // public information
-  fullNarrative: { type: String },
-  summary: { type: String, optional: true },
-  publishToNanopub: { type: Boolean, defaultValue: false },
+  fullNarrative: { type: String, optional: true },
+  summary: {
+    type: String,
+    optional: true,
+    autoValue() {
+      if (!this.isSet) {
+        let summary = "";
+
+        let gleasonScore = this.field("gleasonScore").value;
+        if (gleasonScore) {
+          summary += `Gleason score: ${gleasonScore}; `;
+        }
+
+        let drugs = this.field("drugs").value;
+        if (drugs && drugs.length) {
+          let uniqueDrugs = _.uniq(drugs);
+
+          summary += `Treated with ${drugs.join(", ")}; `;
+        }
+
+        // if no fields filled in return the full narrative
+        if (summary === "") {
+          return this.field("fullNarrative").value;
+        }
+
+        return summary;
+      }
+    },
+  },
+  publishToNanopub: { type: Boolean, defaultValue: false, optional: true },
 
   // normalized text fields
-  Age: {
+  age: {
     type: Number,
     optional: true,
     autoValue() {
@@ -19,7 +49,7 @@ Cases.attachSchema({
       return Math.floor(Math.random()*60+20);
     },
   },
-  Gender: {
+  gender: {
     type: String,
     allowedValues: [ "male", "female" ],
     optional: true,
@@ -30,5 +60,13 @@ Cases.attachSchema({
         return "female";
       }
     },
+  },
+  gleasonScore: {
+    type: Number,
+    optional: true
+  },
+  drugs: {
+    type: [String],
+    optional: true
   },
 });
