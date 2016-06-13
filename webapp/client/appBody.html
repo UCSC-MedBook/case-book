@@ -13,7 +13,7 @@
 </template>
 
 <template name="topMenu">
-  <div class="ui menu inverted topmenu">
+  <div class="ui fluid menu inverted topmenu">
     <a href={{pathFor "home"}} class="header item topmenu">
       <h3 class="topmenu">MedBook</h3>
     </a>
@@ -48,7 +48,6 @@
       </div>
     </a>
 
-
     <a href={{pathFor "projects"}} class="ui dropdown item inverted topmenu">
       Projects
       <i class="dropdown icon"></i>
@@ -75,11 +74,11 @@
 
     <div class="right menu">
       <a class="icon item">
-        <i class="comments large icon"></i>
+        <i class="comments big icon"></i>
       </a>
 
       <a class="icon item">
-        <i class="lightbulb large icon"></i>
+        <i class="lightbulb big icon"></i>
         <div class="floating ui red label">3</div>
       </a>
 
@@ -91,6 +90,18 @@
           <div class="item">Logout</div>
         </div>
       </a>
+    </div>
+  </div>
+</template>
+
+<template name="dataLoading">
+  <div class="ui icon message">
+    <i class="notched circle loading icon"></i>
+    <div class="content">
+      <div class="header">
+        One moment please...
+      </div>
+      <p>We're fetching that data for you.</p>
     </div>
   </div>
 </template>
