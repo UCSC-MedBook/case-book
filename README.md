@@ -6,5 +6,9 @@ $ cd case-book <br>
 $ meteor
 
 
+Installing Meteor
+https://www.meteor.com/install
+
+
 
 
