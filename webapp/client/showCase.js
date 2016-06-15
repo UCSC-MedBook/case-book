@@ -16,8 +16,8 @@ Template.showCase.events({
         console.log('selection', selection);
         var parent = selection.anchorNode.parentNode;
         console.log('parentNode', parent);
-        parent.style.backgroundColor = 'yellow';
-        Blaze.render(Template.affordance, parent);
+        //parent.style.backgroundColor = 'yellow';
+        //Blaze.render(Template.affordance, parent);
     },
   "click .createPost"(event, instance) {
     console.log('click', event);
