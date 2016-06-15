@@ -18,5 +18,10 @@ Template.showCase.events({
         console.log('parentNode', parent);
         parent.style.backgroundColor = 'yellow';
         Blaze.render(Template.affordance, parent);
-    }
+    },
+  "click .createPost"(event, instance) {
+    console.log('click', event);
+    //Meteor.call("createPost", $createPostForm.form("get values"));
+    Meteor.call("createPost", { hi: "yop" });
+  }
   });
