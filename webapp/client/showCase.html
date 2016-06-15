@@ -16,6 +16,7 @@
     <i class="angle right arrow icon"></i>
   </button>
 
+{{#if Template.subscriptionsReady}}
   <h2>
     Male, 64, CRPC prostate cancer, resistant to Abi, DNA Repair mutations
     <i class="empty star icon"></i>
@@ -59,6 +60,7 @@
     <h4>Narrative</h4>
     Male, 64, athletic, non-smoker. Dr. OL Young Diagnosed June 2013 with CRPC, adenocarcinoma. Stage IV, mets to bone. MLH2 mutation. Abiraterone started in 2013-07 until 2014-06. Clear benefit. No side effects, but progressed 2014-06. Carboplatin  2014-07 to 2014-11. Stable disease, side effects mild. Abiraterone Trial 2015-01, stopped 2015-04 due to bone metastases. Currently receiving Docetaxel.
   </div>
+
   <div class="ui bottom attached tab segment" data-tab="case2">
       <div class="ui floated right search">
         <div class="ui icon input">
@@ -338,6 +340,9 @@ cervical CA require testing for HPV presence in head and neck tumors.
     </div>
   </div>
 </div>
+  {{else}}
+    {{> dataLoading }}
+  {{/if}}
 
 </template>
 <template name="affordance">
