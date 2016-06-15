@@ -13,7 +13,7 @@ FlowRouter.route("/projects", sameNameAndAction("projects"));
 
 FlowRouter.route("/cases", sameNameAndAction("cases"));
 
-FlowRouter.route("/showCase", sameNameAndAction("showCase"));
+FlowRouter.route("/cases/:caseId", sameNameAndAction("showCase"));
 
 FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
 

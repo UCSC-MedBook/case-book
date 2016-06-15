@@ -20,16 +20,4 @@ Template.cases.helpers({
   getCases() {
     return Cases.find({});
   },
-  pathForPost: function() {
-    var caseObj = this;
-    console.log('case', caseObj);
-    var params = {
-        caseId: caseObj._id
-    };
-    var queryParams = {id: caseObj._id};
-    var routeName = "showCase";
-    var path = FlowRouter.path(routeName, params, queryParams);
-
-    return path;
-  }
 });

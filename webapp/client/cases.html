@@ -68,7 +68,11 @@
                 <tr>
                   <td>{{gender}}</td>
                   <td>{{age}}</td>
-                  <td><a href={{pathForPost}}>{{caseLabel}}</a></td>
+                  <td>
+                    <a href={{pathFor "showCase" caseId=_id}}>
+                      {{caseLabel}}
+                    </a>
+                  </td>
                   <td>{{summary}}</td>
                 </tr>
             	{{/each}}

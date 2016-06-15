@@ -30,4 +30,4 @@ Template.showCase.events({
     //Meteor.call("createPost", $createPostForm.form("get values"));
     Meteor.call("createPost", { hi: "yop" });
   }
-  });
+});
