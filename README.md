@@ -8,7 +8,7 @@ $ meteor
 Installing Meteor
 https://www.meteor.com/install
 
-By default meteor starts up a mongo server, to look at my mongo data, run the following:
+By default meteor starts up a mongo server, to look at mongo data, run the following:
 $ meteor mongo
 > show collections
 
