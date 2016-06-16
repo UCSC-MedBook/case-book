@@ -18,8 +18,10 @@
 
 {{#if Template.subscriptionsReady}}
   <h2>
-    Male, 64, CRPC prostate cancer, resistant to Abi, DNA Repair mutations
-    <i class="empty star icon"></i>
+    {{#with getCase}}
+      {{fullNarrative}}
+      <i class="empty star icon"></i>
+    {{/with}}
   </h2>
 
     <button class="ui right floated icon button">

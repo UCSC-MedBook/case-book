@@ -1,13 +1,17 @@
 Template.showCase.onCreated(function () {
   const instance = this;
-  console.log('created', instance.data);
 });
 
 Template.showCase.onRendered(function () {
   // $(".ui.dropdown").dropdown();
   $('.open-in-new-window').popup();
   $('.tabular.menu .item').tab();
-  console.log('show case', this);
+});
+Template.showCase.helpers({
+  getCase: function () {
+    console.log('getCase this', this);
+    return Cases.findOne(this.caseId);
+  }
 });
 
 Template.showCase.events({
