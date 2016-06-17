@@ -17,7 +17,6 @@ FlowRouter.route("/cases", sameNameAndAction("cases"));
 FlowRouter.route("/cases/:caseId", {
     name: "showCase",
     subscriptions: function(params, queryParams) {
-      console.log('subscribe case params:', params.caseId);
       this.register('showCase', Meteor.subscribe('singleCase', params.caseId));
   },
     action: function(params ) {

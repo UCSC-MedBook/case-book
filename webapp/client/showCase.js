@@ -1,15 +1,20 @@
 Template.showCase.onCreated(function () {
-  const instance = this;
+  const case_instance = this;
+  //console.log('onCreated', instance.data);
+  //console.log('onCreated id=', instance.data.caseId);
+  //instance.subscribe("showCase", instance.data.caseId);
 });
 
 Template.showCase.onRendered(function () {
   // $(".ui.dropdown").dropdown();
   $('.open-in-new-window').popup();
   $('.tabular.menu .item').tab();
+  let instance = this;
+  $createPostForm = instance.$(".new-notebook.ui.form");
+
 });
 Template.showCase.helpers({
   getCase: function () {
-    console.log('getCase this', this);
     return Cases.findOne(this.caseId);
   }
 });
@@ -30,8 +35,9 @@ Template.showCase.events({
         //Blaze.render(Template.affordance, parent);
     },
   "click .createPost"(event, instance) {
-    console.log('click', event);
-    //Meteor.call("createPost", $createPostForm.form("get values"));
-    Meteor.call("createPost", { hi: "yop" });
+    var f = $createPostForm.form("get values");
+    f.caseId = instance.data.caseId;
+    Meteor.call("createPost", f);
+    //Meteor.call("createPost", { hi: "yop" });
   }
 });

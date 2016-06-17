@@ -37,7 +37,8 @@ body {margin: 5px;}
   width:950px;
 }
 .widetext {
-  width:400px;
+  min-width:400px;
+  max-width:500px;
 }
 .searchbox {
 	background-color: #f1f6ff;

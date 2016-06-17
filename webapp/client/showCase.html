@@ -17,12 +17,11 @@
   </button>
 
 {{#if Template.subscriptionsReady}}
-  <h2>
-    {{#with getCase}}
+  {{#with getCase}}
+    <h2>
       {{fullNarrative}}
       <i class="empty star icon"></i>
-    {{/with}}
-  </h2>
+    </h2>
 
     <button class="ui right floated icon button">
       ...
@@ -60,7 +59,7 @@
       <a class="ui yellow label">QA</a>
 
     <h4>Narrative</h4>
-    Male, 64, athletic, non-smoker. Dr. OL Young Diagnosed June 2013 with CRPC, adenocarcinoma. Stage IV, mets to bone. MLH2 mutation. Abiraterone started in 2013-07 until 2014-06. Clear benefit. No side effects, but progressed 2014-06. Carboplatin  2014-07 to 2014-11. Stable disease, side effects mild. Abiraterone Trial 2015-01, stopped 2015-04 due to bone metastases. Currently receiving Docetaxel.
+    {{fullNarrative}}
   </div>
 
   <div class="ui bottom attached tab segment" data-tab="case2">
@@ -93,18 +92,24 @@
         Oldest
         <i class="angle down left icon"></i>
       </button>
-    <div class="ui right labeled input">
-      <input type="text" class="widetext" placeholder="Enter new notebook text">
-      <div class="actions">
-        <div class="ui button ok createPost">Add Entry</div>
+      <div class="content">
+        <div class="ui right labeled input">
+            <form class="new-notebook ui form">
+              <div class="ui segment widetext">
+                <input type="textarea" name="notes" class="widetext" placeholder="Enter new notebook text">
+              </div>
+            </form>
+            <div class="actions">
+              <div class="ui label button ok createPost">Add Entry</div>
+            </div>
+        </div>
+        <div class="ui right labeled input">
+          <input type="text" class="widetext" placeholder="Drag and Drop a Notebook Entry here">
+          <div class="ui label">
+            Upload
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="ui right labeled input">
-      <input type="text" class="widetext" placeholder="Drag and Drop a Notebook Entry here">
-      <div class="ui label">
-        Upload
-      </div>
-    </div>
       <div class="ui celled grid">
         <div class="row">
           <div class="ui two wide column">
@@ -342,6 +347,7 @@ cervical CA require testing for HPV presence in head and neck tumors.
     </div>
   </div>
 </div>
+{{/with}}
   {{else}}
     {{> dataLoading }}
   {{/if}}
