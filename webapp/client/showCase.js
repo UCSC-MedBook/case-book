@@ -16,6 +16,10 @@ Template.showCase.onRendered(function () {
 Template.showCase.helpers({
   getCase: function () {
     return Cases.findOne(this.caseId);
+  },
+  createDate: function () {
+    console.log('helper this',this.createdAt);
+    return moment(this.createdAt).format('MMM DD, YYYY hh:mm a');
   }
 });
 

@@ -7,6 +7,7 @@ Cases.attachSchema({
   firstName: { type: String, optional: true },
   lastName: { type: String, optional: true },
   caseLabel: { type: String, optional: true },
+  createdAt: {type: Date},
 
   // public information
   fullNarrative: { type: String, optional: true },
@@ -31,7 +32,7 @@ Cases.attachSchema({
 
         // if no fields filled in return the full narrative
         if (summary === "") {
-          return this.field("fullNarrative").value;
+          return this.field("fullNarrative").value.slice(0,80);
         }
 
         return summary;

@@ -19,7 +19,7 @@
 {{#if Template.subscriptionsReady}}
   {{#with getCase}}
     <h2>
-      {{fullNarrative}}
+      {{summary}}
       <i class="empty star icon"></i>
     </h2>
 
@@ -40,7 +40,7 @@
       Apps
       <i class="bar chart icon"></i>
     </button>
-  <b>Created:</b> March 1, 2015 9:10pm
+  <b>Created:</b>{{createDate}}
   <b>Updated:</b> May 5, 2015 3:15pm
   <div class="field">
   <div class="ui top attached tabular menu">
@@ -96,7 +96,7 @@
         <div class="ui right labeled input">
             <form class="new-notebook ui form">
               <div class="ui segment widetext">
-                <input type="textarea" name="notes" class="widetext" placeholder="Enter new notebook text">
+                <input type="textarea" name="body" class="widetext" placeholder="Enter new notebook text">
               </div>
             </form>
             <div class="actions">
