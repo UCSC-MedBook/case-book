@@ -13,5 +13,9 @@ $ meteor mongo
 > show collections
 
 
+You also need to manually create the full text index
+> db.cases.createIndex( { fullNarrative: "text" } );
+
+
 
 
