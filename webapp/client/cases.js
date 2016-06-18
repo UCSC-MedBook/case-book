@@ -15,6 +15,15 @@ Template.cases.events({
     FlowRouter.go("showCase");
   },
 });
+Template.caseSearchFields.events({
+  "change .cancer_type"(event, instance) {
+    console.log('search ',event, instance, event.currentTarget);
+    console.log('event.target.value', event.target.value)
+    //var x = instance.$('.cancer_type:selected');
+    var x = Template.instance().findAll();
+    console.log('selected ', x);
+  }
+});
 
 Template.cases.helpers({
   getCases() {

@@ -19,7 +19,7 @@ Template.showCase.helpers({
   },
   createDate: function () {
     console.log('helper this',this.createdAt);
-    return moment(this.createdAt).format('MMM DD, YYYY hh:mm a');
+    return moment(this.createdAt).format('MMM D, YYYY h:mm a');
   }
 });
 
