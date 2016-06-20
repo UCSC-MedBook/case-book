@@ -34,3 +34,8 @@ aldeed:simple-schema
 aldeed:collection2
 momentjs:moment
 hive:facets
+accounts-ui
+accounts-password
+useraccounts:unstyled
+tomi:upload-server
+dbarrett:dropzonejs

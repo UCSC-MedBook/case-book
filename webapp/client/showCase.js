@@ -11,14 +11,25 @@ Template.showCase.onRendered(function () {
   $('.tabular.menu .item').tab();
   let instance = this;
   $createPostForm = instance.$(".new-notebook.ui.form");
-
+});
+Template.showCaseDetails.onRendered(function () {
+  $('.tabular.menu .item').tab();
+});
+Template.showCaseDetails.helpers({
+  getPosts: function () {
+    var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
+    console.log('getPosts', p);
+    return p;
+  },
+  createDate: function () {
+    return moment(this.createdAt).format('MMM D, YYYY h:mm a');
+  }
 });
 Template.showCase.helpers({
   getCase: function () {
-    return Cases.findOne(this.caseId);
+    return Cases.findOne({_id:this.caseId});
   },
   createDate: function () {
-    console.log('helper this',this.createdAt);
     return moment(this.createdAt).format('MMM D, YYYY h:mm a');
   }
 });
@@ -42,6 +53,5 @@ Template.showCase.events({
     var f = $createPostForm.form("get values");
     f.caseId = instance.data.caseId;
     Meteor.call("createPost", f);
-    //Meteor.call("createPost", { hi: "yop" });
   }
 });

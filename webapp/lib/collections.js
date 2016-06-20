@@ -94,18 +94,55 @@ Cases.attachSchema({
 });
 
 Posts = new Mongo.Collection("posts");
-// Posts.attachSchema({
-//   title: { type: String },
-//   body: { type: String, optional: true },
-//   sticky: { type: Boolean, optional: true },
-//   status: { type: Number, optional: true },
-//   url: { type: String, optional: true },
-//   categories: { type: [String], optional: true },
-//   collaboration: { type: [String], optional: true },
-//   userId: { type: String, optional: true },
-//   createdAt: { type: Date },
-//   updatedAt: { type: Date, optional: true },
-//   postedAt: { type: Date, optional: true },
-//   htmlBody: { type: String, optional: true },
-//   scheduledAt: { type: Date, optional: true }
-// });
+Posts.attachSchema({
+  title: { type: String },
+  body: { type: String, optional: true },
+  sticky: { type: Boolean, optional: true },
+  status: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      if (!this.isSet) {
+        return 2;
+      }
+    }
+  },
+  inactive: {
+    type: Boolean,
+    optional: true,
+    autoValue: function() {
+      if (!this.isSet) {
+        return false;
+      }
+    }
+  },
+  url: { type: String, optional: true },
+  categories: { type: [String], optional: true },
+  collaboration: { type: [String], optional: true },
+  userId: {
+    type: String, optional: true,
+    autoValue: function() {
+      if (!this.isSet) {
+        if ( typeof Meteor.userId === "function") {
+          console.log('user set by meteor', Meteor.userId());
+          return Meteor.userId();
+        }
+      }
+    }
+  },
+  author: {
+     type: String,
+     autoValue: function() {
+       if (!this.isSet) {
+         console.log('author', Meteor.user());
+         return 'anonymous';
+       }
+     }
+   },
+  createdAt: { type: Date },
+  updatedAt: { type: Date, optional: true },
+  postedAt: { type: Date, optional: true },
+  htmlBody: { type: String, optional: true },
+  scheduledAt: { type: Date, optional: true },
+  caseId: {type: String, optional: true }
+});

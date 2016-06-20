@@ -9,9 +9,9 @@ Meteor.methods({
   },
   createPost(newPost) {
     newPost.title = newPost.body.substring(0, 80);
-    if ( typeof Meteor.userId === "function") {
-      newPost.userId = this.userId;
-    }
+    //if ( typeof this.userId === "function") {
+    //  newPost.userId = this.userId;
+    //}
     newPost.createdAt = new Date();
     newPost.postedAt = new Date();
     Posts.insert(newPost);
