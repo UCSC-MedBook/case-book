@@ -44,7 +44,7 @@ body {margin: 5px;}
 	background-color: #f1f6ff;
 }
 .dropzone {
-  min-height: 67px;
-  max-height: 100px;
-  height: 70px;
+  min-height: 37px;
+  max-height: 50px;
+  height: 40px;
 }

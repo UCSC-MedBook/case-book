@@ -108,7 +108,7 @@
             <div class="ui label button ok createPost">Add Entry</div>
           </div>
       </div>
-      <div class="ui right labeled input">
+      <div class="ui input">
         {{>dropzone url="/upload" id="template-helper"}}
       </div>
     </div>
@@ -120,10 +120,14 @@
           {{createDate}}
         </div>
         <div class="twelve wide column">
-          <p class="textNorm">
-            <a class="author">Dr. Bob Jones</a>
-            {{title}}
-          </p>
+          <div class="ui comments">
+            <div class="comment">
+              <p class="textNorm">
+                <a class="author">Dr. Bob Jones</a>
+                {{title}}
+              </p>
+            </div>
+          </div>
           <div class="ui comments">
             <h4 class="ui dividing header">Discussion</h4>
             <div class="comment">
