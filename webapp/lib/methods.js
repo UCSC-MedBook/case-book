@@ -15,5 +15,13 @@ Meteor.methods({
     newPost.createdAt = new Date();
     newPost.postedAt = new Date();
     Posts.insert(newPost);
+  },
+  createInsight(postId, text) {
+    var newPost = Posts.findOne({_id:postId});
+    if (newPost.insightStatus) {
+      return;
+    }
+    console.log('update Insight ',postId);
+    Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
   }
 });

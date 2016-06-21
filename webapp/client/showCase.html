@@ -48,7 +48,7 @@
     Apps
     <i class="bar chart icon"></i>
   </button>
-  <b>Created:</b>{{createDate}} id: {{_id}}
+  <b>Created:</b>{{createDate}} 
   <div class="field">
   <div class="ui top attached tabular menu">
   <a class="item active" data-tab="case1">Case</a>
@@ -99,25 +99,26 @@
       Oldest
       <i class="angle down left icon"></i>
     </button>
-    <div class="ui segment">
-      <div class="ui right labeled input">
-          <form class="new-notebook ui form">
-            <input type="textarea" name="body" class="widetext" placeholder="Enter new notebook text">
-          </form>
-          <div class="actions">
-            <div class="ui label button ok createPost">Add Entry</div>
+    <div class="ui segments">
+      <form class="new-notebook ui form">
+        <div class="ui horizontal segments">
+          <div class="ui segment widetext">
+            <textarea rows="1" placeholder="Enter new notebook text" name="body"></textarea>
           </div>
-      </div>
-      <div class="ui input">
-        {{>dropzone url="/upload" id="template-helper"}}
-      </div>
+          <div class="ui floated right segment">
+              {{>dropzone url="/upload" id="template-helper"}}
+          </div>
+        </div>
+        <div class="ui primary button createPost">Add Entry</div>
+    </form>
     </div>
     <div class="ui celled grid">
     {{#if Template.subscriptionsReady}}
       {{#each getPosts}}
       <div class="row">
-        <div class="ui two wide column">
+        <div class="ui two wide column {{insightStatus}}">
           {{createDate}}
+          <i class="ui lightbulb right floating large icon"></i>
         </div>
         <div class="twelve wide column">
           <div class="ui comments">

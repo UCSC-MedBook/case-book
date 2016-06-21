@@ -37,8 +37,8 @@ body {margin: 5px;}
   width:950px;
 }
 .widetext {
-  min-width:400px;
-  max-width:500px;
+  min-width:600px;
+  max-width:600px;
 }
 .searchbox {
 	background-color: #f1f6ff;
@@ -47,4 +47,8 @@ body {margin: 5px;}
   min-height: 37px;
   max-height: 50px;
   height: 40px;
+  padding: 9px;
+}
+.dropzone .dz-message {
+  margin: 0px;
 }

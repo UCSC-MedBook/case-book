@@ -10,7 +10,6 @@ Template.showCase.onRendered(function () {
   $('.open-in-new-window').popup();
   $('.tabular.menu .item').tab();
   let instance = this;
-  $createPostForm = instance.$(".new-notebook.ui.form");
 });
 Template.showCaseDetails.onRendered(function () {
   $('.tabular.menu .item').tab();
@@ -23,6 +22,19 @@ Template.showCaseDetails.helpers({
   },
   createDate: function () {
     return moment(this.createdAt).format('MMM D, YYYY h:mm a');
+  },
+  insightStatus: function() {
+    var post = this;
+    if (post.insightStatus) {
+      console.log('post insight',post.insightStatus);
+      if (post.insightStatus === 'pending') {
+        return "pendingInsight";
+      }
+      else {
+        return "approvedInsight";
+      }
+    }
+    return;
   }
 });
 Template.showCase.helpers({
@@ -50,8 +62,16 @@ Template.showCase.events({
         //Blaze.render(Template.affordance, parent);
     },
   "click .createPost"(event, instance) {
-    var f = $createPostForm.form("get values");
+    var f = instance.$(".new-notebook.ui.form").form("get values");
+    console.log(f);
     f.caseId = instance.data.caseId;
     Meteor.call("createPost", f);
+  },
+});
+Template.showCaseDetails.events({
+  "click .lightbulb"(event, instance) {
+    var post = this;
+    //console.log('click light', event, post, post._id);
+    Meteor.call("createInsight", post._id, post.title);
   }
 });

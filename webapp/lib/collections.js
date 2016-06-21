@@ -107,6 +107,15 @@ Posts.attachSchema({
       }
     }
   },
+  insight: {
+    type: String,
+    optional: true,
+  },
+  insightStatus: {
+    type: String ,
+    allowedValues: [ "pending", "approved", "disapproved" ],
+    optional: true,
+  },
   inactive: {
     type: Boolean,
     optional: true,

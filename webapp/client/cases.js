@@ -10,18 +10,20 @@ Template.cases.onRendered(function () {
 
 Template.cases.events({
   "click .go-to-case-page"(event, instance) {
+    var c = instance.$(".caseid .selected");
+    console.log('show case',c);
     console.log('show case',event, instance);
-    console.log('current target', event.currentTarget );
+    //console.log('current target', event.currentTarget );
     FlowRouter.go("showCase");
   },
 });
 Template.caseSearchFields.events({
   "change .cancer_type"(event, instance) {
-    console.log('search ',event, instance, event.currentTarget);
-    console.log('event.target.value', event.target.value)
-    //var x = instance.$('.cancer_type:selected');
-    var x = Template.instance().findAll();
-    console.log('selected ', x);
+    var val = $('.cancer_type')
+      .dropdown('get value')
+    ;
+    console.log('drop down', val);
+    Meteor.subscribe('searchCase', val);
   }
 });
 

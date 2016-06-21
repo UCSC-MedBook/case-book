@@ -63,17 +63,21 @@
                 <th>Summary</th>
               </tr>
             </thead>
-            <tbody class="go-to-case-page">
+            <tbody >
               {{#each getCases}}
-                <tr>
+                <tr class="go-to-case-page  ">
                   <td>{{gender}}</td>
                   <td>{{age}}</td>
                   <td>
-                    <a href={{pathFor "showCase" caseId=_id}}>
+                    <a href={{pathFor "showCase" caseId=_id}} class="caseid">
                       {{caseLabel}}
                     </a>
                   </td>
-                  <td>{{summary}}</td>
+                  <td>
+                    <div class="go-to-case-page">
+                      {{summary}}
+                    </div>
+                  </td>
                 </tr>
             	{{/each}}
             </tbody>
@@ -121,14 +125,14 @@
     <div class="field">
       <label>Cancer Type</label>
       <select name="cancer-type" multiple="" class="ui fluid dropdown cancer_type">
-        <option value="">Cancer Type</option>
-        <option value="LUAD">Lung</option>
-        <option value="BRCA">Breast</option>
-        <option value="PRAD">Prostate</option>
-        <option value="GBM">GBM</option>
-        <option value="PRAN">Pancreas</option>
-        <option value="HDNC">Head and Neck</option>
-        <option value="SKIM">Melanoma</option>
+        <option data-value="">Cancer Type</option>
+        <option data-value="LUAD">Lung</option>
+        <option data-value="BRCA">Breast</option>
+        <option data-value="PRAD">Prostate</option>
+        <option data-value="GBM">GBM</option>
+        <option data-value="PRAN">Pancreas</option>
+        <option data-value="HDNC">Head and Neck</option>
+        <option data-value="SKIM">Melanoma</option>
       </select>
     </div>
     <div class="field">

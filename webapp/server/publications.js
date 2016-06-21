@@ -8,8 +8,9 @@ Meteor.publish("singleCase", function(cid) {
 });
 Meteor.publish("searchCase", function(cancer_type, gender, age1, age2) {
   check(gender, String);
-  check(cancer_type, [String]);
+  //check(cancer_type, [String]);
   check(age1, Number);
   check(age2, Number);
+  console.log('cancer_type', cancer_type);
   Cases.findWithFacets({gender: gender, age: { $gt: age1, $lt: age2 }, cancer_type: {$in: cancer_type}});
 });
