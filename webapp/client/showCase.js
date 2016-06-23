@@ -35,7 +35,20 @@ Template.showCaseDetails.helpers({
       }
     }
     return;
-  }
+  },
+  isApproved: function (post) {
+    if (post.insightStatus) {
+      console.log('approved',post, post.insightStatus== 'approved' );
+      return post.insightStatus === 'approved';
+    }
+  },
+  isPending: function (post) {
+    if (post.insightStatus) {
+      console.log('pending',post, post.insightStatus == 'pending' );
+      return post.insightStatus === 'pending';
+    }
+  },
+
 });
 Template.showCase.helpers({
   getCase: function () {

@@ -1,7 +1,8 @@
 Template.cases.onCreated(function() {
   let instance = this;
-
-  instance.subscribe("allCases");
+  console.log("onCreated cases")
+  //instance.subscribe("allCases");
+  instance.subscribe("searchCase", "");
 });
 
 Template.cases.onRendered(function () {
@@ -22,7 +23,7 @@ Template.caseSearchFields.events({
     var val = $('.cancer_type')
       .dropdown('get value')
     ;
-    console.log('drop down', val);
+    console.log('subscribe caseSearch drop down', val);
     Meteor.subscribe('searchCase', val);
   }
 });

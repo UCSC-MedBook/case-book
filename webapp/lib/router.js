@@ -27,5 +27,18 @@ FlowRouter.route("/cases/:caseId", {
 FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
 
 FlowRouter.route("/apps", sameNameAndAction("apps"));
+FlowRouter.route("/apps/MaastroLungSurvival", {
+  action: function() {
+    BlazeLayout.render( 'appBody', { content: 'apps', main: 'MaastroLungSurvival' } );
+  },
+  name: 'MaastroLungSurvival'
+});
+
+FlowRouter.route( "/apps/MaastroRectalModel", {
+  action: function() {
+    BlazeLayout.render( 'appBody', { content: 'apps', main: 'MaastroRectalModel' } );
+  },
+  name: 'MaastroRectalModel'
+});
 
 FlowRouter.route("/insights", sameNameAndAction("insights"));
