@@ -1,46 +1,49 @@
 <template name="MaastroLungSurvival">
-  <h2>Maastro Lung Survival Model</h2>
-  <h3>Stages I - IIIB</h3>
+  <img src="/images/Logo_predictionwebsite3.jpg" alt="Maastro cancer models" />
+  <h4>Maastro Lung Survival Model  [Stages I - IIIB]</h4>
   <form class="new-model ui form">
-
-  <div class="field">
-    <label for="Gender"><a href="#">Gender:</a></label>
-    <input type="radio" name="Gender" id="Gender" value="male" />Male
-    <input type="radio" name="Gender" id="Gender" value="female"/>Female<br />
-  </div>
-  <div class="field">
-     <label for="WHO"><a href="#" tooltip="World Health Organisation Performance Scale" class="tooltip">WHO-PS:</a></label>
-      <select name="WHO" id="WHO">
-          <option ></option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+  <div class="three fields">
+    <div class="field">
+      <label for="Gender"><a href="#">Gender:</a></label>
+      <input type="radio" name="Gender" id="Gender" value="male" />Male
+      <input type="radio" name="Gender" id="Gender" value="female"/>Female<br />
+    </div>
+    <div class="field">
+       <label for="WHO"><a href="#" tooltip="World Health Organisation Performance Scale" class="tooltip">WHO-PS:</a></label>
+        <select name="WHO" id="WHO">
+            <option ></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+    </div>
+    <div class="field">
+      <label for="LymphNod"><a href="#" tooltip="Assessed by PET according to Naruke Map" class="tooltip">Number of nodal stations:</a></label>
+      <select name="LymphNod" id="LymphNod">
+        <option ></option>
+        <option value="0" >0</option>
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4 or more</option>
       </select>
+    </div>
   </div>
-  <div class="field">
-    <label for="FEV"><a href="#" tooltip="Forced expiratory volume in 1 sec before start of radiotherapy" class="tooltip">FEV<sub>1</sub> (20-140%)</a></label>
-    <input type="text" name="FEV" id="FEV" />
-  </div>
-  <div class="field">
-    <label for="GTV"><a href="#" tooltip="Volume primary + lymph nodes" class="tooltip">Gross Tumor Volume (1-1000ml):</a></label>
-    <input type="text" name="GTV" id="GTV" />
-  </div>
-  <div class="field">
-    <label for="LymphNod"><a href="#" tooltip="Assessed by PET according to Naruke Map" class="tooltip">Number of nodal stations:</a></label>
-    <select name="LymphNod" id="LymphNod">
-      <option ></option>
-      <option value="0" >0</option>
-      <option value="1" >1</option>
-      <option value="2" >2</option>
-      <option value="3" >3</option>
-      <option value="4" >4 or more</option>
-    </select>
+  <div class="two fields">
+    <div class="field">
+      <label for="FEV"><a href="#" tooltip="Forced expiratory volume in 1 sec before start of radiotherapy" class="tooltip">FEV<sub>1</sub> (20-140%)</a></label>
+      <input type="text" name="FEV" id="FEV" />
+    </div>
+    <div class="field">
+      <label for="GTV"><a href="#" tooltip="Volume primary + lymph nodes" class="tooltip">Gross Tumor Volume (1-1000ml):</a></label>
+      <input type="text" name="GTV" id="GTV" />
+    </div>
   </div>
   <div class="actions">
     <div class="ui secondary button ok calcModel">Calculate</div>
   </div>
-  <label >Risk </label> {{risk}}<br>
-  <label >Probabililty of survival at 24 months </label> {{prob}}
+  <label >Risk: </label> {{risk}}<br>
+  <label >Probabililty of survival at 24 months:</label> {{prob}}
 </form>
 
   <img src="/images/Kaplan300_2.jpg" alt="Kaplan Meier Curves" />
