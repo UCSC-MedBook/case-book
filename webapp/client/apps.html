@@ -1,26 +1,26 @@
 <template name="apps">
   <div class="ui container">
     {{> topMenu}}
-   </div>
-  <div class="ui divided grid">
-    <div class="four wide column">
-      <div class="ui grid">
-        <h3>Apps </h3>
-        <div class="row">
-          <h4>Models</h4>
-        </div>
-        <div class="row">
-          <a href="/apps/MaastroLungSurvival" >Lung Survival Stage I-IIIB</a>
-        </div>
-        <div class="row">
-          <a href="/apps/MaastroRectalModel" >Rectal Model</a>
+    <div class="ui divided grid">
+      <div class="four wide column">
+        <div class="ui grid">
+          <h3>Apps </h3>
+          <div class="row">
+            <h4>Models</h4>
+          </div>
+          <div class="row">
+            <a href="/apps/MaastroLungSurvival" >Lung Survival Stage I-IIIB</a>
+          </div>
+          <div class="row">
+            <a href="/apps/MaastroRectalModel" >Rectal Model</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="twelve wide column">
-      {{> Template.dynamic template=content data=params}}
+      <div class="twelve wide column">
+        {{> Template.dynamic template=content data=params}}
 
+      </div>
     </div>
-  </div>
+</div>
 
 </template>
