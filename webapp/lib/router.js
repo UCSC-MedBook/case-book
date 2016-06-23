@@ -29,14 +29,14 @@ FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
 FlowRouter.route("/apps", sameNameAndAction("apps"));
 FlowRouter.route("/apps/MaastroLungSurvival", {
   action: function() {
-    BlazeLayout.render( 'appBody', { content: 'apps', main: 'MaastroLungSurvival' } );
+    BlazeLayout.render( 'apps', { content: 'MaastroLungSurvival' } );
   },
   name: 'MaastroLungSurvival'
 });
 
 FlowRouter.route( "/apps/MaastroRectalModel", {
   action: function() {
-    BlazeLayout.render( 'appBody', { content: 'apps', main: 'MaastroRectalModel' } );
+    BlazeLayout.render( 'apps', { content: 'MaastroRectalModel' } );
   },
   name: 'MaastroRectalModel'
 });

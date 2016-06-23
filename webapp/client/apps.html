@@ -1,4 +1,7 @@
 <template name="apps">
+  <div class="ui container">
+    {{> topMenu}}
+   </div>
   <div class="ui divided grid">
     <div class="four wide column">
       <div class="ui grid">
@@ -15,7 +18,8 @@
       </div>
     </div>
     <div class="twelve wide column">
-      apps should be here.
+      {{> Template.dynamic template=content data=params}}
+
     </div>
   </div>
 
