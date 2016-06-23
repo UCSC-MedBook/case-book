@@ -36,6 +36,10 @@ body {margin: 5px;}
   height:500px;
   width:950px;
 }
+.appframe {
+  height:900px;
+  width:950px;
+}
 .widetext {
   min-width:600px;
   max-width:600px;

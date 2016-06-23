@@ -1,8 +1,8 @@
 Template.cases.onCreated(function() {
   let instance = this;
   console.log("onCreated cases")
-  //instance.subscribe("allCases");
-  instance.subscribe("searchCase", "");
+  var query = {};
+  instance.subscribe("searchCase", query);
 });
 
 Template.cases.onRendered(function () {
@@ -23,8 +23,15 @@ Template.caseSearchFields.events({
     var val = $('.cancer_type')
       .dropdown('get value')
     ;
-    console.log('subscribe caseSearch drop down', val);
-    Meteor.subscribe('searchCase', val);
+    if (val === null) {
+      console.log('subscribe caseSearch all cases');
+      Meteor.subscribe('searchCase', {});
+    }
+    else {
+      var query = {'cancerType': {$in : val}};
+      console.log('subscribe caseSearch drop down', query);
+      Meteor.subscribe('searchCase', query);
+    }
   }
 });
 

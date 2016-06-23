@@ -1,20 +1,22 @@
 <template name="showCase">
-  <a href={{pathFor "cases"}} class="ui left labeled icon button">
-    All Cases
-    <i class="angle double left icon"></i>
-  </a>
-  <button class="ui left labeled icon button">
-    Previous Case
-    <i class="angle left arrow icon"></i>
-  </button>
-  <button class="ui right floated icon button open-in-new-window"
-      data-content="Open in new window">
-    <i class="external icon"></i>
-  </button>
-  <button class="ui right floated labeled icon button">
-    Next Case
-    <i class="angle right arrow icon"></i>
-  </button>
+  <div class="ui segment">
+    <a href={{pathFor "cases"}} class="ui left labeled icon button">
+      All Cases
+      <i class="angle double left icon"></i>
+    </a>
+    <button class="ui left labeled icon button">
+      Previous Case
+      <i class="angle left arrow icon"></i>
+    </button>
+    <button class="ui right floated icon button open-in-new-window"
+        data-content="Open in new window">
+      <i class="external icon"></i>
+    </button>
+    <button class="ui right floated labeled icon button">
+      Next Case
+      <i class="angle right arrow icon"></i>
+    </button>
+  </div>
 
   {{#if Template.subscriptionsReady}}
     {{#with getCase}}
@@ -26,29 +28,28 @@
 </template>
 
 <template name="showCaseDetails">
-  <h2>
-    {{caseLabel}} {{summary}}
-    <i class="empty star icon"></i>
-  </h2>
+  <b> {{caseLabel}} </b>: {{summary}} <i class="empty star icon"></i>
 
-  <button class="ui right floated icon button">
-    ...
-  </button>
-  <button class="ui right floated icon button">
-    Add to a Project
-  </button>
-  <button class="ui right floated icon button">
-    Similar Cases
-  </button>
-  <button class="ui right floated labeled icon button">
-    Contact
-    <i class="mail icon"></i>
-  </button>
-  <button class="ui right floated labeled icon button">
-    Apps
-    <i class="bar chart icon"></i>
-  </button>
-  <b>Created:</b>{{createDate}}
+  <div class="segment">
+    <button class="ui right floated icon button">
+      ...
+    </button>
+    <button class="ui right floated icon button">
+      Add to a Project
+    </button>
+    <button class="ui right floated icon button">
+      Similar Cases
+    </button>
+    <button class="ui right floated labeled icon button">
+      Contact
+      <i class="mail icon"></i>
+    </button>
+    <button class="ui right floated labeled icon button">
+      Apps
+      <i class="bar chart icon"></i>
+    </button>
+  </div>
+  <br><b>Created:</b>{{createDate}}
   <div class="field">
   <div class="ui top attached tabular menu">
   <a class="item active" data-tab="case1">Case</a>
