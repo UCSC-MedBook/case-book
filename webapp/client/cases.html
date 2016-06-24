@@ -54,7 +54,7 @@
           <table class="ui structured table">
             <thead>
               <tr>
-                <th>Gender</th>
+                <th>Type</th>
                 <th>Age</th>
                 <th>Case ID</th>
                 <th>Summary</th>
@@ -63,7 +63,7 @@
             <tbody >
               {{#each getCases}}
                 <tr class="go-to-case-page  ">
-                  <td>{{gender}}</td>
+                  <td>{{cancer_type}}</td>
                   <td>{{age}}</td>
                   <td>
                     <a href={{pathFor "showCase" caseId=_id}} class="caseid">
@@ -126,11 +126,11 @@
         <option data-value="LUAD">Lung</option>
         <option data-value="BRCA">Breast</option>
         <option data-value="PRAD">Prostate</option>
-        <option data-value="GBM">GBM</option>
         <option data-value="PRAN">Pancreas</option>
-        <option data-value="HDNC">Head and Neck</option>
         <option data-value="SKIM">Melanoma</option>
         <option data-value="MM">Multiple Myeloma</option>
+        <option data-value="GBM">GBM</option>
+        <option data-value="HDNC">Head and Neck</option>
 
       </select>
     </div>
