@@ -20,6 +20,36 @@ Template.showCaseDetails.helpers({
     console.log('getPosts', p);
     return p;
   },
+  getStage: function () {
+    if (this.stage) {
+      return 'stage ' + this.stage;
+    }
+    return ;
+  },
+  getStageColor: function () {
+    if (this.stage) {
+      if (this.stage == 'IV')
+        return 'red';
+      if (this.stage == 'III')
+        return 'yellow';
+      if (this.stage == 'II')
+        return 'blue';
+      if (this.stage == 'I')
+        return 'green';
+    }
+    return ;
+  },
+  getAge: function () {
+    if (this.age) {
+      return this.age + 'yo';
+    }
+    return;
+  },
+  getMutations: function () {
+    if (this.mutations) {
+      return 'Mutations: '+ this.mutations;
+    }
+  },
   createDate: function () {
     return moment(this.createdAt).format('MMM D, YYYY h:mm a');
   },

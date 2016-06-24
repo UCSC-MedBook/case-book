@@ -28,7 +28,8 @@
 </template>
 
 <template name="showCaseDetails">
-  <b> {{caseLabel}} </b>: {{summary}} <i class="empty star icon"></i>
+  <b> {{caseLabel}} </b>: {{gender}} {{getAge}} {{histology}} {{cancer_type}} cancer {{getStage}}<i class="empty star icon"></i>
+  <br><b>Created:</b>{{createDate}}
 
   <div class="segment">
     <button class="ui right floated icon button">
@@ -49,7 +50,6 @@
       <i class="bar chart icon"></i>
     </button>
   </div>
-  <br><b>Created:</b>{{createDate}}
   <div class="field">
   <div class="ui top attached tabular menu">
   <a class="item active" data-tab="case1">Case</a>
@@ -59,13 +59,10 @@
   <a class="item" data-tab="case5">Scribe</a>
   </div>
   <div class="ui bottom attached tab segment active" data-tab="case1">
-  <a href={{pathFor "tags"}} class="ui item">
-    Tags
-  </a>
-    <a class="ui red label">Pediatric</a>
-    <a class="ui blue label">Molecular</a>
-    <a class="ui yellow label">QA</a>
-
+  {{getMutations}}
+    <a href={{pathFor "tags"}} class="ui item"> </a>
+    <a class="ui blue label">{{cancer_type}}</a>
+    <a class="ui {{getStageColor}} label">{{getStage}}</a>
   <h4>Narrative</h4>
   {{fullNarrative}}
   </div>
@@ -131,8 +128,8 @@
           <div class="ui comments">
             <div class="comment">
               <p class="textNorm">
-                <a class="author">Dr. Bob Jones</a>
-                {{title}}
+                <a class="author">Emma S, PhD</a>
+                {{body}}
               </p>
             </div>
           </div>
