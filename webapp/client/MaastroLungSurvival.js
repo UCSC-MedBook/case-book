@@ -1,7 +1,10 @@
 
 Template.MaastroLungSurvival.onCreated(function() {
+    let instance = this;
     Session.set('risk', '');
     Session.set('probability', '');
+    instance.risk = new ReactiveVar('');
+    instance.probability = new ReactiveVar('');
 });
 
 Template.MaastroLungSurvival.events({
