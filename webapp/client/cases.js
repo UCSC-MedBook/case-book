@@ -56,5 +56,17 @@ Template.caseSearchFields.events({
     // HERE you're going to have to not refer to instance but Template.instance().parent()
     Session.set('caseQuery',query);
     //instance.casesQuery.set(query);
+  },
+  "change .stage"(event, instance) {
+    var val = $('.stage').dropdown('get value');
+    let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
+    if (!val) {
+      delete query.stage;
+    } else {
+      //query.cancer_type = val;
+      query = {stage: {$in: val}};
+    }
+    console.log("setting query:", query);
+    Session.set('caseQuery',query);
   }
 });

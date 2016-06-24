@@ -48,9 +48,6 @@
           <i class="fork icon"></i>
         </button>
       </h3>
-      <p>
-        Found 1,030 (11.1%) of 10,933 cases
-      </p>
 
       {{#if Template.subscriptionsReady}}
         {{#if length getCases}}
@@ -137,13 +134,13 @@
     </div>
     <div class="field">
       <label>Stage</label>
-      <select name="cancer-stage" multiple="" class="ui fluid dropdown">
-        <option value="">Stage</option>
+      <select name="stage" multiple="" class="ui fluid dropdown stage">
+        <option value=""></option>
         <option value="0">0</option>
-        <option value="1">I</option>
-        <option value="2">II</option>
-        <option value="3">III</option>
-        <option value="4">IV</option>
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
       </select>
     </div>
     <div class="field">
