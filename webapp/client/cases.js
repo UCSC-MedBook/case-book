@@ -2,7 +2,7 @@ Template.cases.onCreated(function() {
   let instance = this;
 
   instance.casesQuery = new ReactiveVar({});
-  Session.set('caseQuery','');
+  Session.set('caseQuery', '');
 
   instance.autorun(() => {
     //let query = JSON.parse(JSON.stringify(instance.casesQuery.get()));
@@ -49,6 +49,9 @@ Template.caseSearchFields.events({
       delete query.cancer_type;
     } else {
       //query.cancer_type = val;
+      if (!query) {
+        query = {}
+      }
       query = {cancer_type: {$in: val}};
     }
 
@@ -64,7 +67,10 @@ Template.caseSearchFields.events({
       delete query.stage;
     } else {
       //query.cancer_type = val;
-      query = {stage: {$in: val}};
+      if (!query) {
+        query = {}
+      }
+      query.stage = {$in: val};
     }
     console.log("setting query:", query);
     Session.set('caseQuery',query);
