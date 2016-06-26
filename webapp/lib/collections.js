@@ -1,3 +1,4 @@
+Expression = new Mongo.Collection("expression");
 Cases = new Mongo.Collection("cases");
 Cases.attachSchema({
   // NOTE: fullNarrative, firstName, lastName, publishToNanopub
