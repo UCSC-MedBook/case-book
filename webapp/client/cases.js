@@ -46,11 +46,6 @@ Template.cases.events({
 
     FlowRouter.go("showCase");
   },
-  'change #genelist' : function(evt, tmpl) {
-     var $genelist = $("#genelist");
-     var before = $genelist.select2("val");
-     console.log("genelist", before);
-  },
 });
 
 Template.caseSearchFields.events({
@@ -68,7 +63,7 @@ Template.caseSearchFields.events({
       if (!query) {
         query = {}
       }
-      query = {cancer_type: {$in: val}};
+      query.cancer_type = {$in: val};
     }
 
     console.log("setting query:", query);
@@ -87,6 +82,22 @@ Template.caseSearchFields.events({
         query = {}
       }
       query.stage = {$in: val};
+    }
+    console.log("setting query:", query);
+    Session.set('caseQuery',query);
+  },
+  'change #genelist' : function(evt, tmpl) {
+    let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
+    var $genelist = $("#genelist");
+    var val = $genelist.select2("val");
+    if (!val) {
+      delete query.mutations;
+    } else {
+      //query.cancer_type = val;
+      if (!query) {
+        query = {}
+      }
+      query.mutations = {$in: val};
     }
     console.log("setting query:", query);
     Session.set('caseQuery',query);
