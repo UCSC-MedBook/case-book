@@ -40,6 +40,11 @@ Template.cases.helpers({
 });
 
 Template.cases.events({
+  "click .savesearch"(event, instance) {
+    let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
+    console.log('save search', query);
+    Meteor.call("createSavedSearch", query);
+  },
   "click .go-to-case-page"(event, instance) {
     var c = instance.$(".caseid .selected");
     console.log('show case',c);

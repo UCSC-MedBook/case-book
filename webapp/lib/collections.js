@@ -1,4 +1,3 @@
-Expression = new Mongo.Collection("expression");
 Cases = new Mongo.Collection("cases");
 Cases.attachSchema({
   // NOTE: fullNarrative, firstName, lastName, publishToNanopub
@@ -84,6 +83,18 @@ Cases.attachSchema({
       }
     },
   },
+  cancer_type: {
+    type: String,
+    optional: true
+  },
+  stage: {
+    type: String,
+    optional: true
+  },
+  mutations: {
+    type: [String],
+    optional: true
+  },
   gleasonScore: {
     type: Number,
     optional: true
@@ -156,3 +167,49 @@ Posts.attachSchema({
   scheduledAt: { type: Date, optional: true },
   caseId: {type: String, optional: true }
 });
+CaseSaveSearch = new Mongo.Collection("caseSaveSearch");
+CaseSaveSearch.attachSchema({
+// saved search on case query
+  name: {
+    type: String,
+    optional:true
+  },
+  query: {
+    type: String
+  },
+  userId: {
+    type: String, optional: true,
+    autoValue: function() {
+      if (!this.isSet) {
+        if ( typeof Meteor.userId === "function") {
+          console.log('user set by meteor', Meteor.userId());
+          return Meteor.userId();
+        }
+      }
+    }
+  },
+  createdAt: {
+    type: Date,
+    autoValue: function() {
+       if (this.isInsert) {
+         return new Date();
+       } else if (this.isUpsert) {
+         return {$setOnInsert: new Date()};
+       } else {
+         this.unset();  // Prevent user from supplying their own value
+       }
+     }
+  },
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isUpdate) {
+        return new Date();
+      }
+    },
+    denyInsert: true,
+    optional: true
+  },
+});
+Expression = new Mongo.Collection("expression");
+CaseSavedSearches = new Mongo.Collection("case_saved_searches");

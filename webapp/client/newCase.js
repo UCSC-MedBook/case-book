@@ -43,7 +43,11 @@ Template.newCaseModal.onRendered(function() {
         return false;
       }
 
-      Meteor.call("createCase", $createCaseForm.form("get values"));
+      var form_vals = $createCaseForm.form("get values");
+
+      //var parsed = Meteor.call("parseCase", form_vals.fullNarrative);
+      //console.log('form',form_vals, 'parsed',parsed);
+      Meteor.call("createCase", form_vals);
     }
   });
 });
