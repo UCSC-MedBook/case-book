@@ -1,6 +1,7 @@
 
 Template.MaastroLungSurvival.onCreated(function() {
     let instance = this;
+    console.log('created lung',instance);
     Session.set('risk', '');
     Session.set('probability', '');
     instance.risk = new ReactiveVar('');
@@ -18,6 +19,30 @@ Template.MaastroLungSurvival.events({
   },
 });
 Template.MaastroLungSurvival.helpers({
+  getGender: function(){
+    var current = FlowRouter.current();
+    console.log('current', current);
+    console.log('route g', current.queryParams.g);
+    return current.queryParams.g;
+  },
+  getFev: function(){
+    var current = FlowRouter.current();
+    console.log('current', current);
+    return current.queryParams.f;
+  },
+  checkIfMale: function(){
+    var current = FlowRouter.current();
+    console.log('check if male', current.queryParams.g);
+    if (current.queryParams.g == "male") {
+      return "checked";
+    }
+  },
+  checkIffemale: function(){
+    var current = FlowRouter.current();
+    if (current.queryParams.g == "female") {
+      return "checked";
+    }
+  },
   risk: function () {
     return Session.get('risk');
   },

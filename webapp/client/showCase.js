@@ -110,11 +110,20 @@ Template.showCase.events({
     f.caseId = instance.data.caseId;
     Meteor.call("createPost", f);
   },
+  "click .app"(event, instance) {
+    var cid = this;
+    console.log('app clicked', cid._id, cid.fev, cid);
+    FlowRouter.go("/apps/MaastroLungSurvival?g="+cid.gender+'&f='+cid.fev );
+  }
 });
 Template.showCaseDetails.events({
   "click .lightbulb"(event, instance) {
     var post = this;
     //console.log('click light', event, post, post._id);
     Meteor.call("createInsight", post._id, post.title);
+  },
+  "click .app"(event, instance) {
+    var cid = this;
+    console.log('app clicked', cid);
   }
 });

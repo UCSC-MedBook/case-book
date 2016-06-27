@@ -9,28 +9,27 @@
     <div class="content">
       <form class="new-case ui form">
         <div class="ui segment">
-          <h3>Organization Information</h3>
+          <h3>Private Information</h3>
           <p>
-            This private information will only be seen within your organization
+            Entries above the red line will only be seen within your organization.
           </p>
 
           <div class="three fields">
-            <div class="required field">
+            <div class="field">
               <label>Patient First Name</label>
-              <input type="text" name="firstName" placeholder="Anonymous" value="Anonymous">
-            </div>
-
-            <div class="required field">
-              <label>Patient Last Name</label>
-              <input type="text" name="lastName" placeholder="Anonymous" value="Anonymous">
+              <input type="text" name="firstName" placeholder="First Name" >
             </div>
 
             <div class="field">
+              <label>Patient Last Name</label>
+              <input type="text" name="lastName" placeholder="Last Name" >
+            </div>
+
+            <div class="required field">
               <label>Case ID </label>
               <input type="text" name="caseLabel" placeholder="Enter Case ID">
             </div>
           </div>
-
           <div class="fields">
 
             <div class="six wide field">
@@ -43,24 +42,23 @@
             </div>
           </div>
         </div>
+            <hr size="3" color="red">
 
         <div class="ui segment">
-          <h3>Case Information</h3>
+          <h3>Anonymized Case Summary</h3>
           <p>
-            Do not include patient identifiable information in the
-            case narrative.
+            Edit the following entries to summarize anonymized case info. Please leave the [attribute:value] formatting, just change the values after the colons, for example, change: [gender: m/f] to [gender: m] or [gender: f]. You can also make up new values not listed and even new attributes. Please anonymize. (We'll check, but it'll save time if you try to pre-anonymize to the extent possible.)
           </p>
-          <div class="field">
+          <div class="required field">
             <label>Narrative</label>
-            <textarea name="fullNarrative">[gender: male/female] [age: number] [cancer_type: Lung/Breast/Liver/etc] [stage: roman numeral] [histology: Adenomcarinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse] </textarea>
+            <textarea name="fullNarrative">[gender: male/female] [age: number] [cancer_type: Lung/Breast/Liver/etc] [stage: roman numeral] [histology: Adenomcarinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [fev:30] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]  </textarea>
           </div>
 
           <div class="field">
             <div class="ui checkbox">
               <input type="checkbox">
-              <label>Allow this case information to be anonymized,
-                peer reviewed, and published to NanoPub
-                (this cannot be undone).
+              <label>Allow this case information to be vetted,
+                peer reviewed, and published to NanoPub.
                 <a target="_blank" href="http://nanopub.org/wordpress">
                   Learn about the NanoPub process
                 </a>

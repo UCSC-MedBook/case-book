@@ -8,17 +8,11 @@ Template.newCaseModal.onRendered(function() {
   // set up the form in the create-case modal
   $createCaseForm.form({
     fields: {
-      firstName: {
+      caseLabel: {
         rules: [
-          { type: "empty", prompt: "Please enter the patient's first name" }
+          { type: "empty", prompt: "Please enter the case ID" }
         ],
       },
-      lastName: {
-        rules: [
-          { type: "empty", prompt: "Please enter the patient's last name" }
-        ],
-      },
-      // caseLabel: {},
       fullNarrative: {
         rules: [
           { type: "empty", prompt: "Please fill in the narrative" },

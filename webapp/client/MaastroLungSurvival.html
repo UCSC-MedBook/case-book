@@ -4,9 +4,9 @@
   <form class="new-model ui form">
   <div class="three fields">
     <div class="field">
-      <label for="Gender"><a href="#">Gender:</a></label>
-      <input type="radio" name="Gender" id="Gender" value="male" />Male
-      <input type="radio" name="Gender" id="Gender" value="female"/>Female<br />
+      <label for="Gender" ><a >Gender:</a></label>
+      <input type="radio" name="Gender" id="Gender" value="male" {{checkIfMale}} />Male
+      <input type="radio" name="Gender" id="Gender" value="female" {{checkIffemale}}/>Female<br />
     </div>
     <div class="field">
        <label for="WHO" data-content="World Health Organisation Performance Scale"><a href="#" class="tooltip">WHO-PS:</a></label>
@@ -32,7 +32,7 @@
   <div class="two fields">
     <div class="field">
       <label for="FEV"><a href="#" data-content="Forced expiratory volume in 1 sec before start of radiotherapy" class="tooltip">FEV<sub>1</sub> (20-140%)</a></label>
-      <input type="text" name="FEV" id="FEV" />
+      <input type="text" name="FEV" id="FEV" value={{getFev}} />
     </div>
     <div class="field">
       <label for="GTV"><a href="#" data-content="Volume primary + lymph nodes" class="tooltip">Gross Tumor Volume (1-1000ml):</a></label>

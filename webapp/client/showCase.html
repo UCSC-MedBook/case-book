@@ -45,7 +45,7 @@
       Contact
       <i class="mail icon"></i>
     </button>
-    <button class="ui right floated labeled icon button">
+    <button class="ui right floated labeled icon button app">
       Apps
       <i class="bar chart icon"></i>
     </button>
@@ -63,7 +63,9 @@
     <a href={{pathFor "tags"}} class="ui item"> </a>
     <a class="ui blue label">{{cancer_type}}</a>
     <a class="ui {{getStageColor}} label">{{getStage}}</a>
-  <h4>Narrative</h4>
+  <h4>Narrative of {{caseLabel}}</h4>
+  A {{getAge}} {{gender}} presented with {{getStage}} {{histology}} {{cancer_type}} cancer with the following biomarkers: {{getMutations}}.
+  <h4>Raw Data</h4>
   {{fullNarrative}}
   </div>
 
@@ -128,10 +130,10 @@
           <div class="ui comments">
             <div class="comment">
               <p class="textNorm">
-                <a class="author">Emma S, PhD</a>
+                <a class="author">Dr. Jones</a>
                 {{body}}
               </p>
-                <div class="actions">
+                  <div class="actions">
                   <a class="reply">Reply</a>
                 </div>
             </div>
@@ -210,7 +212,7 @@
           <p><b>Dr. Allen Baker</b> A number of immunotherapy trials in particular in HNSCC and
   cervical CA require testing for HPV presence in head and neck tumors.
           </p>
-          <p><b>Disagreed</b> (60%)</p>
+          <p><b>Pending</b></p>
         </div>
         <div class="two wide column">
         </div>

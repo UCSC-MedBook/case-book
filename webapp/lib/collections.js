@@ -66,22 +66,15 @@ Cases.attachSchema({
   age: {
     type: Number,
     optional: true,
-    autoValue() {
-      // numbers between 20 and 80
-      return Math.floor(Math.random()*60+20);
-    },
   },
   gender: {
     type: String,
     allowedValues: [ "male", "female" ],
     optional: true,
-    autoValue() {
-      if (Math.random() < .5) {
-        return "male";
-      } else {
-        return "female";
-      }
-    },
+  },
+  fev: {
+    type: Number,
+    optional: true
   },
   cancer_type: {
     type: String,
