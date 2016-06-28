@@ -40,6 +40,13 @@ Meteor.methods({
     console.log('update Insight ',postId);
     Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
   },
+  approveInsight(postId, text) {
+    var newPost = Posts.findOne({_id:postId});
+    if (newPost.insightStatus) {
+      console.log('approve Insight ',postId);
+      Posts.update({_id:postId},{$set:{insight:text, insightStatus:"approved"}});
+    }
+  },
   createSavedSearch(query) {
     var newSearch = {};
     newSearch.query = JSON.stringify(query);

@@ -72,6 +72,21 @@ Template.showCaseDetails.helpers({
       return post.insightStatus === 'approved';
     }
   },
+  isNotInsight: function (post) {
+    if (!post.insightStatus) {
+      return true;
+    }
+  },
+  isNotApproved: function(post) {
+    console.log('insight status', this.insightStatus);
+    if (post.insightStatus) {
+      console.log('approved',post.insightStatus== 'approved' );
+      return post.insightStatus != 'approved';
+    }
+    else {
+      return true;
+    }
+  },
   isPending: function (post) {
     if (post.insightStatus) {
       console.log('pending',post, post.insightStatus == 'pending' );
@@ -113,14 +128,26 @@ Template.showCase.events({
   "click .app"(event, instance) {
     var cid = this;
     console.log('app clicked', cid._id, cid.fev, cid);
-    FlowRouter.go("/apps/MaastroLungSurvival?g="+cid.gender+'&f='+cid.fev );
+    var path="/apps/MaastroLungSurvival?"
+    if (cid.gender) {
+      var path=path+'g='+cid.gender+'&';
+    }
+    if (cid.fev) {
+      path=path+'f='+cid.fev;
+    }
+    FlowRouter.go(path);
   }
 });
 Template.showCaseDetails.events({
-  "click .lightbulb"(event, instance) {
+  "click .lightswitch"(event, instance) {
     var post = this;
     //console.log('click light', event, post, post._id);
     Meteor.call("createInsight", post._id, post.title);
+  },
+  "click .lightbulb"(event, instance) {
+      var post = this;
+      //console.log('click light', event, post, post._id);
+      Meteor.call("approveInsight", post._id, post.title);
   },
   "click .app"(event, instance) {
     var cid = this;
