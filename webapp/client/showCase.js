@@ -15,6 +15,7 @@ Template.showCaseDetails.onRendered(function () {
   $('.tabular.menu .item').tab();
     // make the dropdowns in the menu work on hover
   $(".ui.menu .ui.dropdown"); //.dropdown({ on: "hover" });
+  $(".ui.dropdown").dropdown({on:"hover"});
 });
 Template.showCaseDetails.helpers({
   getPosts: function () {
@@ -138,6 +139,16 @@ Template.showCase.events({
       path=path+'f='+cid.fev;
     }
     FlowRouter.go(path);
+  },
+  "click .rectal"(event, instance) {
+    FlowRouter.go("/apps/MaastroRectalModel");
+  },
+  "click .PatientsLikeMe"(event, instance) {
+    FlowRouter.go("/apps/PatientsLikeMe");
+  },
+  "click .OrderIHC"(event, instance) {
+    console.log('event',event);
+    FlowRouter.go("/apps/OrderIHC");
   }
 });
 Template.showCaseDetails.events({

@@ -23,7 +23,8 @@ Template.cases.onCreated(function() {
 Template.cases.onRendered(function () {
   let instance = this;
 
-  $(".ui.dropdown").dropdown();
+  $(".ui.dropdown").dropdown({on:"hover"});
+
 
   let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
   if (!query) {
