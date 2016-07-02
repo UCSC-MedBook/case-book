@@ -100,14 +100,6 @@ Template.caseSearchFields.events({
       if (!query) {
         query = {}
       }
-//      if (val) {
-//        val = val.filter(function(x) {
-//          if (x) {
-//            return x.length > 1;
-//          }
-//          return x;
-//        });
-//      }
       query.cancer_type = {$in: val};
       if (!val ) {
         delete query.cancer_type;
@@ -142,7 +134,8 @@ Template.caseSearchFields.events({
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
     var $genelist = $("#genelist");
     var val = $genelist.select2("val");
-    if (!val) {
+    console.log('change mut ', val);
+    if (!val || val.length == 0) {
       delete query.mutations;
     } else {
       //query.cancer_type = val;
@@ -151,7 +144,7 @@ Template.caseSearchFields.events({
       }
       query.mutations = {$in: val};
     }
-    console.log("setting query:", query);
+    console.log("setting mutation query:", query);
     Session.set('caseQuery',query);
   }
 });
