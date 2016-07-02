@@ -13,6 +13,8 @@ Template.showCase.onRendered(function () {
 });
 Template.showCaseDetails.onRendered(function () {
   $('.tabular.menu .item').tab();
+    // make the dropdowns in the menu work on hover
+  $(".ui.menu .ui.dropdown"); //.dropdown({ on: "hover" });
 });
 Template.showCaseDetails.helpers({
   getPosts: function () {
@@ -125,9 +127,9 @@ Template.showCase.events({
     f.caseId = instance.data.caseId;
     Meteor.call("createPost", f);
   },
-  "click .app"(event, instance) {
+  "click .lung"(event, instance) {
     var cid = this;
-    console.log('app clicked', cid._id, cid.fev, cid);
+    console.log('lung app clicked', cid._id, cid.fev, cid);
     var path="/apps/MaastroLungSurvival?"
     if (cid.gender) {
       var path=path+'g='+cid.gender+'&';
@@ -149,8 +151,8 @@ Template.showCaseDetails.events({
       //console.log('click light', event, post, post._id);
       Meteor.call("approveInsight", post._id, post.title);
   },
-  "click .app"(event, instance) {
+  "hover .app"(event, instance) {
     var cid = this;
-    console.log('app clicked', cid);
+    console.log('menu hover', cid);
   }
 });

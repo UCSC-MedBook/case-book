@@ -138,7 +138,7 @@ Posts.attachSchema({
     autoValue: function() {
       if (!this.isSet) {
         if ( typeof Meteor.userId === "function") {
-          console.log('user set by meteor', Meteor.userId());
+          //console.log('user set by meteor', Meteor.userId());
           return Meteor.userId();
         }
       }
@@ -148,7 +148,7 @@ Posts.attachSchema({
      type: String,
      autoValue: function() {
        if (!this.isSet) {
-         console.log('author', Meteor.user());
+         //console.log('author', Meteor.user());
          return 'anonymous';
        }
      }
@@ -175,7 +175,7 @@ CaseSaveSearch.attachSchema({
     autoValue: function() {
       if (!this.isSet) {
         if ( typeof Meteor.userId === "function") {
-          console.log('user set by meteor', Meteor.userId());
+          //console.log('user set by meteor', Meteor.userId());
           return Meteor.userId();
         }
       }

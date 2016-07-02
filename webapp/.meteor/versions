@@ -37,6 +37,7 @@ ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7
 email@1.0.8
+erasaur:meteor-lodash@4.0.0
 fastclick@1.0.7
 flemay:less-autoprefixer@1.2.0
 geojson-utils@1.0.4
@@ -55,6 +56,8 @@ livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
 mdg:validation-error@0.2.0
+medbook:collaborations@2.4.12
+medbook:namespace@0.0.2
 meteor@1.1.10
 meteor-base@1.0.1
 meteorhacks:aggregate@1.2.1

@@ -2,17 +2,43 @@ Template.cases.onCreated(function() {
   let instance = this;
 
   instance.casesQuery = new ReactiveVar({});
-  Session.set('caseQuery', '');
+  var caseQuery = Session.get('caseQuery');
+  if (caseQuery == null) {
+    console.log('##onCreated, clearing caseQuery',caseQuery);
+    Session.set('caseQuery', '');
+  }
+  else{
+    if (caseQuery.cancer_type) {
+      console.log('onCreated cancer type', caseQuery.cancer_type);
+    }
+  }
 
   instance.autorun(() => {
     //let query = JSON.parse(JSON.stringify(instance.casesQuery.get()));
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
     instance.subscribe("searchCase", query);
+    console.log('autorun',query);
   });
 });
 
 Template.cases.onRendered(function () {
+  let instance = this;
+
   $(".ui.dropdown").dropdown();
+
+  let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
+  if (!query) {
+    query = {};
+  }
+  console.log('on rendered', query);
+  if (query.stage) {
+    instance.$(".ui.dropdown.stage").dropdown("set exactly", query.stage);
+  }
+  //instance.$(".ui.dropdown.stage").dropdown("set exactly", ["I", "0"]);
+  if (query.cancer_type) {
+    console.log("onRendered setting cancertype", query.cancer_type);
+    instance.$(".ui.dropdown#cancer_type").dropdown("set exactly", query.cancer_type);
+  }
 });
 
 Template.cases.rendered = function(){
@@ -20,7 +46,7 @@ Template.cases.rendered = function(){
    //var TheChart = CurrentChart();
    setTimeout(function() {
        //initializeHtmlElements(TheChart);
-       console.log('init genes', instance);
+       //console.log('init genes', instance);
        initializeJQuerySelect2(instance);
        //initializeJQuerySortable(TheChart);
    }, 1000);
@@ -62,6 +88,10 @@ Template.caseSearchFields.events({
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
 
     if (!val) {
+      if (!query.cancer_type) {
+        console.log("#setting cancer type",query.cancer_type);
+        instance.$(".ui.dropdown.cancer_type").dropdown("set exactly", query.cancer_type);
+      }
       delete query.cancer_type;
     } else {
       //query.cancer_type = val;

@@ -7,4 +7,7 @@ Template.appBody.events({
   "click .ui.menu .createCase"(event, instance) {
     $('.create-case.ui.modal').modal('show');
   },
+  "change"(event, instance){
+    console.log('change fired in appBody');
+  }
 });

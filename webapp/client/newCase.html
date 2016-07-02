@@ -15,8 +15,12 @@
           </p>
 
           <div class="three fields">
+            <div class="required field">
+              <label>Case ID </label>
+              <input type="text" name="caseLabel" placeholder="Enter Case ID">
+            </div>
             <div class="field">
-              <label>Patient First Name</label>
+              <label>Patient First Name (optional)</label>
               <input type="text" name="firstName" placeholder="First Name" >
             </div>
 
@@ -24,14 +28,8 @@
               <label>Patient Last Name</label>
               <input type="text" name="lastName" placeholder="Last Name" >
             </div>
-
-            <div class="required field">
-              <label>Case ID </label>
-              <input type="text" name="caseLabel" placeholder="Enter Case ID">
-            </div>
           </div>
           <div class="fields">
-
             <div class="six wide field">
               <label>Attachments</label>
               <div style="min-height: 37px; border: 2px dashed #AAA;">
@@ -46,12 +44,27 @@
 
         <div class="ui segment">
           <h3>Anonymized Case Summary</h3>
+              <div class="required field">
+                <label>Cancer Type</label>
+                <select name="cancer_type" class="ui fluid dropdown cancer_type">
+                  <option data-value=""></option>
+                  <option data-value="LUAD">Lung</option>
+                  <option data-value="BRCA">Breast</option>
+                  <option data-value="PRAD">Prostate</option>
+                  <option data-value="PRAN">Pancreas</option>
+                  <option data-value="SKIM">Melanoma</option>
+                  <option data-value="MM">Multiple Myeloma</option>
+                  <option data-value="GBM">GBM</option>
+                  <option data-value="HDNC">Head and Neck</option>
+                  <option data-value="UNC">Cancer of Unknown origin</option>
+                </select>
+              </div>
           <p>
             Edit the following entries to summarize anonymized case info. Please leave the [attribute:value] formatting, just change the values after the colons, for example, change: [gender: m/f] to [gender: m] or [gender: f]. You can also make up new values not listed and even new attributes. Please anonymize. (We'll check, but it'll save time if you try to pre-anonymize to the extent possible.)
           </p>
           <div class="required field">
             <label>Narrative</label>
-            <textarea name="fullNarrative">[gender: male/female] [age: number] [cancer_type: Lung/Breast/Liver/etc] [stage: roman numeral] [histology: Adenomcarinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [fev:30] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]  </textarea>
+            <textarea name="fullNarrative">[gender: male/female] [age: number] [cancer_type: Lung/Breast/Liver/etc] [stage: roman numeral] [histology: Adenocarcinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [fev:30] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]  </textarea>
           </div>
 
           <div class="field">

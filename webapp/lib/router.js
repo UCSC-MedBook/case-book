@@ -29,11 +29,15 @@ FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
 FlowRouter.route("/apps", sameNameAndAction("apps"));
 FlowRouter.route("/apps/MaastroLungSurvival", {
   action: function(params, queryParams) {
-      console.log("Params:", params);
-      console.log("Query Params:", queryParams);
       BlazeLayout.render( 'apps', { content: 'MaastroLungSurvival', data: queryParams } );
   },
   name: 'MaastroLungSurvival'
+});
+FlowRouter.route("/apps/PatientsLikeMe", {
+  action: function(params, queryParams) {
+      BlazeLayout.render( 'apps', { content: 'PatientsLikeMe', data: queryParams } );
+  },
+  name: 'PatientsLikeMe'
 });
 
 FlowRouter.route( "/apps/MaastroRectalModel", {
