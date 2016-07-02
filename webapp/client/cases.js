@@ -32,12 +32,12 @@ Template.cases.onRendered(function () {
   }
   console.log('on rendered', query);
   if (query.stage) {
-    instance.$(".ui.dropdown.stage").dropdown("set exactly", query.stage);
+    instance.$(".ui.dropdown.stage").dropdown("set exactly", query.stage["$in"]);
   }
-  //instance.$(".ui.dropdown.stage").dropdown("set exactly", ["I", "0"]);
+  //instance.$(".ui.dropdown.stage").dropdown("set exactly", ["II", "0"]);
   if (query.cancer_type) {
-    console.log("onRendered setting cancertype", query.cancer_type);
-    instance.$(".ui.dropdown#cancer_type").dropdown("set exactly", query.cancer_type);
+    console.log("onRendered setting cancertype", query.cancer_type["$in"]);
+    instance.$(".ui.dropdown.cancer_type").dropdown("set exactly", query.cancer_type["$in"]);
   }
 });
 
