@@ -46,5 +46,11 @@ FlowRouter.route( "/apps/MaastroRectalModel", {
   },
   name: 'MaastroRectalModel'
 });
+FlowRouter.route( "/apps/OrderIHC", {
+  action: function() {
+    BlazeLayout.render( 'apps', { content: 'OrderIHC' } );
+  },
+  name: 'OrderIHC'
+});
 
 FlowRouter.route("/insights", sameNameAndAction("insights"));
