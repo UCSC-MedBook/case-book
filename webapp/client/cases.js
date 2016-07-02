@@ -17,7 +17,6 @@ Template.cases.onCreated(function() {
     //let query = JSON.parse(JSON.stringify(instance.casesQuery.get()));
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
     instance.subscribe("searchCase", query);
-    console.log('autorun',query);
   });
 });
 
@@ -30,13 +29,11 @@ Template.cases.onRendered(function () {
   if (!query) {
     query = {};
   }
-  console.log('on rendered', query);
   if (query.stage) {
     instance.$(".ui.dropdown.stage").dropdown("set exactly", query.stage["$in"]);
   }
   //instance.$(".ui.dropdown.stage").dropdown("set exactly", ["II", "0"]);
   if (query.cancer_type) {
-    console.log("onRendered setting cancertype", query.cancer_type["$in"]);
     instance.$(".ui.dropdown.cancer_type").dropdown("set exactly", query.cancer_type["$in"]);
   }
 });
@@ -59,8 +56,6 @@ Template.cases.helpers({
     if (!query) {
       query = {};
     }
-    console.log("query:", query);
-    //console.log("query.onStop:", query.onStop);
     return Cases.find(query);
   },
 });
@@ -82,14 +77,21 @@ Template.cases.events({
 Template.caseSearchFields.events({
   "change .cancer_type"(event, instance) {
     var val = $('.cancer_type').dropdown('get value');
-    console.log('search ',val);
+    if (val) {
+      val = val.filter(function(x) {
+        if (x) {
+          return x.length > 1;
+        }
+        return x;
+      });
+    }
+    console.log('change cancer_type ',val);
 
     //let query = instance.casesQuery.get();
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')));
 
     if (!val) {
       if (!query.cancer_type) {
-        console.log("#setting cancer type",query.cancer_type);
         instance.$(".ui.dropdown.cancer_type").dropdown("set exactly", query.cancer_type);
       }
       delete query.cancer_type;
@@ -98,9 +100,24 @@ Template.caseSearchFields.events({
       if (!query) {
         query = {}
       }
+//      if (val) {
+//        val = val.filter(function(x) {
+//          if (x) {
+//            return x.length > 1;
+//          }
+//          return x;
+//        });
+//      }
       query.cancer_type = {$in: val};
+      if (!val ) {
+        delete query.cancer_type;
+      }
+      else{
+        if (val && val.length ==0) {
+          delete query.cancer_type;
+        }
+      }
     }
-
     console.log("setting query:", query);
     // HERE you're going to have to not refer to instance but Template.instance().parent()
     Session.set('caseQuery',query);
