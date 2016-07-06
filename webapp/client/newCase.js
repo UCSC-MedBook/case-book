@@ -1,36 +1,16 @@
-Template.newCaseModal2.hooks({
-  rendered: function () {
-    var modal = $(this.firstNode);
-
-    modal.modal({
-      detachable: false,
-      onApprove: function () {
-        // Never close modals automatically, do it explicitly after
-        // a successful operation
-        return false;
-      },
-      onHidden: function () {
-        // Get the outer modal view
-        var parent_view = Blaze.getView(this).templateInstance().parent().view;
-
-        // Destroy modal after hide transition
-        Blaze.remove(parent_view);
-      }
-    });
-
-    // Show modal immediately upon rendering the template
-    modal.modal("show");
-  }
-});
-
 Template.newCaseModal.onRendered(function() {
   let instance = this;
 
   instance.$(".ui.checkbox").checkbox();
-  instance.detachable= false;
+  instance.$(".ui.dropdown.cancer_type").dropdown({
+    onChange: function(value, text, $selectedItem) {
+      console.log("value:", value);
+      console.log("text:", text);
+      console.log("$selectedItem:", $selectedItem);
+    }
+  });
 
-
-  $createCaseForm = instance.$(".new-case.ui.form")
+  $createCaseForm = instance.$(".new-case.ui.form");
 
   // set up the form in the create-case modal
   $createCaseForm.form({
@@ -55,6 +35,7 @@ Template.newCaseModal.onRendered(function() {
   // set up the modal but don't show it just yet
   instance.$('.create-case.ui.modal').modal({
     onApprove(clickedElement) {
+      console.log("onApprove", clickedElement);
       if (clickedElement[0].className.indexOf("createCaseAndSearch") !== -1) {
         console.log("need to also do case search");
       }
@@ -65,6 +46,7 @@ Template.newCaseModal.onRendered(function() {
       }
 
       var form_vals = $createCaseForm.form("get values");
+      Meteor.call("createCase", form_vals);
 
       var ctype = "nsclc"; // Will get set by a pulldown to one of the ctype template keys.
       var values = {}; // Will eventually have the entered values, or NOT_ENTERED
@@ -105,8 +87,17 @@ Template.newCaseModal.onRendered(function() {
 
       // Note that these can OVERRIDE the standard keys!
       var subtemplates = {
-          "Lung": {"lobes":"l/r/both",
-      	     "fev": "volume in ml (200ml)"}
+          "Lung": {
+            "lobes":"l/r/both",
+        	  "fev": "volume in ml (200ml)"
+          },
+          "NSCLC": {
+            "field1":"field1_description",
+            "field2":"field2_description",
+          },
+          "Race": {
+            "race:":"White",
+          }
       }
 
       function xlate(intext) {
@@ -159,14 +150,4 @@ Template.newCaseModal.onRendered(function() {
       Meteor.call("createCase", form_vals);
     }
   });
-});
-Template.newCaseModal.events({
-"change"(event, instance) {
-  console.log('change on modal');
-  var val = $('.cancer_type').dropdown('get value');
-  console.log('change cancer type ',val);
-},
-"click"(event, instance) {
-  console.log('click on modal');
-}
 });
