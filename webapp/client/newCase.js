@@ -1,7 +1,34 @@
+Template.newCaseModal2.hooks({
+  rendered: function () {
+    var modal = $(this.firstNode);
+
+    modal.modal({
+      detachable: false,
+      onApprove: function () {
+        // Never close modals automatically, do it explicitly after
+        // a successful operation
+        return false;
+      },
+      onHidden: function () {
+        // Get the outer modal view
+        var parent_view = Blaze.getView(this).templateInstance().parent().view;
+
+        // Destroy modal after hide transition
+        Blaze.remove(parent_view);
+      }
+    });
+
+    // Show modal immediately upon rendering the template
+    modal.modal("show");
+  }
+});
+
 Template.newCaseModal.onRendered(function() {
   let instance = this;
 
   instance.$(".ui.checkbox").checkbox();
+  instance.detachable= false;
+
 
   $createCaseForm = instance.$(".new-case.ui.form")
 
@@ -134,11 +161,12 @@ Template.newCaseModal.onRendered(function() {
   });
 });
 Template.newCaseModal.events({
-"change "(event, instance) {
+"change"(event, instance) {
+  console.log('change on modal');
   var val = $('.cancer_type').dropdown('get value');
   console.log('change cancer type ',val);
 },
 "click"(event, instance) {
-  console.log('click')
+  console.log('click on modal');
 }
 });
