@@ -1,7 +1,6 @@
 Template.newCaseModal.onRendered(function() {
   let instance = this;
 
-  instance.$(".ui.checkbox").checkbox();
   instance.$(".ui.dropdown.cancer_type").dropdown({
     onChange: function(value, text, $selectedItem) {
       console.log("value:", value);
@@ -31,6 +30,7 @@ Template.newCaseModal.onRendered(function() {
       }
     }
   });
+  instance.$(".ui.checkbox").checkbox();
 
   // set up the modal but don't show it just yet
   instance.$('.create-case.ui.modal').modal({
@@ -46,7 +46,10 @@ Template.newCaseModal.onRendered(function() {
       }
 
       var form_vals = $createCaseForm.form("get values");
-      Meteor.call("createCase", form_vals);
+      if (form_vals.gender === 'unk') {
+        delete form_vals.gender;
+      }
+      console.log('form_vals',form_vals);
 
       var ctype = "nsclc"; // Will get set by a pulldown to one of the ctype template keys.
       var values = {}; // Will eventually have the entered values, or NOT_ENTERED
@@ -149,5 +152,5 @@ Template.newCaseModal.onRendered(function() {
       //console.log('form',form_vals, 'parsed',parsed);
       Meteor.call("createCase", form_vals);
     }
-  });
+  }); //.modal("show");
 });
