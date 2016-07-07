@@ -1,0 +1,51 @@
+<template name="newProjectModal">
+  {{! shows up when creating a new project}}
+  <div class="create-project ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      New Project
+    </div>
+
+    <div class="content">
+      <form class="new-project ui form">
+        <div class="ui segment">
+          <div class="two fields">
+            <div class="required field">
+              <label>Project ID </label>
+              <input type="text" name="projectLabel" placeholder="Enter Project ID">
+            </div>
+            <div class="required field">
+              <label>Project Name</label>
+              <input type="text" name="projectName" placeholder="Project Name" >
+            </div>
+          </div>
+        </div>
+        <div class="ui segment">
+          <div class="ui horizontal segments">
+            <div class="ui segment">
+              <div class="required field">
+                <label>Project Type</label>
+                <select name="project_type" class="ui fluid dropdown project_type">
+                  <option value=""></option>
+                  <option value="CS">Case Series</option>
+                  <option value="CT">Clinical Trial</option>
+                  <option value="TB">Tumor Board</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="required field">
+            <label>Project Description</label>
+            <textarea name="projectDescription"> </textarea>
+          </div>
+        </div>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+
+    <div class="actions">
+      <div class="ui button cancel">Cancel</div>
+      <div class="ui secondary button ok createProject">Create Project</div>
+    </div>
+  </div>
+</template>

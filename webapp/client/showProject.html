@@ -1,8 +1,8 @@
 <template name="showProject">
-  <button class="ui left labeled icon button">
+    <a href={{pathFor "projects"}} class="ui left labeled icon button">
     All Projects
-    <i class="angle double left icon"></i>
-  </button>
+      <i class="angle double left icon"></i>
+    </a>
   <button class="ui left labeled icon button">
     Previous Project
     <i class="angle left arrow icon"></i>
@@ -16,8 +16,13 @@
     <i class="angle right arrow icon"></i>
   </button>
 
-  <h1>
-    Long-Term NIH Study Fall 2016
+  {{#if Template.subscriptionsReady}}
+    {{#with getCase}}
+      {{> showCaseDetails}}
+    {{/with}}
+  {{else}}
+    {{> dataLoading }}
+  {{/if}}
     <i class="pencil icon"></i>
     <i class="empty star icon"></i>
 
@@ -28,7 +33,6 @@
       Apps
       <i class="fork icon"></i>
     </button>
-  </h1>
   Trial
   <div class="field">
     <div class="ui top attached tabular menu">

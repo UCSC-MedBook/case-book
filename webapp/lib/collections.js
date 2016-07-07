@@ -101,6 +101,42 @@ Cases.attachSchema({
   },
 });
 
+Projects = new Mongo.Collection("projects");
+Projects.attachSchema({
+  projectName: { type: String, optional: true },
+  projectLabel: { type: String, optional: true },
+  project_type: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    autoValue: function() {
+       if (this.isInsert) {
+         return new Date();
+       } else if (this.isUpsert) {
+         return {$setOnInsert: new Date()};
+       } else {
+         this.unset();  // Prevent user from supplying their own value
+       }
+     }
+  },
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isUpdate) {
+        return new Date();
+      }
+    },
+    denyInsert: true,
+    optional: true
+  },
+  collaborations: {
+    type: [String]
+  },
+
+  // public information
+  projectDescription: { type: String, optional: true },
+});
 Posts = new Mongo.Collection("posts");
 Posts.attachSchema({
   title: { type: String },

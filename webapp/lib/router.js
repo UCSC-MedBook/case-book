@@ -24,7 +24,17 @@ FlowRouter.route("/cases/:caseId", {
     }}
 );
 
-FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
+FlowRouter.route("/projects/:projectId", {
+    name: "showProject",
+    subscriptions: function(params, queryParams) {
+      this.register('showProject', Meteor.subscribe('singleProject', params.projectId));
+  },
+    action: function(params ) {
+        BlazeLayout.render("appBody", { content: "showProject", params });
+    }}
+);
+
+//FlowRouter.route("/projects/showProject", sameNameAndAction("showProject"));
 
 FlowRouter.route("/apps", sameNameAndAction("apps"));
 FlowRouter.route("/apps/MaastroLungSurvival", {

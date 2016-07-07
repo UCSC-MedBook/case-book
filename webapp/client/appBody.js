@@ -16,4 +16,10 @@ Template.appBody.events({
     //if (container)
     // Blaze.renderWithData(modal_template, this, container, parent_view);
   },
+  "click .ui.menu .createProject"(event, instance) {
+    console.log('create Project');
+    $('.create-project.ui.modal')
+        // .modal({detachable: false})
+        .modal('show');
+  },
 });

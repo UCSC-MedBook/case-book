@@ -38,64 +38,37 @@
     </div>
   <div class="twelve wide column">
   <h3>My Projects</h3>
-  9 Projects
     <div clase="ui grid">
+    {{#if Template.subscriptionsReady}}
+      {{#if length getProjects}}
       <table class="ui structured compact table">
         <thead>
           <tr>
             <th></th>
             <th>Name</th>
             <th>Type</th>
+            <th>id</th>
             <th>Created</th>
             <th>Last Activity</th>
           </tr>
         </thead>
         <tbody class="go-to-project-page">
+          {{#each getProjects}}
             <tr>
               <td>
                 <i class="empty star icon"></i>
               </td>
-              <td>Best Lab Practices</td>
-              <td>Discussion</td>
-              <td>3/1/2015</td>
-              <td>6/1/2015 3:30pm</td>
-            </tr>
-            <tr>
+              <td>{{projectName}}</td>
+              <td>{{project_type}}</td>
               <td>
-                <i class="star icon"></i>
+                  <a href={{pathFor "showProject" projectId=_id}} class="projectid">
+                    {{projectLabel}}
+                  </a>
               </td>
-              <td>Biomarker Case Series</td>
-              <td>Case Series</td>
-              <td>7/12/2015</td>
-              <td>12/1/2015 11:03am</td>
+              <td>{{createDate}}</td>
+              <td>{{updateDate}}</td>
             </tr>
-            <tr>
-              <td>
-                <i class="empty star icon"></i>
-              </td>
-              <td>Candidates For Anti-PD1 Trial</td>
-              <td>Case Series</td>
-              <td>11/3/2015</td>
-              <td>12/1/2015 1:20pm</td>
-            </tr>
-            <tr>
-              <td>
-                <i class="star icon"></i>
-              </td>
-              <td>Critical Patients</td>
-              <td>Case Series</td>
-              <td>1/14/201</td>
-              <td>8 hours ago</td>
-            </tr>
-            <tr>
-              <td>
-                <i class="star icon"></i>
-              </td>
-              <td>SMC Tumor Board Candidates Q3 2016</td>
-              <td>Tumor Board</td>
-              <td>3/1/2016</td>
-              <td>5 minutes ago</td>
-            </tr>
+        	{{/each}}
         </tbody>
         <tfoot>
           <tr><th colspan="5">
@@ -114,6 +87,14 @@
           </th>
         </tr></tfoot>
       </table>
+        {{else}}
+          <p>
+            No data loaded... :(
+          </p>
+        {{/if}}
+      {{else}}
+        {{> dataLoading}}
+      {{/if}}
     </div>
   </div>
   </div>
@@ -140,7 +121,7 @@
       </div>
       <div class="field">
         <label>Type</label>
-        <select name="project-type" multiple="" class="ui fluid dropdown">
+        <select name="project_type" multiple="" class="ui fluid dropdown project_type">
           <option value="">Type</option>
           <option value="ds">Discussion</option>
           <option value="cs">Case Series</option>

@@ -23,6 +23,15 @@ Meteor.methods({
     console.log('parsed text',JSON.stringify(newCase));
     Cases.insert(newCase);
   },
+  createProject(newProject) {
+    newProject.createdAt = new Date();
+    if ( typeof Meteor.userId === "function") {
+      newProject.userId = Meteor.userId();
+    }
+    newProject.createdAt = new Date();
+    console.log('project ',JSON.stringify(newProject));
+    Projects.insert(newProject);
+  },
   createPost(newPost) {
     newPost.title = newPost.body.substring(0, 80);
     //if ( typeof this.userId === "function") {
