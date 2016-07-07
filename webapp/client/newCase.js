@@ -49,6 +49,10 @@ Template.newCaseModal.onRendered(function() {
       if (form_vals.gender === 'unk') {
         delete form_vals.gender;
       }
+      // temporary *** FIX until we add share button
+      if (!form_vals.collaboration) {
+        form_vals.collaborations = ["ASK"];
+      }
       console.log('form_vals',form_vals);
 
       var ctype = "nsclc"; // Will get set by a pulldown to one of the ctype template keys.
@@ -60,7 +64,7 @@ Template.newCaseModal.onRendered(function() {
           var txt = "";
           // Add the standard keys which are the same for every cancer.
           for (var key in standard_keys) {
-          	txt = txt + "[" + key + ":" + standard_keys[key] + "]\n"
+          	txt = txt + "[" + key + ":" + standard_keys[key] + "]\n";
           	default_vals[key]=standard_keys[key];
           }
           // Now add the ctype-specific keys. Note that these can OVERRIDE the standard ones!
@@ -86,7 +90,7 @@ Template.newCaseModal.onRendered(function() {
       var ctype_templates = {
           "nsclc": ["Lung", "NSCLC"],
           "Melanoma": ["Race"]
-      }
+      };
 
       // Note that these can OVERRIDE the standard keys!
       var subtemplates = {
@@ -101,7 +105,7 @@ Template.newCaseModal.onRendered(function() {
           "Race": {
             "race:":"White",
           }
-      }
+      };
 
       function xlate(intext) {
           //var intext = (document.getElementById("text1")).value

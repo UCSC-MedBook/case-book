@@ -29,6 +29,9 @@ Cases.attachSchema({
     denyInsert: true,
     optional: true
   },
+  collaborations: {
+    type: [String]
+  },
 
   // public information
   fullNarrative: { type: String, optional: true },

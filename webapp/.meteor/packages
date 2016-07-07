@@ -36,11 +36,11 @@ momentjs:moment
 hive:facets
 accounts-ui
 accounts-password
-useraccounts:unstyled
 tomi:upload-server
 dbarrett:dropzonejs
 reactive-var
 ucscmedbook:api
 medbook:collaborations
+medbook:namespace
 meteortoys:allthings
 aldeed:template-extension
