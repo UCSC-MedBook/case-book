@@ -6,8 +6,7 @@ Template.appBody.onRendered(function () {
 Template.appBody.events({
   "click .ui.menu .createCase"(event, instance) {
     console.log('create case');
-    $('.invite.ui.modal')
-    //$('.create-case.ui.modal')
+    $('.create-case.ui.modal')
         // .modal({detachable: false})
         .modal('show');
     //var modal_template = Template[instance.data.template];
