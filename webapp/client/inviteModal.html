@@ -1,54 +1,21 @@
-<template name="appDimmer">
-  <div class="app-dimmer ui dimmer modals page"></div>
-</template>
-
-
-<template name="newCaseModal2">
-  <aside class="create-case2 ui modal">
-    {{> Template.contentBlock}}
-  </aside>
-</template>
-
-<template name="newCaseModal">
-  {{! shows up when creating a new case}}
-  <div class="create-case ui modal">
+<template name="inviteModal">
+  {{! shows up when invite people to a case}}
+  <div class="invite ui modal">
     <i class="close icon"></i>
     <div class="header">
-      New Case
+      Invite to a Case
     </div>
 
     <div class="content">
-      <form class="new-case ui form">
+      <form class="invite ui form">
         <div class="ui segment">
-          <h3>Private Information</h3>
-          <p>
-            Entries above the <span class="red">red line </span> will only be seen within your organization and stored in encypted form.
-          </p>
-
+          <h3>Already included Discussion </h3>
           <div class="three fields">
-            <div class="required field">
-              <label>Case ID </label>
-              <input type="text" name="caseLabel" placeholder="Enter Case ID">
-            </div>
             <div class="field">
-              <label>Patient First Name (optional)</label>
-              <input type="text" name="firstName" placeholder="First Name" >
+              <label>Name</label>
+              {{profile.firstName}} {{profile.lastName}}
             </div>
 
-            <div class="field">
-              <label>Patient Last Name</label>
-              <input type="text" name="lastName" placeholder="Last Name" >
-            </div>
-          </div>
-          <div class="fields">
-            <div class="six wide field">
-              <label>Attachments</label>
-              <div style="min-height: 37px; border: 2px dashed #AAA;">
-                <p style="text-align: center; padding-top: 6px;">
-                  <u>Drag and drop attachments here</u>
-                </p>
-              </div>
-            </div>
           </div>
         </div>
             <hr size="3" color="red">

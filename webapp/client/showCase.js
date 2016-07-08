@@ -149,6 +149,12 @@ Template.showCase.events({
   "click .OrderIHC"(event, instance) {
     console.log('event',event);
     FlowRouter.go("/apps/OrderIHC");
+  },
+  "click .invite"(event, instance) {
+    console.log('invite');
+    $('.invite.ui.modal')
+        // .modal({detachable: false})
+        .modal('show');
   }
 });
 Template.showCaseDetails.events({
@@ -163,6 +169,10 @@ Template.showCaseDetails.events({
       Meteor.call("approveInsight", post._id, post.title);
   },
   "hover .app"(event, instance) {
+    var cid = this;
+    console.log('menu hover', cid);
+  },
+  "hover .contact"(event, instance) {
     var cid = this;
     console.log('menu hover', cid);
   }
