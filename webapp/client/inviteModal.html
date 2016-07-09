@@ -9,97 +9,114 @@
     <div class="content">
       <form class="invite ui form">
         <div class="ui segment">
-          <h3>Already included Discussion </h3>
-          <div class="three fields">
-            <div class="field">
-              <label>Name</label>
-              {{profile.firstName}} {{profile.lastName}}
-            </div>
-
-          </div>
+          {{#if Template.subscriptionsReady}}
+            {{#if getCase}}
+              {{#with getCase}}
+                <h3>{{summary}}</h3>
+                <table class="ui structured table">
+                <thead>
+                  <tr>
+                    <th>Already included Discussion </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each collaborations}}
+                    <tr class="  ">
+                      <div class="three fields">
+                      <td>{{this}}</td>
+                      <td><a href="#">x</a></td>
+                        <div class="field">
+                          {{profile.firstName}} {{profile.lastName}}
+                        </div>
+                      </div>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+              {{/with}}
+            {{else}}
+            No case
+            {{/if}}
+          {{/if}}
         </div>
-            <hr size="3" color="red">
-
         <div class="ui segment">
-          <h3>Anonymized Case Summary</h3>
-          <div class="ui horizontal segments">
-            <div class="ui segment">
-              <div class="required field">
-                <label>Cancer Type</label>
-                <select name="cancer_type" class="ui fluid dropdown cancer_type">
-                  <option value=""></option>
-                  <option value="LUAD">Lung</option>
-                  <option value="BRCA">Breast</option>
-                  <option value="PRAD">Prostate</option>
-                  <option value="PRAN">Pancreas</option>
-                  <option value="SKIM">Melanoma</option>
-                  <option value="MM">Multiple Myeloma</option>
-                  <option value="GBM">GBM</option>
-                  <option value="HDNC">Head and Neck</option>
-                  <option value="UNC">Cancer of Unknown origin</option>
-                </select>
+          {{#if getMyContacts}}
+            <div class="ui horizontal segments">
+              <table class="ui structured table">
+                <thead>
+                  <tr>
+                    <th>My Contacts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each getMyContacts}}
+                    <tr class="  ">
+                      <div class="three fields">
+                        <td>
+                          <div class="field">
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="field">
+                            {{name}}
+                          </div>
+                        </td>
+                        <td>{{email}}</td>
+                        <td><a href="#">x</a></td>
+                      </div>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
               </div>
-            </div>
-            <div class="ui segment">
-              <div class="grouped fields">
-                <label>Gender</label>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="gender" id="unknown" value="unk" checked="checked">
-                    <label>Unknown</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="gender" id="female" value="female" >
-                    <label>Female</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="gender" id="male" value="male" >
-                    <label>Male</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="ui segment">
-              <div class="field">
-                <label>Age</label>
-                <input type="number" name="age" >
-              </div>
-            </div>
-          </div>
-          <p>
-            Edit the following entries to summarize anonymized case info. Please leave the [attribute:value] formatting, just change the values after the colons, for example, change: [gender: m/f] to [gender: m] or [gender: f]. You can also make up new values not listed and even new attributes. Please anonymize. (We'll check, but it'll save time if you try to pre-anonymize to the extent possible.)
-          </p>
-          <div class="required field">
-            <label>Narrative</label>
-            <textarea name="fullNarrative"> [histology: Adenocarcinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [fev:30] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]  </textarea>
-          </div>
+            {{/if}}
 
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox">
-              <label>Allow this case information to be vetted,
-                peer reviewed, and published to NanoPub.
-                <a target="_blank" href="http://nanopub.org/wordpress">
-                  Learn about the NanoPub process
-                </a>
-              </label>
-            </div>
-          </div>
+        </div>
+        <div class="ui segment">
+          {{#if getRecommendedContacts}}
+            <div class="ui horizontal segments">
+              <table class="ui structured table">
+                <thead>
+                  <tr>
+                    <th>Recommended Contacts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each getRecommendedContacts}}
+                    <tr class="  ">
+                      <div class="three fields">
+                        <td>
+                          <div class="field">
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="field">
+                            {{name}}
+                          </div>
+                        </td>
+                        <td>{{email}}</td>
+                        <td><a href="#">x</a></td>
+                      </div>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            {{/if}}
+
         </div>
         <div class="ui error message"></div>
       </form>
     </div>
-
     <div class="actions">
       <div class="ui button cancel">Cancel</div>
-      <div class="ui secondary button ok createCase">Create Case</div>
-      <div class="ui primary button ok createCaseAndSearch">
-        Create Case and Search
-      </div>
+      <div class="ui secondary button ok invite">Invite </div>
     </div>
   </div>
 </template>

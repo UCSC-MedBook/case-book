@@ -20,7 +20,6 @@ Template.showCaseDetails.onRendered(function () {
 Template.showCaseDetails.helpers({
   getPosts: function () {
     var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
-    console.log('getPosts', p);
     return p;
   },
   getStage: function () {
@@ -71,7 +70,6 @@ Template.showCaseDetails.helpers({
   },
   isApproved: function (post) {
     if (post.insightStatus) {
-      console.log('approved',post, post.insightStatus== 'approved' );
       return post.insightStatus === 'approved';
     }
   },
@@ -81,9 +79,7 @@ Template.showCaseDetails.helpers({
     }
   },
   isNotApproved: function(post) {
-    console.log('insight status', this.insightStatus);
     if (post.insightStatus) {
-      console.log('approved',post.insightStatus== 'approved' );
       return post.insightStatus != 'approved';
     }
     else {
@@ -92,7 +88,6 @@ Template.showCaseDetails.helpers({
   },
   isPending: function (post) {
     if (post.insightStatus) {
-      console.log('pending',post, post.insightStatus == 'pending' );
       return post.insightStatus === 'pending';
     }
   },
@@ -116,15 +111,12 @@ Template.showCase.events({
         } else if (document.selection) {
           selection = document.selection.createRange();
         }
-        console.log('selection', selection);
         var parent = selection.anchorNode.parentNode;
-        console.log('parentNode', parent);
         //parent.style.backgroundColor = 'yellow';
         //Blaze.render(Template.affordance, parent);
     },
   "click .createPost"(event, instance) {
     var f = instance.$(".new-notebook.ui.form").form("get values");
-    console.log(f);
     f.caseId = instance.data.caseId;
     Meteor.call("createPost", f);
   },
