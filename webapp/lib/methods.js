@@ -56,6 +56,9 @@ Meteor.methods({
       Posts.update({_id:postId},{$set:{insight:text, insightStatus:"approved"}});
     }
   },
+  invite(newInvite) {
+    console.log('invite', newInvite);
+  },
   createSavedSearch(query) {
     var newSearch = {};
     newSearch.query = JSON.stringify(query);

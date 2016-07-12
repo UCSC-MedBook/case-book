@@ -1,120 +1,114 @@
 <template name="inviteModal">
   {{! shows up when invite people to a case}}
-  <div class="invite ui basic modal right floating">
-          {{#if Template.subscriptionsReady}}
-            {{#if getCase}}
-              {{#with getCase}}
-    <i class="close icon"></i>
-    <div class="header">
-      Invite for Opinion on {{caseLabel}} : {{summary}}
-    </div>
-    <div class="content">
-      <form class="invite ui form">
-        <div class="ui list">
-                <table class="ui structured table">
-                <thead>
-                  <tr>
-                    <th>Already included Discussion </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each collaborations}}
-                    <tr class="  ">
-                      <div class="three fields">
-                      <td>{{this}}</td>
-                      <td><a href="#">x</a></td>
-                        <div class="field">
-                          {{profile.firstName}} {{profile.lastName}}
-                        </div>
-                      </div>
-                    </tr>
-                  {{/each}}
-                </tbody>
-              </table>
-        </div>
-        <div class="ui list">
-          {{#if getMyContacts}}
-            <div class="ui horizontal segments">
-              <table class="ui structured table">
-                <thead>
-                  <tr>
-                    <th>My Contacts</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each getMyContacts}}
-                    <tr class="  ">
-                      <div class="three fields">
-                        <td>
-                          <div class="field">
-                            <div class="ui checkbox">
-                              <input type="checkbox">
+  <div class="invite ui modal">
+    {{#if Template.subscriptionsReady}}
+      {{#if getCase}}
+        {{#with getCase}}
+          <i class="close icon"></i>
+          <div class="header">
+            Invite for Opinion on {{caseLabel}} : {{summary}}
+          </div>
+          <div class="content">
+            <form class="invite2 ui form">
+              <div class="ui list">
+                      <table class="ui structured table">
+                      <thead>
+                        <tr>
+                          <th>Already included Discussion </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each collaborations}}
+                          <tr class="  ">
+                            <div class="three fields">
+                            <td>{{this}}</td>
+                            <td><a href="#">x</a></td>
+                              <div class="field">
+                                {{profile.firstName}} {{profile.lastName}}
+              <input type="text" name="firstName" placeholder="First Name" >
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="field">
-                            {{name}}
-                          </div>
-                        </td>
-                        <td>{{email}}</td>
-                        <td><a href="#">x</a></td>
-                      </div>
-                    </tr>
-                    {{/each}}
-                  </tbody>
-                </table>
+                          </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
               </div>
-            {{/if}}
-
-        </div>
-        <div class="ui list">
-          {{#if getRecommendedContacts}}
-            <div class="ui horizontal segments">
-              <table class="ui structured table">
-                <thead>
-                  <tr>
-                    <th>Recommended Contacts</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each getRecommendedContacts}}
-                    <tr class="  ">
-                      <div class="three fields">
-                        <td>
-                          <div class="field">
-                            <div class="ui checkbox">
-                              <input type="checkbox">
+              <div class="ui list">
+                {{#if getMyContacts}}
+                  <div class="ui horizontal segments">
+                    <table class="ui structured table">
+                      <thead>
+                        <tr>
+                          <th>My Contacts</th>
+                          <th><a href="/addContact">Add Contact</a></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each getMyContacts}}
+                          <tr class="  ">
+                            <div class="three fields">
+                              <td>
+                                <div class="field">
+                                  <div class="ui checkbox">
+                                    <input type="checkbox" name="addInvite">
+                                    <label>{{name}}</label>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>{{email}}</td>
+                              <td><a href="#">x</a></td>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="field">
-                            {{name}}
-                          </div>
-                        </td>
-                        <td>{{email}}</td>
-                        <td><a href="#">x</a></td>
-                      </div>
-                    </tr>
-                    {{/each}}
-                  </tbody>
-                </table>
-              </div>
-            {{/if}}
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                    </div>
+                  {{/if}}
 
-        </div>
-        <div class="ui error message"></div>
-      </form>
-    </div>
-    <div class="actions">
-      <div class="ui button cancel">Cancel</div>
-      <div class="ui secondary button ok invite">Invite </div>
-    </div>
-              {{/with}}
-            {{else}}
-            No case
-            {{/if}}
-          {{/if}}
+              </div>
+              <div class="ui list">
+                {{#if getRecommendedContacts}}
+                  <div class="ui horizontal segments">
+                    <table class="ui structured table">
+                      <thead>
+                        <tr>
+                          <th>Recommended Contacts</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each getRecommendedContacts}}
+                          <tr class="  ">
+                            <div class="three fields">
+                              <td>
+                                <div class="field">
+                                  <div class="ui checkbox">
+                                    <input type="checkbox">
+                                    <label>{{name}}</label>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>{{email}}</td>
+                              <td><a href="#">x</a></td>
+                            </div>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                    </div>
+                  {{/if}}
+
+              </div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        {{/with}}
+      {{else}}
+        No case
+      {{/if}}
+      <div class="actions">
+        <div class="ui button cancel">Cancel</div>
+        <div class="ui primary button ok invite">Invite </div>
+      </div>
+    {{/if}}
   </div>
 </template>

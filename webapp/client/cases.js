@@ -3,6 +3,7 @@ Template.cases.onCreated(function () {
 
   instance.casesQuery = new ReactiveVar({})
   var caseQuery = Session.get('caseQuery')
+  console.log('onCreated', caseQuery);
   if (caseQuery == null) {
     console.log('##onCreated, clearing caseQuery', caseQuery)
     Session.set('caseQuery', '')
@@ -25,6 +26,7 @@ Template.cases.onRendered(function () {
   $('.ui.dropdown').dropdown({on: 'hover'})
 
   let query = JSON.parse(JSON.stringify(Session.get('caseQuery')))
+  console.log('onRendered', query);
   if (!query) {
     query = {}
   }
@@ -75,7 +77,7 @@ Template.cases.events({
 
 Template.caseSearchFields.events({
   'change .cancer_type'(event, instance) {
-    var val = $('.cancer_type').dropdown('get value')
+    var val = _.uniq($('.search.cancer_type').dropdown('get value'))
     if (val) {
       val = val.filter(function (x) {
         if (x) {

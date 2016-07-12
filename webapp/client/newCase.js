@@ -31,7 +31,7 @@ Template.newCaseModal.onRendered(function() {
     }
   });
   instance.$(".ui.checkbox").checkbox();
-
+  console.log('create modal');
   // set up the modal but don't show it just yet
   instance.$('.create-case.ui.modal').modal({
     onApprove(clickedElement) {
