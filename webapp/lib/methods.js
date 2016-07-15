@@ -41,6 +41,14 @@ Meteor.methods({
     newPost.postedAt = new Date();
     Posts.insert(newPost);
   },
+  createReply(newReply) {
+    //if ( typeof this.userId === "function") {
+    //  newPost.userId = this.userId;
+    //}
+    newReply.createdAt = new Date();
+    newReply.postedAt = new Date();
+    Comments.insert(newReply);
+  },
   createInsight(postId, text) {
     var newPost = Posts.findOne({_id:postId});
     if (newPost.insightStatus) {
