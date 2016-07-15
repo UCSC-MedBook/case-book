@@ -8,6 +8,17 @@ Template.newCaseModal.onRendered(function() {
       console.log("$selectedItem:", $selectedItem);
     }
   });
+  instance.$(".mutations").dropdown({
+    onChange: function(value, text, $selectedItem) {
+      console.log("mut", value, text, $selectedItem);
+      //var $genelist = $('.genelist2')
+      //var mutations = $genelist.select2('val')
+      if (value)  {
+        instance.mutations = value
+      }
+      //console.log('mut:', mutations)
+    }
+  });
 
   $createCaseForm = instance.$(".new-case.ui.form");
 
@@ -53,7 +64,7 @@ Template.newCaseModal.onRendered(function() {
       if (!form_vals.collaboration) {
         form_vals.collaborations = ["ASK"];
       }
-      console.log('form_vals',form_vals);
+      console.log('muts ', instance.mutations, 'form_vals',form_vals);
 
       var ctype = "nsclc"; // Will get set by a pulldown to one of the ctype template keys.
       var values = {}; // Will eventually have the entered values, or NOT_ENTERED
@@ -83,8 +94,13 @@ Template.newCaseModal.onRendered(function() {
           return txt;
       }
 
-      var standard_keys = {"age": "age in month (as 25mo) or years (25yo)",
-      		      "height":"As 72in, 6-6, 6'6\", etc."};
+      var standard_keys = {
+          "cancer_type": "Lung, Breast, Prostate, Melanoma",
+          "gender": "Male/Female/Unknown",
+          "age": "age in month (as 25mo) or years (25yo)",
+          "mutations": "list of valid mutations",
+      		"height":"As 72in, 6-6, 6'6\", etc."
+        };
 
       // Each of these is an array of names of subtemplates.
       var ctype_templates = {

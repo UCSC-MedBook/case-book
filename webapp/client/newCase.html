@@ -31,13 +31,8 @@
               <input type="text" name="caseLabel" placeholder="Enter Case ID">
             </div>
             <div class="field">
-              <label>Patient First Name (optional)</label>
-              <input type="text" name="firstName" placeholder="First Name" >
-            </div>
-
-            <div class="field">
-              <label>Patient Last Name</label>
-              <input type="text" name="lastName" placeholder="Last Name" >
+              <label>Patient Nick Name (optional)</label>
+              <input type="text" name="nickName" placeholder="nickname" >
             </div>
           </div>
           <div class="fields">
@@ -61,14 +56,15 @@
                 <label>Cancer Type</label>
                 <select name="cancer_type" class="ui fluid dropdown cancer_type">
                   <option value=""></option>
-                  <option value="LUAD">Lung</option>
-                  <option value="BRCA">Breast</option>
-                  <option value="PRAD">Prostate</option>
-                  <option value="PRAN">Pancreas</option>
-                  <option value="SKIM">Melanoma</option>
-                  <option value="MM">Multiple Myeloma</option>
+                  <option value="Lung">Lung</option>
+                  <option value="Breast">Breast</option>
+                  <option value="Prostate">Prostate</option>
+                  <option value="Pancreas">Pancreas</option>
+                  <option value="Liver">Liver</option>
+                  <option value="Melanoma">Melanoma</option>
+                  <option value="Multiple Myeloma">Multiple Myeloma</option>
                   <option value="GBM">GBM</option>
-                  <option value="HDNC">Head and Neck</option>
+                  <option value="Head and Neck">Head and Neck</option>
                   <option value="UNC">Cancer of Unknown origin</option>
                 </select>
               </div>
@@ -102,13 +98,24 @@
                 <input type="number" name="age" >
               </div>
             </div>
+            <div class="ui segment">
+              <div class="field">
+                <label>Mutations</label>
+                <select name="mutations" class="ui fluid multiple dropdown mutations">
+                  <option value=""></option>
+                  <option value="BRCA1">BRCA1</option>
+                  <option value="BRCA2">BRCA2</option>
+                  <option value="ERG">ERG</option>
+                </select>
+              </div>
+            </div>
           </div>
           <p>
             Edit the following entries to summarize anonymized case info. Please leave the [attribute:value] formatting, just change the values after the colons, for example, change: [gender: m/f] to [gender: m] or [gender: f]. You can also make up new values not listed and even new attributes. Please anonymize. (We'll check, but it'll save time if you try to pre-anonymize to the extent possible.)
           </p>
           <div class="required field">
             <label>Narrative</label>
-            <textarea name="fullNarrative"> [histology: Adenocarcinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [fev:30] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]  </textarea>
+            <textarea name="fullNarrative"> [histology: Adenocarcinoma/small cell/non small cell/etc] [mets: count] [fev:30] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]  </textarea>
           </div>
 
           <div class="field">
