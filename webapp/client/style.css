@@ -61,3 +61,6 @@ body {margin: 5px;}
 .invite.ui.modal {
   max-width: 500px;
 }
+.reply-col {
+  width: 450px;
+}

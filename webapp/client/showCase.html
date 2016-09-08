@@ -21,6 +21,7 @@
   {{#if Template.subscriptionsReady}}
     {{#with getCase}}
       {{> showCaseDetails}}
+      {{> insightModal}}
     {{/with}}
   {{else}}
     {{> dataLoading }}
@@ -81,12 +82,6 @@
   </div>
 
   <div class="ui bottom attached tab segment" data-tab="case2">
-    <div class="ui floated right search">
-      <div class="ui icon input">
-      <input class="prompt" type="text" placeholder="Search Notebook ...">
-      <i class="search icon"></i>
-      </div>
-    </div>
     <button class="ui floated right button">
       All
     </button>
@@ -117,10 +112,10 @@
             <textarea rows="1" placeholder="Enter new notebook text" name="body"></textarea>
           </div>
           <div class="ui floated right segment">
-              {{>dropzone url="/upload" id="template-helper"}}
+              {{>dropzone url="/upload" id="uploader"}}
           </div>
         </div>
-        <div class="ui primary button createPost">Add Entry</div>
+        <div class="ui primary button createPost">Add Notebook Entry</div>
     </form>
     </div>
     <div class="ui celled grid">
@@ -140,38 +135,28 @@
             <img class="ui floating mini image lightswitch" src="/images/light_sw_off.svg" />
           {{/if}}
         </div>
-        <div class="twelve wide column">
+        <div class="ten wide column ">
           <div class="ui comments">
-            <div class="comment">
-              <p class="textNorm">
-                <a class="author">Dr. Jones</a>
-                {{body}}
-              </p>
-                  <div class="actions">
-                  <a class="reply">Reply</a>
+            <form class="new-reply ui form">
+              <div class="comment">
+                <p class="textNorm">
+                <a class="author">Dr. Jones: </a>
+                  {{body}}
+                </p>
+                <div class="ui action input reply-col">
+                  <input type="hidden" name="postId" value={{_id}}>
+                  <textarea rows="1" placeholder="Enter reply" name="body"></textarea>
+                  <div class="ui primary compact right button createReply">Reply</div>
                 </div>
-            </div>
+              </div>
+            </form>
           </div>
           <div class="ui comments">
             <h4 class="ui dividing header">Discussion</h4>
-            <div class="comment">
-              <div class="content">
-                <a class="author">Dr. Smith</a>
-                <div class="metadata">
-                  <span class="date">Now</span>
-                </div>
-                <div class="text">
-                  This is a reaction
-                </div>
-                <div class="actions">
-                  <a class="reply">Reply</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div class="two wide column">
-          <button class="ui contact right floated labeled icon dropdown button item">
+          <button class="ui contact right compact labeled icon dropdown button item">
             <i class="mail dropdown icon"></i>
             Contact
               <div class="menu">
@@ -219,7 +204,7 @@
           <br>3:14pm
         </div>
         <div class="twelve wide column">
-          <p><b>Dr. John Doe </b>INCB24360 has shown efficacy both as a single agent, and in combination with immune checkpoint drugs.
+          <p><b>Dr. Jones:</b>Over expression and mutation of CTNNB1 implies activation of WNT pathway
           </p>
           <p><b>Agreed</b> (100%) View case View notebook entry</p>
         </div>
@@ -233,8 +218,7 @@
           <br> 5:16pm
         </div>
         <div class="twelve wide column">
-          <p><b>Dr. Allen Baker</b> A number of immunotherapy trials in particular in HNSCC and
-  cervical CA require testing for HPV presence in head and neck tumors.
+          <p><b>Dr. Allen Baker:</b>patient should get CTNNB1 IHC stain to confirm as shown in (Am J Surg Pathol 2012;36:1691)
           </p>
           <p><b>Pending</b></p>
         </div>

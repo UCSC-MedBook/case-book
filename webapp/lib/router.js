@@ -56,6 +56,12 @@ FlowRouter.route( "/apps/MaastroRectalModel", {
   },
   name: 'MaastroRectalModel'
 });
+FlowRouter.route( "/apps/PathologyStains", {
+  action: function() {
+    BlazeLayout.render( 'apps', { content: 'PathologyStains' } );
+  },
+  name: 'PathologyStains'
+});
 FlowRouter.route( "/apps/OrderIHC", {
   action: function() {
     BlazeLayout.render( 'apps', { content: 'OrderIHC' } );

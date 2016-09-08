@@ -36,11 +36,12 @@ momentjs:moment
 hive:facets
 accounts-ui
 accounts-password
-tomi:upload-server
-dbarrett:dropzonejs
 reactive-var
 ucscmedbook:api
 medbook:collaborations
 medbook:namespace
 meteortoys:allthings
 aldeed:template-extension
+tomi:upload-jquery@2.2.0
+tomi:upload-server@1.3.3
+dbarrett:dropzonejs

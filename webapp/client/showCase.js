@@ -1,8 +1,8 @@
 Template.showCase.onCreated(function () {
   const case_instance = this;
-  //console.log('onCreated', instance.data);
-  //console.log('onCreated id=', instance.data.caseId);
-  //instance.subscribe("showCase", instance.data.caseId);
+});
+Template.showCaseDetails.onCreated(function () {
+  const post_instance = this;
 });
 
 Template.showCase.onRendered(function () {
@@ -16,6 +16,27 @@ Template.showCaseDetails.onRendered(function () {
     // make the dropdowns in the menu work on hover
   $(".ui.menu .ui.dropdown"); //.dropdown({ on: "hover" });
   $(".ui.dropdown").dropdown({on:"hover"});
+  let instance = this;
+  //var options = _.extend( {}, Meteor.Dropzone.options, this.data );
+  //Meteor.Dropzone.autoDiscover = false;
+  Dropzone.options.uploader = {
+    init: function() {
+      console.log('upload init');
+      this.on("addedfile", function(file) { alert("Added file."); });
+    },
+    accept: function(file, done) {
+      console.log('acccept',file)
+    },
+    addedfile: function(file) {
+      console.log('added:',file)
+    }
+  };
+  var uploader = $('#uploader'); //new Dropzone("#uploader");
+  uploader.on("addedfile", function(file) {
+    console.log('added 2',file)
+    /* Maybe display some more file information on your page */
+  });
+  console.log('onRendered det', instance);
 });
 Template.showCaseDetails.helpers({
   getPosts: function () {
@@ -111,9 +132,16 @@ Template.showCase.events({
         } else if (document.selection) {
           selection = document.selection.createRange();
         }
+        //selection.toString() !== '' && alert(' calling modal Insight : "' + selection.toString() + '"       at ' + event.pageX + '/' + event.pageY);
+        $('.ui.star.rating').rating()
+        $('.ui.heart.rating').rating()
+        $('.ui.radio.rating').rating()
+        $('.annotate-insight.ui.modal')
+            // .modal({detachable: false})
+            .modal('show');
         var parent = selection.anchorNode.parentNode;
-        //parent.style.backgroundColor = 'yellow';
-        //Blaze.render(Template.affordance, parent);
+        parent.style.backgroundColor = 'yellow';
+        Blaze.render(Template.affordance, parent);
     },
   "click .createPost"(event, instance) {
     var f = instance.$(".new-notebook.ui.form").form("get values");
@@ -159,6 +187,21 @@ Template.showCaseDetails.events({
       var post = this;
       //console.log('click light', event, post, post._id);
       Meteor.call("approveInsight", post._id, post.title);
+  },
+  "click .createReply"(event, instance) {
+    var f = instance.$(".new-reply.ui.form").form("get values");
+    console.log("#reply2 detail",f,instance.data)
+
+    f.caseId = instance.data.caseId;
+    f.postId = instance.data.postId;
+    for (var reply in f) {
+      if (f[reply]) {
+        if (f[reply].body) {
+          console.log('#createReply',f[reply]);
+          Meteor.call("createReply", f[reply]);
+        }
+      }
+    }
   },
   "hover .app"(event, instance) {
     var cid = this;

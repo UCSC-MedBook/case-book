@@ -47,6 +47,7 @@ Meteor.methods({
     //}
     newReply.createdAt = new Date();
     newReply.postedAt = new Date();
+    console.log("new reply", newReply)
     Comments.insert(newReply);
   },
   createInsight(postId, text) {
@@ -56,6 +57,11 @@ Meteor.methods({
     }
     console.log('update Insight ',postId);
     Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
+  },
+  updateInsight(postId, text) {
+    var newPost = Posts.findOne({_id:postId});
+    console.log('update Insight ',postId, text);
+    //Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
   },
   approveInsight(postId, text) {
     var newPost = Posts.findOne({_id:postId});

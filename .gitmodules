@@ -1,3 +1,6 @@
 [submodule "webapp/packages/collaborations"]
 	path = webapp/packages/collaborations
 	url = https://github.com/UCSC-MedBook/collaborations
+[submodule "webapp/packages/blobs"]
+	path = webapp/packages/blobs
+	url = https://github.com/UCSC-MedBook/blobs
