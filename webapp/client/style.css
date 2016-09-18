@@ -49,6 +49,9 @@ body {margin: 5px;}
 .searchbox {
 	background-color: #f1f6ff;
 }
+.bluebox {
+	background-color: #f1f6ff;
+}
 .dropzone {
   min-height: 37px;
   max-height: 50px;
@@ -62,5 +65,4 @@ body {margin: 5px;}
   max-width: 500px;
 }
 .reply-col {
-  width: 450px;
 }

@@ -137,6 +137,20 @@ Projects.attachSchema({
   // public information
   projectDescription: { type: String, optional: true },
 });
+Insights = new Mongo.Collection("insights")
+Insights.attachSchema({
+  caseId: { type: String },
+  postId: { type: String , optional: true},
+  insightText: { type: String },
+  insightStatus: {
+    type: String ,
+    allowedValues: [ "pending", "approved", "disapproved", "pending-peer-review","public" ],
+    optional: true,
+  },
+  note: { type: String , optional: true},
+  cnl: { type: String, optional:true },
+  url: { type: String, optional: true },
+});
 Posts = new Mongo.Collection("posts");
 Posts.attachSchema({
   title: { type: String },

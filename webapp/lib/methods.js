@@ -50,24 +50,32 @@ Meteor.methods({
     console.log("new reply", newReply)
     Comments.insert(newReply);
   },
-  createInsight(postId, text) {
-    var newPost = Posts.findOne({_id:postId});
-    if (newPost.insightStatus) {
+  createInsight(caseId, postId, formObj) {
+    var caseObj = Cases.findOne({_id:caseId});
+    if (!caseObj) {
       return;
     }
-    console.log('update Insight ',postId);
-    Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
-  },
-  updateInsight(postId, text) {
-    var newPost = Posts.findOne({_id:postId});
-    console.log('update Insight ',postId, text);
+    console.log('create Insight: ',formObj.text);
     //Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
+    if (postId) {
+      Insights.insert({caseId:caseId, postId: postId, insightText:formObj.text, note:formObj.note, insightStatus:"pending"})
+    }
+    else {
+      Insights.insert({caseId:caseId, insightText:formObj.text, note: formObj.note, insightStatus:"pending"})
+    }
   },
-  approveInsight(postId, text) {
-    var newPost = Posts.findOne({_id:postId});
-    if (newPost.insightStatus) {
-      console.log('approve Insight ',postId);
-      Posts.update({_id:postId},{$set:{insight:text, insightStatus:"approved"}});
+  updateInsight(insightId, formObj) {
+    var insight = Insights.findOne({_id:insightId});
+    console.log('update Insight ',insight, formObj.text);
+    //Posts.update({_id:postId},{$set:{insight:text, insightStatus:"pending"}});
+    Insights.update({_id:insightId},{$set:{insightText:formObj.text, insightStatus:"pending"}});
+  },
+  approveInsight(insightId, text) {
+    var insight = Insights.findOne({_id:insightId});
+    //var newPost = Posts.findOne({_id:postId});
+    if (insight.insightStatus) {
+      console.log('approve Insight ',insightId);
+      Insights.update({_id:insightId},{$set:{insight:text, insightStatus:"approved"}});
     }
   },
   invite(newInvite) {

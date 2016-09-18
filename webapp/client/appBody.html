@@ -17,7 +17,7 @@
 <template name="topMenu">
   <div class="ui fluid menu inverted topmenu">
     <a href={{pathFor "home"}} class="header item topmenu">
-      <h3 class="topmenu">MedBook</h3>
+      <h3 class="topmenu">CaseBook</h3>
     </a>
     <a href={{pathFor "cases"}} class="ui dropdown item topmenu">
       Cases
@@ -74,7 +74,6 @@
     </a>
 
 
-    <div class="right menu">
       <a class="icon item">
         <i class="comments big icon"></i>
       </a>
@@ -85,15 +84,6 @@
       </a>
 
       <a class="ui topmenu item">{{> loginButtons}} </a>
-      <a class="ui dropdown item">
-        Dr. John Doe
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item">Change password</div>
-          <div class="item">Logout</div>
-        </div>
-      </a>
-    </div>
   </div>
 </template>
 

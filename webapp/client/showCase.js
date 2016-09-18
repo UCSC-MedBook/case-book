@@ -12,9 +12,18 @@ Template.showCase.onRendered(function () {
   let instance = this;
 });
 Template.showCaseDetails.onRendered(function () {
+    tinymce.init({
+    selector: '.reply-fancy',
+    skin_url: '/packages/teamon_tinymce/skins/lightgray',
+    menubar: false,
+    //plugins: 'image',
+    toolbar: 'insertfile undo, redo | styleselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | outdent indent',
+    //toolbar: 'undo redo | styleselect | bold italic | link image',
+  });
+
   $('.tabular.menu .item').tab();
     // make the dropdowns in the menu work on hover
-  $(".ui.menu .ui.dropdown"); //.dropdown({ on: "hover" });
+  //$(".ui.dropdown"); //.dropdown({ on: "hover" });
   $(".ui.dropdown").dropdown({on:"hover"});
   let instance = this;
   //var options = _.extend( {}, Meteor.Dropzone.options, this.data );
@@ -25,7 +34,7 @@ Template.showCaseDetails.onRendered(function () {
       this.on("addedfile", function(file) { alert("Added file."); });
     },
     accept: function(file, done) {
-      console.log('acccept',file)
+      console.log('accept',file)
     },
     addedfile: function(file) {
       console.log('added:',file)
@@ -79,7 +88,7 @@ Template.showCaseDetails.helpers({
   insightStatus: function() {
     var post = this;
     if (post.insightStatus) {
-      console.log('post insight',post.insightStatus);
+      console.log('get insight status',post.insightStatus);
       if (post.insightStatus === 'pending') {
         return "pendingInsight";
       }
@@ -136,15 +145,21 @@ Template.showCase.events({
         $('.ui.star.rating').rating()
         $('.ui.heart.rating').rating()
         $('.ui.radio.rating').rating()
-        $('.annotate-insight.ui.modal')
+        var postId = this._id;
+        //console.log('show insight create', selection.toString(), 'postID:' , postId);
+        //instance.text = selection.toString()
+        $('#text')[0].value = selection.toString();
+        $('.create-insight.ui.modal')
             // .modal({detachable: false})
             .modal('show');
         var parent = selection.anchorNode.parentNode;
+        console.log('parent',parent)
         parent.style.backgroundColor = 'yellow';
         Blaze.render(Template.affordance, parent);
     },
   "click .createPost"(event, instance) {
     var f = instance.$(".new-notebook.ui.form").form("get values");
+    console.log('post form', f)
     f.caseId = instance.data.caseId;
     Meteor.call("createPost", f);
   },
@@ -181,7 +196,7 @@ Template.showCaseDetails.events({
   "click .lightswitch"(event, instance) {
     var post = this;
     //console.log('click light', event, post, post._id);
-    Meteor.call("createInsight", post._id, post.title);
+    Meteor.call("createInsight", post.castId, post._id, post.title);
   },
   "click .lightbulb"(event, instance) {
       var post = this;

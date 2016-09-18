@@ -1,55 +1,31 @@
 <template name="insightModal">
-  {{! shows up when creating or annotating an insight}}
-  <div class="annotate-insight ui modal">
+  {{! shows up when creating an insight}}
+  <div class="create-insight ui modal">
     <i class="close icon"></i>
     <div class="header">
       New Insight
     </div>
 
     <div class="content">
-      <form class="insight ui form">
-        <div class="ui horizontal segments">
-          <div class="ui center aligned segment">
-            <div class="field">
-              <label>Applicability to this Case</label>
-              <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
-              <label>Not Very...Neutral...Very Applicable</label>
-            </div>
-          </div>
-          <div class="ui center aligned segment">
-            <div class="field">
-              <label>Importance Outside this Case</label>
-              <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
-              <label>Specific to this case...Generally useful</label>
-            </div>
-          </div>
-          <div class="ui center aligned segment">
-            <div class="field">
-              <label>Strength of Evidence</label>
-              <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
-              <label>Anecdotal...Strong Evidence</label>
-            </div>
-          </div>
-      </div>
-        <div class="ui input quicknote focus field">
-          <label>Note</label>
-          <input type="text" name="note" placeholder="Author notes" >
+      <form class="create-insight ui form">
+        <div class="field">
+          <label>Insight Text</label>
+          <textarea rows="2" id="text" name="text" placeholder="Insight"></textarea>
         </div>
-        <div class="actions">
-          <div class="ui primary button ok agreeInsight">Agree</div>
-          <div class="ui secondary button ok disagreeInsight">Disagree</div>
-          <div class="ui button cancel">No Opinion</div>
+        <div class="ui field focus">
+          <label>Author Notes</label>
+          <textarea rows="2" name="note" placeholder=""></textarea>
         </div>
-        <button class="ui button">
-        Comment
-        </button>
         <div class="field">
           <label>Translation into Controlled Natural Language (CNL)</label>
           <input type="text" name="cnl" placeholder="translated text" >
         </div>
-        <button class="ui button">
-        Complain about translation
-        </button>
+        <div class="actions">
+          <div class="ui primary button ok approve createInsight">
+            Create Insight
+          </div>
+          <div class="ui button cancel">Cancel</div>
+        </div>
       </form>
     </div>
   </div>

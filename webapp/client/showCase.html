@@ -42,7 +42,7 @@
     <button class="ui right floated icon button">
       Similar Cases
     </button>
-    <button class="ui contact right floated labeled icon dropdown button item">
+    <button class="ui contact right floated labeled icon button dropdown item">
       <i class="mail dropdown icon"></i>
       Contact
         <div class="menu">
@@ -105,13 +105,13 @@
       Oldest
       <i class="angle down left icon"></i>
     </button>
-    <div class="ui segments">
-      <form class="new-notebook ui form">
+    <div class="ui segments bluebox">
+      <form class="new-notebook bluebox ui form">
         <div class="ui horizontal segments">
-          <div class="ui segment widetext">
+          <div class="ui segment raised widetext">
             <textarea rows="1" placeholder="Enter new notebook text" name="body"></textarea>
           </div>
-          <div class="ui floated right segment">
+          <div class="ui floated raised right segment">
               {{>dropzone url="/upload" id="uploader"}}
           </div>
         </div>
@@ -121,7 +121,7 @@
     <div class="ui celled grid">
     {{#if Template.subscriptionsReady}}
       {{#each getPosts}}
-      <div class="row">
+      <div class="row" data-postId="{{_id}}">
         <div class="ui two wide column {{insightStatus}}">
           {{createDate}}
           {{#if isPending this}}
@@ -143,7 +143,7 @@
                 <a class="author">Dr. Jones: </a>
                   {{body}}
                 </p>
-                <div class="ui action input reply-col">
+                <div class="ui action input widetext reply-col">
                   <input type="hidden" name="postId" value={{_id}}>
                   <textarea rows="1" placeholder="Enter reply" name="body"></textarea>
                   <div class="ui primary compact right button createReply">Reply</div>
