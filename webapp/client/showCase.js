@@ -164,11 +164,14 @@ Template.showCase.events({
     },
   "click .blankPost"(event, instance) {
     console.log('blank Post');
-    $('.create-post.ui.modal').modal({
-      dimmerSettings: { opacity: 0.1 },
-      position: 'bottom right',
+    $('.create-post.ui.modal')  //.modal({
+      //dimmerSettings: { opacity: 0.1 },
+      //onApprove: this.ok,
+      //closable: false,
+      //position: 'bottom right',
       //detachable: false
-    }).modal('show');
+    //})
+    .modal('setting','closable', false).modal('show');
   },
   //"click .createPost"(event, instance) {
   //  var f = instance.$(".new-notebook.ui.form").form("get values");

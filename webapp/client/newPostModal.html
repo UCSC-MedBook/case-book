@@ -1,0 +1,69 @@
+<template name="newPostModal">
+    <div class="create-post ui modal">
+      <i class="close icon"></i>
+      <div class="header">
+        New Case
+      </div>
+    <div class="content">
+      <form class="new-post ui form">
+        <div class="ui vertical segments">
+          <div class="ui raised segment">
+            <div class="grouped fields">
+              <label>Type of Item2</label>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="title" value="Tumor Board" checked="checked">
+                  <label>Discussion from Tumor Board</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="title" value="Question from Patient" >
+                  <label>Question from Patient</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="title" value="Lab Test Result">
+                  <label>Lab Test Result</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="title" value="Request for Diagnostic">
+                  <label>Request for Diagnostic</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="title" value="Treatment Recommendation">
+                  <label>Treatment Recommendation</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="title" value="Bioinformatics Result">
+                  <label>Bioinformatics Result</label>
+                </div>
+              </div>
+              <textarea rows="3" placeholder="Enter detailed discussion or question" name="body"></textarea>
+              <div class="ui raised segment">
+                <a class="ui red ribbon label">Support or Background</a>
+                <span> </span>
+                <p></p>
+                <textarea rows="3" placeholder="Enter Evidence or Background to support recommendation or question" name="support"></textarea>
+              </div>
+              <div class="ui segment">
+                  {{>dropzone url="/upload" id="uploader"}}
+              </div>
+            </div>
+          </div>
+              <div class="actions">
+                <div class="ui button cancel">Cancel</div>
+                <div class="ui primary button ok createPost">Add Entry</div>
+              </div>
+        </div>
+    </form>
+  </div>
+  </div>
+</template>
