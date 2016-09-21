@@ -11,6 +11,7 @@ function sameNameAndAction(name) {
 FlowRouter.route("/", sameNameAndAction("home"));
 
 FlowRouter.route("/projects", sameNameAndAction("projects"));
+FlowRouter.route("/chart", sameNameAndAction("lineChart"));
 
 FlowRouter.route("/cases", sameNameAndAction("cases"));
 

@@ -32,13 +32,17 @@ Meteor.methods({
     console.log('project ',JSON.stringify(newProject));
     Projects.insert(newProject);
   },
-  createPost(newPost) {
-    newPost.title = newPost.body.substring(0, 80);
+  createPost(newPost, caseId) {
+    //newPost.title = newPost.title;
+    if (newPost.title === 'undefined') {
+      newPost.title = newPost.body.substring(0, 80);
+    }
     //if ( typeof this.userId === "function") {
     //  newPost.userId = this.userId;
     //}
     newPost.createdAt = new Date();
     newPost.postedAt = new Date();
+    newPost.caseId = caseId;
     Posts.insert(newPost);
   },
   createReply(newReply) {

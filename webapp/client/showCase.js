@@ -10,6 +10,7 @@ Template.showCase.onRendered(function () {
   $('.open-in-new-window').popup();
   $('.tabular.menu .item').tab();
   let instance = this;
+  console.log('showCase.onRendered')
 });
 Template.showCaseDetails.onRendered(function () {
     tinymce.init({
@@ -21,6 +22,7 @@ Template.showCaseDetails.onRendered(function () {
     //toolbar: 'undo redo | styleselect | bold italic | link image',
   });
 
+  console.log('hover on, showCaseDetails.onRendered')
   $('.tabular.menu .item').tab();
     // make the dropdowns in the menu work on hover
   //$(".ui.dropdown"); //.dropdown({ on: "hover" });
@@ -45,12 +47,15 @@ Template.showCaseDetails.onRendered(function () {
     console.log('added 2',file)
     /* Maybe display some more file information on your page */
   });
-  console.log('onRendered det', instance);
 });
 Template.showCaseDetails.helpers({
   getPosts: function () {
     var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
     return p;
+  },
+  getTitle: function() {
+    return "Discussion From Tumor Board"
+    //return this.body.substring(0,100)
   },
   getStage: function () {
     if (this.stage) {
@@ -79,7 +84,7 @@ Template.showCaseDetails.helpers({
   },
   getMutations: function () {
     if (this.mutations) {
-      return 'Mutations: '+ this.mutations;
+      return this.mutations;
     }
   },
   createDate: function () {
@@ -157,12 +162,19 @@ Template.showCase.events({
         parent.style.backgroundColor = 'yellow';
         Blaze.render(Template.affordance, parent);
     },
-  "click .createPost"(event, instance) {
-    var f = instance.$(".new-notebook.ui.form").form("get values");
-    console.log('post form', f)
-    f.caseId = instance.data.caseId;
-    Meteor.call("createPost", f);
+  "click .blankPost"(event, instance) {
+    console.log('blank Post');
+    $('.create-post.ui.modal').modal({
+      dimmerSettings: { opacity: 0.1 },
+      position: 'bottom right',
+      //detachable: false
+    }).modal('show');
   },
+  //"click .createPost"(event, instance) {
+  //  var f = instance.$(".new-notebook.ui.form").form("get values");
+  //  f.caseId = instance.data.caseId;
+  //  Meteor.call("createPost", f);
+  //},
   "click .lung"(event, instance) {
     var cid = this;
     console.log('lung app clicked', cid._id, cid.fev, cid);

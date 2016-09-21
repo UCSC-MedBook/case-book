@@ -40,7 +40,7 @@ body {margin: 5px;}
 }
 .appframe {
   height:900px;
-  width:950px;
+  width:1100px;
 }
 .widetext {
   min-width:600px;
@@ -49,8 +49,8 @@ body {margin: 5px;}
 .searchbox {
 	background-color: #f1f6ff;
 }
-.bluebox {
-	background-color: #f1f6ff;
+.caseBackground {
+	background-color: #C6E2FF;
 }
 .dropzone {
   min-height: 37px;

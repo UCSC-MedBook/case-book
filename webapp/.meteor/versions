@@ -26,6 +26,7 @@ cfs:http-methods@0.0.32
 check@1.1.0
 coffeescript@1.0.11
 cosmos:browserify@0.9.4
+d3js:d3@3.5.8
 dbarrett:dropzonejs@4.2.1
 ddp@1.2.2
 ddp-client@1.2.1

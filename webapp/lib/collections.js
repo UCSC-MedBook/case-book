@@ -299,3 +299,4 @@ CaseSaveSearch.attachSchema({
 });
 Expression = new Mongo.Collection("expression");
 CaseSavedSearches = new Mongo.Collection("case_saved_searches");
+Points = new Meteor.Collection("Points");

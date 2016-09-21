@@ -49,3 +49,10 @@ Meteor.publish("searchProject", function(query) {
   console.log("query projects:", query, Projects.find(query).count());
   return projects;
 });
+Meteor.publish("points", function(query) {
+  let user = MedBook.ensureUser(this.userId);
+  if (!query) query = {};
+  var points = Points.find(query, { limit: 2000 });
+  console.log("points query:", query, "count",Points.find(query).count());
+  return points;
+});
