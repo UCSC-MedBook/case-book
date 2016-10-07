@@ -13,6 +13,33 @@ Template.showCase.onRendered(function () {
   console.log('showCase.onRendered')
 });
 Template.showCaseDetails.onRendered(function () {
+  //if (Template.showCaseDetails.subscriptionsReady) {
+  //if (Session.get('DATA_LOADED')) {
+
+      $(".ccard").draggable({
+        revert: true,
+        //scrollSensitivity: 100,
+        scroll: false,
+        start: function (event, ui) {
+          var movingItem = Blaze.getData(this)._id;
+          Session.set('movingItem', movingItem);
+          console.log('moving ' + movingItem);
+        },
+      });
+      $(".postcard").droppable({
+        hoverClass: "drop-hover",
+        stop: function (event, ui) {
+          //var movingItem = Blaze.getData(this)._id;
+          var movingItem = Session.get('movingItem');
+          console.log('stop' +movingItem)
+        },
+        drop: function (event, ui) {
+          var movingItem = Session.get('movingItem');
+          var target = Blaze.getData(this)._id;
+          console.log('drop ' +movingItem+' on to _id '+target)
+        },
+      });
+
     tinymce.init({
     selector: '.reply-fancy',
     skin_url: '/packages/teamon_tinymce/skins/lightgray',
@@ -26,36 +53,53 @@ Template.showCaseDetails.onRendered(function () {
   $('.tabular.menu .item').tab();
     // make the dropdowns in the menu work on hover
   //$(".ui.dropdown"); //.dropdown({ on: "hover" });
-  $(".ui.dropdown").dropdown({on:"hover"});
+  //$(".ui.dropdown").dropdown({on:"hover"});
   let instance = this;
   //var options = _.extend( {}, Meteor.Dropzone.options, this.data );
   //Meteor.Dropzone.autoDiscover = false;
-  Dropzone.options.uploader = {
-    init: function() {
-      console.log('upload init');
-      this.on("addedfile", function(file) { alert("Added file."); });
-    },
-    accept: function(file, done) {
-      console.log('accept',file)
-    },
-    addedfile: function(file) {
-      console.log('added:',file)
-    }
-  };
-  var uploader = $('#uploader'); //new Dropzone("#uploader");
-  uploader.on("addedfile", function(file) {
-    console.log('added 2',file)
+
+  //Dropzone.options.uploader = {
+  //  init: function() {
+  //    console.log('upload init');
+  //    this.on("addedfile", function(file) { alert("Added file."); });
+  //  },
+  //  accept: function(file, done) {
+  //    console.log('accept',file)
+  //  },
+  //  addedfile: function(file) {
+  //    console.log('added:',file)
+  //  }
+  //};
+  //var uploader = $('#uploader'); //new Dropzone("#uploader");
+  //uploader.on("addedfile", function(file) {
+//    console.log('added 2',file)
     /* Maybe display some more file information on your page */
-  });
+  //});
 });
 Template.showCaseDetails.helpers({
   getPosts: function () {
     var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
     return p;
   },
+  getFiles: function () {
+    var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
+    return p;
+  },
   getTitle: function() {
     return "Discussion From Tumor Board"
     //return this.body.substring(0,100)
+  },
+  getBody: function() {
+    if (this.body && this.body.length > 2)
+      return this.body;
+    else
+      return false;
+  },
+  getUrl: function() {
+    if (this.url)
+      return 'URL: '+this.url;
+    else
+      return false;
   },
   getStage: function () {
     if (this.stage) {
@@ -154,13 +198,13 @@ Template.showCase.events({
         //console.log('show insight create', selection.toString(), 'postID:' , postId);
         //instance.text = selection.toString()
         $('#text')[0].value = selection.toString();
-        $('.create-insight.ui.modal')
+        //$('.create-insight.ui.modal')
             // .modal({detachable: false})
-            .modal('show');
+        //    .modal('show');
         var parent = selection.anchorNode.parentNode;
         console.log('parent',parent)
-        parent.style.backgroundColor = 'yellow';
-        Blaze.render(Template.affordance, parent);
+        //parent.style.backgroundColor = 'yellow';
+        //Blaze.render(Template.affordance, parent);
     },
   "click .blankPost"(event, instance) {
     console.log('blank Post');
@@ -178,6 +222,12 @@ Template.showCase.events({
   //  f.caseId = instance.data.caseId;
   //  Meteor.call("createPost", f);
   //},
+  'change .search.posts'(event, instance) {
+    var val = _.uniq($('.search.posts'))
+    if (val) {
+      console.log('search',val)
+    }
+  },
   "click .lung"(event, instance) {
     var cid = this;
     console.log('lung app clicked', cid._id, cid.fev, cid);
