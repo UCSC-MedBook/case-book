@@ -37,7 +37,7 @@ Template.showCaseDetails.onRendered(function () {
           var movingItem = Session.get('movingItem');
           var target = Blaze.getData(this)._id;
           console.log('drop ' +movingItem+' on to _id '+target)
-          console.log('update.Post{_id:'+target+'},{$set:{url:'+movingItem+'}}')
+          console.log('Posts.update.{_id:'+target+'},{$set:{url:'+movingItem+'}}')
           Posts.update({
             _id:target
           },{

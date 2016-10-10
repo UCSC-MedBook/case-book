@@ -232,7 +232,7 @@ Posts.allow({
     var user = MedBook.ensureUser(userId);
     user.ensureAccess(submission);
 
-    return submission.status === "editing";
+    return true;
   },
 });
 
