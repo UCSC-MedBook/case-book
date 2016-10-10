@@ -20,7 +20,6 @@ check
 ecmascript
 http
 
-semantic:ui
 flemay:less-autoprefixer
 jquery
 
@@ -34,7 +33,6 @@ aldeed:simple-schema
 aldeed:collection2
 momentjs:moment
 hive:facets
-accounts-ui
 accounts-password
 reactive-var
 ucscmedbook:api
@@ -48,5 +46,5 @@ iandouglas:accounts-ui-semantic-ui
 teamon:tinymce
 d3js:d3
 vsivsi:file-collection
-dbernhard:jquery-ui-draggable
 drewproud:jquery-ui-droppable
+semantic:ui

@@ -1,0 +1,33 @@
+
+<template name="showListPosts">
+  <div class="four wide column">
+    <div class="ui raised segment fileDrop">
+      <div class="ui primary button blankPost">
+      Upload
+      </div>
+      <div class="ui icon input">
+        <input class="search posts" type="text" placeholder="Enter search terms ...">
+        <i class="search icon"></i>
+      </div>
+      <input type="text" name="uploadfile" >
+    </div>
+    <div class="ui cards">
+      {{#if Template.subscriptionsReady}}
+        {{#each getFiles}}
+        <div class="ui fluid raised card ccard" data-postId="{{_id}}">
+          {{#if getBody}}
+            {{getBody}}
+          {{else}}
+            {{title}}
+          {{/if}}
+          {{#if getUrl}}
+            <br>{{getUrl}}
+          {{/if}}
+        </div>
+        {{/each}}
+      {{else}}
+        {{> dataLoading }}
+      {{/if}}
+    </div>
+  </div>
+</template>

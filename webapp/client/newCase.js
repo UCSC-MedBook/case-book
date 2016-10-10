@@ -9,6 +9,7 @@ Template.newCaseModal.onRendered(function() {
     }
   });
   instance.$(".mutations").dropdown({
+    maxSelections: 20,
     onChange: function(value, text, $selectedItem) {
       console.log("mut", value, text, $selectedItem);
       //var $genelist = $('.genelist2')

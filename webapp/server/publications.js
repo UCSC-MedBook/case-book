@@ -1,4 +1,6 @@
 Meteor.publish("singleCase", function(cid) {
+  check(cid, String);
+
   let user = MedBook.ensureUser(this.userId);
 
   // throws "permission-denied" if no access
@@ -21,6 +23,7 @@ Meteor.publish("searchCase", function(query) {
 
   console.log("query:", query);
   var cases = Cases.find(query, { limit: 20 });
+
   return cases;
 });
 

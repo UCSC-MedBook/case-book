@@ -189,7 +189,9 @@ Posts.attachSchema({
   },
   url: { type: String, optional: true },
   categories: { type: [String], optional: true },
-  collaboration: { type: [String], optional: true },
+  collaborations: {
+    type: [String]
+  },
   userId: {
     type: String, optional: true,
     autoValue: function() {
@@ -218,6 +220,22 @@ Posts.attachSchema({
   scheduledAt: { type: Date, optional: true },
   caseId: {type: String, optional: true }
 });
+Posts.allow({
+  insert: function (userId, submission) {
+    var user = MedBook.ensureUser(userId);
+    user.ensureAccess(submission);
+
+    return submission.status === "editing";
+  },
+  update: function (userId, submission, fields, modifier) {
+    console.log('checking post access user:',userId, ' submission',submission)
+    var user = MedBook.ensureUser(userId);
+    user.ensureAccess(submission);
+
+    return submission.status === "editing";
+  },
+});
+
 Comments = new Mongo.Collection("comments");
 Comments.attachSchema({
   body: { type: String, optional: true },

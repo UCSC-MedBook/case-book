@@ -18,6 +18,7 @@ Template.showCaseDetails.onRendered(function () {
 
       $(".ccard").draggable({
         revert: true,
+        helper:'clone' ,
         //scrollSensitivity: 100,
         scroll: false,
         start: function (event, ui) {
@@ -27,7 +28,6 @@ Template.showCaseDetails.onRendered(function () {
         },
       });
       $(".postcard").droppable({
-        hoverClass: "drop-hover",
         stop: function (event, ui) {
           //var movingItem = Blaze.getData(this)._id;
           var movingItem = Session.get('movingItem');
@@ -37,6 +37,17 @@ Template.showCaseDetails.onRendered(function () {
           var movingItem = Session.get('movingItem');
           var target = Blaze.getData(this)._id;
           console.log('drop ' +movingItem+' on to _id '+target)
+          console.log('update.Post{_id:'+target+'},{$set:{url:'+movingItem+'}}')
+          Posts.update({
+            _id:target
+          },{
+            $set:{
+              url:movingItem
+            },
+          function (err, _id) {  // Callback to .insert
+            if (err) { return console.error("Post update failed!", err); }
+          }
+        });
         },
       });
 
@@ -49,7 +60,7 @@ Template.showCaseDetails.onRendered(function () {
     //toolbar: 'undo redo | styleselect | bold italic | link image',
   });
 
-  console.log('hover on, showCaseDetails.onRendered')
+  console.log('showCaseDetails.onRendered')
   $('.tabular.menu .item').tab();
     // make the dropdowns in the menu work on hover
   //$(".ui.dropdown"); //.dropdown({ on: "hover" });
@@ -137,7 +148,7 @@ Template.showCaseDetails.helpers({
   insightStatus: function() {
     var post = this;
     if (post.insightStatus) {
-      console.log('get insight status',post.insightStatus);
+      //console.log('get insight status',post.insightStatus);
       if (post.insightStatus === 'pending') {
         return "pendingInsight";
       }
@@ -182,30 +193,30 @@ Template.showCase.helpers({
 });
 
 Template.showCase.events({
-  "mouseup .textNorm"(event, instance) {
-        var selection;
-
-        if (window.getSelection) {
-          selection = window.getSelection();
-        } else if (document.selection) {
-          selection = document.selection.createRange();
-        }
-        //selection.toString() !== '' && alert(' calling modal Insight : "' + selection.toString() + '"       at ' + event.pageX + '/' + event.pageY);
-        $('.ui.star.rating').rating()
-        $('.ui.heart.rating').rating()
-        $('.ui.radio.rating').rating()
-        var postId = this._id;
-        //console.log('show insight create', selection.toString(), 'postID:' , postId);
-        //instance.text = selection.toString()
-        $('#text')[0].value = selection.toString();
-        //$('.create-insight.ui.modal')
-            // .modal({detachable: false})
-        //    .modal('show');
-        var parent = selection.anchorNode.parentNode;
-        console.log('parent',parent)
-        //parent.style.backgroundColor = 'yellow';
-        //Blaze.render(Template.affordance, parent);
-    },
+  //"mouseup .textNorm"(event, instance) {
+  //      var selection;
+//
+//        if (window.getSelection) {
+//          selection = window.getSelection();
+//        } else if (document.selection) {
+//          selection = document.selection.createRange();
+//        }
+//        //selection.toString() !== '' && alert(' calling modal Insight : "' + selection.toString() + '"       at ' + event.pageX + '/' + event.pageY);
+//        $('.ui.star.rating').rating()
+//        $('.ui.heart.rating').rating()
+//        $('.ui.radio.rating').rating()
+//        var postId = this._id;
+//        //console.log('show insight create', selection.toString(), 'postID:' , postId);
+//        //instance.text = selection.toString()
+//        $('#text')[0].value = selection.toString();
+//        //$('.create-insight.ui.modal')
+//            // .modal({detachable: false})
+//        //    .modal('show');
+//        var parent = selection.anchorNode.parentNode;
+//        console.log('parent',parent)
+//        //parent.style.backgroundColor = 'yellow';
+//        //Blaze.render(Template.affordance, parent);
+//    },
   "click .blankPost"(event, instance) {
     console.log('blank Post');
     $('.create-post.ui.modal')  //.modal({

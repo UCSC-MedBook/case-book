@@ -150,7 +150,8 @@
       {{/if}}
     </div>
   </div>
-  <div class="four wide column">
+  {{>showListPosts}}
+  <!--<div class="four wide column">
     <div class="ui raised segment fileDrop">
       <div class="ui primary button blankPost">
       Upload
@@ -165,7 +166,7 @@
       {{#if Template.subscriptionsReady}}
         {{#each getFiles}}
         <div class="ui fluid raised card ccard" data-postId="{{_id}}">
-          {{#if getBody}}
+          {{#if   getBody}}
             {{getBody}}
           {{else}}
             {{title}}
@@ -179,7 +180,7 @@
         {{> dataLoading }}
       {{/if}}
     </div>
-  </div>
+  </div> -->
 </div>
   <div class="ui bottom attached tab segment" data-tab="case3">
     <button class="ui floated right button">

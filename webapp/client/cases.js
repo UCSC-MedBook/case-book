@@ -16,6 +16,7 @@ Template.cases.onCreated(function () {
   instance.autorun(() => {
     // let query = JSON.parse(JSON.stringify(instance.casesQuery.get()))
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')))
+    console.log('subscribe searchCase:', query)
     instance.subscribe('searchCase', query)
   })
 })

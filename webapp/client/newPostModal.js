@@ -42,6 +42,11 @@ Template.newPostModal.onRendered(function() {
       if (form_vals.note === 'unk') {
         delete form_vals.note;
       }
+      // temporary until we have share button
+      if (!form_vals.collaboration) {
+        form_vals.collaborations = ["ASK"];
+      }
+
 
       function madlib () {
         // generates CNL
