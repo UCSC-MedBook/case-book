@@ -1,6 +1,6 @@
 Template.inviteModal.onRendered(function () {
   let instance = this
-  console.log('invite2', instance)
+  //console.log('invite2', instance)
 
   instance.$('.ui.dropdown.project_type').dropdown({
     onChange: function (value, text, $selectedItem) {
@@ -40,11 +40,6 @@ Template.inviteModal.onRendered(function () {
 Template.inviteModal.helpers({
   getCase() {
     var c = Cases.findOne({})
-    if (c) {
-      console.log('case collab', c.collaborations)
-    }else {
-      console.log('no case ')
-    }
     return c
   },
   getMyContacts() {

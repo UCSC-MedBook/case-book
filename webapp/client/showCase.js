@@ -16,40 +16,40 @@ Template.showCaseDetails.onRendered(function () {
   //if (Template.showCaseDetails.subscriptionsReady) {
   //if (Session.get('DATA_LOADED')) {
 
-      $(".ccard").draggable({
-        revert: true,
-        helper:'clone' ,
-        //scrollSensitivity: 100,
-        scroll: false,
-        start: function (event, ui) {
-          var movingItem = Blaze.getData(this)._id;
-          Session.set('movingItem', movingItem);
-          console.log('moving ' + movingItem);
-        },
-      });
-      $(".postcard").droppable({
-        stop: function (event, ui) {
+//      $(".ccard").draggable({
+//        revert: true,
+//        helper:'clone' ,
+//        //scrollSensitivity: 100,
+//        scroll: false,
+//        start: function (event, ui) {
+//          var movingItem = Blaze.getData(this)._id;
+//          Session.set('movingItem', movingItem);
+//          console.log('moving ' + movingItem);
+//        },
+//      });
+//      $(".postcard").droppable({
+//        stop: function (event, ui) {
           //var movingItem = Blaze.getData(this)._id;
-          var movingItem = Session.get('movingItem');
-          console.log('stop' +movingItem)
-        },
-        drop: function (event, ui) {
-          var movingItem = Session.get('movingItem');
-          var target = Blaze.getData(this)._id;
-          console.log('drop ' +movingItem+' on to _id '+target)
-          console.log('Posts.update.{_id:'+target+'},{$set:{url:'+movingItem+'}}')
-          Posts.update({
-            _id:target
-          },{
-            $set:{
-              url:movingItem
-            },
-          function (err, _id) {  // Callback to .insert
-            if (err) { return console.error("Post update failed!", err); }
-          }
-        });
-        },
-      });
+//          var movingItem = Session.get('movingItem');
+//          console.log('stop' +movingItem)
+//        },
+//        drop: function (event, ui) {
+//          var movingItem = Session.get('movingItem');
+//          var target = Blaze.getData(this)._id;
+//          console.log('drop ' +movingItem+' on to _id '+target)
+//          console.log('Posts.update.{_id:'+target+'},{$set:{url:'+movingItem+'}}')
+//          Posts.update({
+//            _id:target
+//          },{
+//            $set:{
+//              url:movingItem
+//            },
+//          function (err, _id) {  // Callback to .insert
+//            if (err) { return console.error("Post update failed!", err); }
+//          }
+//        });
+//        },
+//      });
 
     tinymce.init({
     selector: '.reply-fancy',
@@ -60,7 +60,6 @@ Template.showCaseDetails.onRendered(function () {
     //toolbar: 'undo redo | styleselect | bold italic | link image',
   });
 
-  console.log('showCaseDetails.onRendered')
   $('.tabular.menu .item').tab();
     // make the dropdowns in the menu work on hover
   //$(".ui.dropdown"); //.dropdown({ on: "hover" });

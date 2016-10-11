@@ -1,7 +1,7 @@
 Meteor.startup(() => {
   //AutoForm.setDefaultTemplate("semanticUI");
   // This assigns a file upload drop zone to some DOM node
-  //Files.resumable.assignDrop($(".fileDrop"));
+  myFiles.resumable.assignDrop($(".fileDrop"));
 
   // This assigns a browse action to a DOM node
   //Files.resumable.assignBrowse($(".fileBrowse"));

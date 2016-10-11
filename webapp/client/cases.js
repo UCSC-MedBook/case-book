@@ -42,12 +42,8 @@ Template.cases.onRendered(function () {
 
 Template.cases.rendered = function () {
   var instance = this
-  // var TheChart = CurrentChart()
   setTimeout(function () {
-    // initializeHtmlElements(TheChart)
-    // console.log('init genes', instance)
     initializeJQuerySelect2(instance)
-  // initializeJQuerySortable(TheChart)
   }, 1000)
 }
 

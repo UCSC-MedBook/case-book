@@ -1,59 +1,49 @@
-Template.showListPosts.onCreated(function () {
+Template.showListEvidence.onCreated(function () {
   const post_instance = this;
 });
 
-Template.showListPosts.onRendered(function () {
+Meteor.startup(() => {
+  //AutoForm.setDefaultTemplate("semanticUI");
+  // This assigns a file upload drop zone to some DOM node
+  myFiles.resumable.assignDrop($(".fileDrop"));
+
+  // This assigns a browse action to a DOM node
+  //myFiles.resumable.assignBrowse($(".fileBrowse"));
+})
+Template.showListEvidence.onRendered(function () {
   let instance = this;
-  console.log('showListPosts.onRendered', Template.showListPosts)
-  //if (Template.showListPosts.subscriptionsReady) {
-    console.log('showListPosts.draggable')
-  //if (Session.get('DATA_LOADED'))
+  console.log("RENDERED");
+  var content = Posts.find().fetch()
+  $('.ui.search')
+  .search({
+    source : content,
+    searchFields   : [
+      'title',
+      'body',
+      'url'
+    ],
+    searchFullText: true
+  });
 
-      $(".ccard").draggable({
-        revert: true,
-        helper:'clone' ,
-        //scrollSensitivity: 100,
-        scroll: false,
-        start: function (event, ui) {
-          var movingItem = Blaze.getData(this)._id;
-          Session.set('movingItem', movingItem);
-          console.log('moving ' + movingItem);
-        },
-        drag: function (event, ui) {
-          console.log('drag')
-        }
-      });
-      $( ".ccard" ).on( "dragstart", function( event, ui ) {
-          var movingItem = Blaze.getData(this)._id;
-          Session.set('movingItem', movingItem);
-          console.log('dragstart moving ' + movingItem);
+  // When a file is added via drag and drop
+  myFiles.resumable.on('fileAdded', function (file) {
+    debugger
+    console.log('fileadded',file)
 
-      } );
-      $(".postcard").droppable({
-        stop: function (event, ui) {
-          //var movingItem = Blaze.getData(this)._id;
-          var movingItem = Session.get('movingItem');
-          console.log('stop' +movingItem)
-        },
-        drop: function (event, ui) {
-          var movingItem = Session.get('movingItem');
-          var target = Blaze.getData(this)._id;
-          console.log('drop ' +movingItem+' on to _id '+target)
-          console.log('update.Post{_id:'+target+'},{$set:{url:'+movingItem+'}}')
-          Posts.update({
-            _id:target
-          },{
-            $set:{
-              url:movingItem
-            },
-          function (err, _id) {  // Callback to .insert
-            if (err) { return console.error("Post update failed!", err); }
-          }
-          })
-        },
-      });
-
-
+    // Create a new file in the file collection to upload
+    myFiles.insert({
+      _id: file.uniqueIdentifier,  // This is the ID resumable will use
+      filename: file.fileName,
+      contentType: file.file.type
+      },
+      function (err, _id) {  // Callback to .insert
+        if (err) { return console.error("File creation failed!", err); }
+        // Once the file exists on the server, start uploading
+        myFiles.resumable.upload();
+      }
+    );
+  });
+})
   //var options = _.extend( {}, Meteor.Dropzone.options, this.data );
   //Meteor.Dropzone.autoDiscover = false;
 
@@ -73,9 +63,8 @@ Template.showListPosts.onRendered(function () {
   //uploader.on("addedfile", function(file) {
 //    console.log('added 2',file)
     /* Maybe display some more file information on your page */
-  //});
-});
-Template.showListPosts.helpers({
+//});
+Template.showListEvidence.helpers({
   getPosts: function () {
     var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
     return p;
@@ -88,18 +77,6 @@ Template.showListPosts.helpers({
   getTitle: function() {
     return "Discussion From Tumor Board"
     //return this.body.substring(0,100)
-  },
-  getBody: function() {
-    if (this.body && this.body.length > 2)
-      return this.body;
-    else
-      return false;
-  },
-  getUrl: function() {
-    if (this.url)
-      return 'URL: '+this.url;
-    else
-      return false;
   },
   getStage: function () {
     if (this.stage) {
@@ -173,14 +150,91 @@ Template.showListPosts.helpers({
 
 });
 
-Template.showListPosts.events({
+Template.showListEvidence.events({
   'focus .ccard'( event, instance) {
-    console.log('showListPosts focus')
+    console.log('showListEvidence focus')
   },
   'change .ccard'(event, instance) {
-    console.log('showListPosts change')
+    console.log('showListEvidence change')
   },
-  'mouseenter .ccard'(event, instance) {
-    console.log('showListPosts mouseenter')
+});
+
+// Template.evidenceCard
+
+Template.postCard.onRendered(function () {
+  let instance = this;
+  $(".postcard").droppable({
+     stop: function (event, ui) {
+       //var movingItem = Blaze.getData(this)._id;
+       var movingItem = Session.get('movingItem');
+       console.log('stop' +movingItem)
+     },
+     drop: function (event, ui) {
+       var movingItem = Session.get('movingItem');
+       var target = Blaze.getData(this)._id;
+       console.log('drop ' +movingItem+' on to _id '+target)
+       console.log('update.Post{_id:'+target+'},{$addToSet:{supporting_cards:'+movingItem+'}}')
+       Posts.update({
+         _id:target
+       },{
+         $addToSet:{
+           supporting_cards:{post_id:movingItem}
+         },
+       function (err, _id) {  // Callback to .insert
+         if (err) { return console.error("Post update failed!", err); }
+       }
+       })
+     }
+   });
+});
+Template.evidenceCard.onRendered(function () {
+  let instance = this;
+
+  $(".ccard").draggable({
+    revert: true,
+    helper:'clone' ,
+    //scrollSensitivity: 100,
+    scroll: false,
+    start: function (event, ui) {
+      var movingItem = Blaze.getData(this)._id;
+      Session.set('movingItem', movingItem);
+    },
+    drag: function (event, ui) {
+    }
+  });
+  $(".ccard").on( "dragstart", function( event, ui ) {
+    var movingItem = Blaze.getData(this)._id;
+    Session.set('movingItem', movingItem);
+    console.log('dragstart moving ' + movingItem);
+  });
+});
+
+Template.postCard.helpers({
+  getSupportingEvidence: function() {
+    var list = []
+    var index;
+    var arr = this.supporting_cards;
+    if (arr) {
+      for (index = 0; index < arr.length; ++index) {
+        var pid = arr[index];
+        var p = Posts.findOne({_id: pid.post_id},{sort:{createdAt:-1}});
+        list.push(p)
+      }
+    }
+    return list
+  }
+});
+Template.evidenceCard.helpers({
+  getBody: function() {
+    if (this.body && this.body.length > 2)
+      return this.body;
+    else
+      return false;
+  },
+  getUrl: function() {
+    if (this.url)
+      return 'URL: '+this.url;
+    else
+      return false;
   },
 });
