@@ -26,6 +26,12 @@
           </div>
           <div class="field">
             <div class="ui radio checkbox">
+              <input type="radio" name="frequency" >
+              <label>Outcome</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
               <input type="radio" name="frequency">
               <label>Clinical Trial</label>
             </div>
@@ -91,8 +97,12 @@
               <img class="ui floating mini image lightswitch" src="/images/light_sw_off.svg" />
             {{/if}}-->
             <div class="content postcard">
+
               <div class="header {{insightStatus}}">
                   {{title}}
+              </div>
+              <div class="textNorm description">
+                Original <a href="">Case</a>
               </div>
               <div class="textNorm description">
                   <a class="author">Dr. Jones: </a>
@@ -120,7 +130,7 @@
               <div class="item">
                 <button class="ui contact right compact labeled icon dropdown button item">
                   <i class="mail dropdown icon"></i>
-                  Contact
+                  Consult
                     <div class="menu">
                       <div class="item invite">Invite Opinion </div>
                       <div class="item curbside">Curbside</div>

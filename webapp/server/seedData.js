@@ -6,7 +6,7 @@ Meteor.startup(function() {
 
     _.each(newCases, (c) => { Cases.insert(c); });
   };
-  Accounts.config({
-    forbidClientAccountCreation : false
-  });
+//  Accounts.config({
+//    forbidClientAccountCreation : false
+//  });
 });
