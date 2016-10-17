@@ -7,7 +7,7 @@
     </div> -->
         <div class="ui toggle checkbox">
           <input type="checkbox" name="public">
-          <label>Show Evidence from all cases</label>
+          <label>Show Evidence from matching cases</label>
         </div>
       <div class="ui form">
         <div class="grouped fields">
@@ -39,7 +39,7 @@
           <div class="field">
             <div class="ui radio checkbox">
               <input type="radio" name="frequency">
-              <label>Analysis</label>
+              <label>Hypothesis</label>
             </div>
           </div>
           <div class="field">
@@ -72,13 +72,23 @@
 
 <template name="evidenceCard">
   <div class="ui fluid raised card ccard" data-postId="{{_id}}">
+    <b>{{title}} </b>
     {{#if getBody}}
-      {{getBody}}
+      {{#if url}}
+        <a href="{{url}}" >
+        {{getBody}}
+        </a>
+      {{else}}
+        {{getBody}}
+      {{/if}}
     {{else}}
-      {{title}}
-    {{/if}}
-    {{#if getUrl}}
-      <br>{{getUrl}}
+      {{#if url}}
+        <a href="{{url}}" >
+        {{title}}
+        </a>
+      {{else}}
+        {{title}}
+      {{/if}}
     {{/if}}
   </div>
 </template>
@@ -99,14 +109,18 @@
             <div class="content postcard">
 
               <div class="header {{insightStatus}}">
-                  {{title}}
-              </div>
-              <div class="textNorm description">
-                Original <a href="">Case</a>
-              </div>
-              <div class="textNorm description">
-                  <a class="author">Dr. Jones: </a>
+                  {{title}}:
+                  {{#if url}}
+                    <a target="_blank" href="{{url}}">
+                      url
+                    </a>
+                  {{/if}}
                   {{body}}
+              </div>
+              <div class="meta">
+                {{author}}
+              </div>
+              <div class="textNorm description">
 <!--                <div class="ui action input widetext reply-col">
                     <input type="hidden" name="postId" value={{_id}}>
                     <textarea rows="1" placeholder="Enter reply" name="body"></textarea>
@@ -120,9 +134,14 @@
                 <div class="ui list">
                 {{#each getSupportingEvidence}}
                 <div class="item">
-                  <a class="author">{{author}}</a>
-                  <b>{{title}}</b>
+                  <b> {{title}} </b>
+                  {{#if url}}
+                    <a target="_blank" href="{{url}}">
+                      url
+                    </a>
+                  {{/if}}
                   {{body}}
+                  <b class="author">{{author}}</b>
                 </div>
                 {{/each}}
               </div>

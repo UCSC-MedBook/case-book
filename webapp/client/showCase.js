@@ -88,11 +88,11 @@ Template.showCaseDetails.onRendered(function () {
 });
 Template.showCaseDetails.helpers({
   getPosts: function () {
-    var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
+    var p = Posts.find({caseId: this._id},{sort:{updatedAt:-1}}).fetch();
     return p;
   },
   getFiles: function () {
-    var p = Posts.find({caseId: this._id},{sort:{createdAt:-1}}).fetch();
+    var p = Posts.find({caseId: this._id},{sort:{updatedAt:-1}}).fetch();
     return p;
   },
   getTitle: function() {

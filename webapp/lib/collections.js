@@ -211,15 +211,28 @@ Posts.attachSchema({
   author: {
      type: String,
      autoValue: function() {
-       if (!this.isSet) {
+       if (!this.isSet && this.insert) {
          //console.log('author', Meteor.user());
-         return 'anonymous';
+         var randomString = parseInt(Math.random(8).toString())
+         return 'Clinician'+randomString;
        }
      }
    },
   commenters: { type: [String], optional: true },
-  createdAt: { type: Date },
-  updatedAt: { type: Date, optional: true },
+  createdAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {
+        return new Date();
+      }
+    },
+  },
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+        return new Date();
+    }
+  },
   postedAt: { type: Date, optional: true },
   htmlBody: { type: String, optional: true },
   scheduledAt: { type: Date, optional: true },
@@ -269,7 +282,8 @@ Comments.attachSchema({
      autoValue: function() {
        if (!this.isSet) {
          //console.log('author', Meteor.user());
-         return 'anonymous';
+         var randomString = parseInt(Math.random(8).toString())
+         return 'Clinician'+randomString;
        }
      }
    },

@@ -1,7 +1,7 @@
 Meteor.startup(() => {
   //AutoForm.setDefaultTemplate("semanticUI");
   // This assigns a file upload drop zone to some DOM node
-  myFiles.resumable.assignDrop($(".fileDrop"));
+  //myFiles.resumable.assignDrop($(".fileDrop"));
 
   // This assigns a browse action to a DOM node
   //Files.resumable.assignBrowse($(".fileBrowse"));
@@ -49,4 +49,9 @@ Template.registerHelper("or", function (first, second) {
 
 Template.registerHelper("threeOr", function (first, second, third) {
   return first || second || third;
+});
+
+Template.registerHelper("getRandomDoctorName", function getRandom() {
+  var num = Math.random()*5.0
+  return "Dr. "+num.toString();
 });

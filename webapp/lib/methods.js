@@ -41,8 +41,10 @@ Meteor.methods({
     //  newPost.userId = this.userId;
     //}
     newPost.createdAt = new Date();
-    newPost.postedAt = new Date();
+    newPost.updatedAt = newPost.createdAt ;
+    newPost.postedAt = newPost.createdAt;
     newPost.caseId = caseId;
+    console.log('insert post',newPost)
     Posts.insert(newPost);
   },
   createReply(newReply) {

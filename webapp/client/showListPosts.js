@@ -180,6 +180,7 @@ Template.postCard.onRendered(function () {
          $addToSet:{
            supporting_cards:{post_id:movingItem}
          },
+         updatedAt: new Date,
        function (err, _id) {  // Callback to .insert
          if (err) { return console.error("Post update failed!", err); }
        }
@@ -217,7 +218,7 @@ Template.postCard.helpers({
     if (arr) {
       for (index = 0; index < arr.length; ++index) {
         var pid = arr[index];
-        var p = Posts.findOne({_id: pid.post_id},{sort:{createdAt:-1}});
+        var p = Posts.findOne({_id: pid.post_id},{sort:{updatedAt:-1}});
         list.push(p)
       }
     }
