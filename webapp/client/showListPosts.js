@@ -163,6 +163,7 @@ Template.showListEvidence.events({
 
 Template.postCard.onRendered(function () {
   let instance = this;
+  $('.ui.dropdown').dropdown({on: 'hover'})
   $(".postcard").droppable({
      stop: function (event, ui) {
        //var movingItem = Blaze.getData(this)._id;

@@ -36,7 +36,6 @@ hive:facets
 accounts-password
 accounts-ui
 reactive-var
-ucscmedbook:api
 medbook:collaborations
 medbook:namespace
 meteortoys:allthings

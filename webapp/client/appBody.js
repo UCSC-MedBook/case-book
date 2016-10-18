@@ -1,6 +1,6 @@
 Template.appBody.onRendered(function () {
   // make the dropdowns in the menu work on hover
-  $(".ui.menu .ui.dropdown"); //.dropdown({ on: "hover" });
+  $(".ui.menu .ui.dropdown").dropdown({ on: "hover" });
 });
 
 Template.appBody.events({
