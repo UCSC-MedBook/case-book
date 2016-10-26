@@ -14,7 +14,6 @@ Meteor.publish("singleCase", function(cid) {
 
 Meteor.publish("searchCase", function(query) {
   let user = MedBook.ensureUser(this.userId);
-  //console.log('user',user);
 
   // default to search all
   if (!query) query = {};

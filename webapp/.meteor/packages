@@ -40,8 +40,6 @@ medbook:collaborations
 medbook:namespace
 meteortoys:allthings
 aldeed:template-extension
-tomi:upload-jquery@2.2.0
-tomi:upload-server@1.3.3
 teamon:tinymce
 d3js:d3
 vsivsi:file-collection

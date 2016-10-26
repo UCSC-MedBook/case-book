@@ -192,30 +192,30 @@ Template.showCase.helpers({
 });
 
 Template.showCase.events({
-  //"mouseup .textNorm"(event, instance) {
-  //      var selection;
-//
-//        if (window.getSelection) {
-//          selection = window.getSelection();
-//        } else if (document.selection) {
-//          selection = document.selection.createRange();
-//        }
-//        //selection.toString() !== '' && alert(' calling modal Insight : "' + selection.toString() + '"       at ' + event.pageX + '/' + event.pageY);
-//        $('.ui.star.rating').rating()
-//        $('.ui.heart.rating').rating()
-//        $('.ui.radio.rating').rating()
-//        var postId = this._id;
-//        //console.log('show insight create', selection.toString(), 'postID:' , postId);
-//        //instance.text = selection.toString()
-//        $('#text')[0].value = selection.toString();
-//        //$('.create-insight.ui.modal')
-//            // .modal({detachable: false})
-//        //    .modal('show');
-//        var parent = selection.anchorNode.parentNode;
-//        console.log('parent',parent)
-//        //parent.style.backgroundColor = 'yellow';
-//        //Blaze.render(Template.affordance, parent);
-//    },
+"mouseup .textNorm"(event, instance) {
+      var selection;
+
+        if (window.getSelection) {
+          selection = window.getSelection();
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+        //selection.toString() !== '' && alert(' calling modal Insight : "' + selection.toString() + '"       at ' + event.pageX + '/' + event.pageY);
+        $('.ui.star.rating').rating()
+        $('.ui.heart.rating').rating()
+        $('.ui.radio.rating').rating()
+        var postId = this._id;
+        console.log('show insight create', selection.toString(), 'postID:' , postId);
+        //instance.text = selection.toString()
+        $('#text')[0].value = selection.toString();
+        //$('.create-insight.ui.modal')
+            // .modal({detachable: false})
+        //    .modal('show');
+        var parent = selection.anchorNode.parentNode;
+        console.log('parent',parent)
+        //parent.style.backgroundColor = 'yellow';
+        //Blaze.render(Template.affordance, parent);
+    },
   "click .blankPost"(event, instance) {
     console.log('blank Post');
     $('.create-post.ui.modal')  //.modal({
@@ -300,5 +300,16 @@ Template.showCaseDetails.events({
   "hover .contact"(event, instance) {
     var cid = this;
     console.log('menu hover', cid);
-  }
+  },
+  "mouseup .textNorm"(event, instance) {
+      var selection;
+
+      console.log('showcase mouseup')
+        if (window.getSelection) {
+          selection = window.getSelection();
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+        console.log('mouseUp',selection)
+    }
 });

@@ -5,7 +5,7 @@ Template.showListEvidence.onCreated(function () {
 Meteor.startup(() => {
   //AutoForm.setDefaultTemplate("semanticUI");
   // This assigns a file upload drop zone to some DOM node
-  myFiles.resumable.assignDrop($(".fileDrop"));
+  //myFiles.resumable.assignDrop($(".fileDrop"));
 
   // This assigns a browse action to a DOM node
   //myFiles.resumable.assignBrowse($(".fileBrowse"));
@@ -26,23 +26,23 @@ Template.showListEvidence.onRendered(function () {
   });
 
   // When a file is added via drag and drop
-  myFiles.resumable.on('fileAdded', function (file) {
-    debugger
-    console.log('fileadded',file)
+  //myFiles.resumable.on('fileAdded', function (file) {
+  //  debugger
+  //  console.log('fileadded',file)
 
     // Create a new file in the file collection to upload
-    myFiles.insert({
-      _id: file.uniqueIdentifier,  // This is the ID resumable will use
-      filename: file.fileName,
-      contentType: file.file.type
-      },
-      function (err, _id) {  // Callback to .insert
-        if (err) { return console.error("File creation failed!", err); }
-        // Once the file exists on the server, start uploading
-        myFiles.resumable.upload();
-      }
-    );
-  });
+  //  myFiles.insert({
+  //    _id: file.uniqueIdentifier,  // This is the ID resumable will use
+  //    filename: file.fileName,
+  //    contentType: file.file.type
+  //    },
+  //    function (err, _id) {  // Callback to .insert
+  //      if (err) { return console.error("File creation failed!", err); }
+  //      // Once the file exists on the server, start uploading
+  //      myFiles.resumable.upload();
+  //    }
+  //  );
+  //});
 })
   //var options = _.extend( {}, Meteor.Dropzone.options, this.data );
   //Meteor.Dropzone.autoDiscover = false;
@@ -148,6 +148,32 @@ Template.showListEvidence.helpers({
     }
   },
 
+});
+
+Template.postCard.events({
+
+  "mouseup .textNorm"(event, instance) {
+    var selection;
+
+      if (window.getSelection) {
+        selection = window.getSelection();
+      } else if (document.selection) {
+        selection = document.selection.createRange();
+      }
+      console.log('mouseUp',selection)
+      $('.ui.star.rating').rating()
+      $('.ui.heart.rating').rating()
+      $('.ui.radio.rating').rating()
+      var postId = this._id;
+      console.log('show insight create', selection.toString(), 'postID:' , postId);
+      //instance.text = selection.toString()
+      $('#text')[0].value = selection.toString();
+      $('.create-insight.ui.modal')
+          // .modal({detachable: false})
+          .modal('show');
+      var parent = selection.anchorNode.parentNode;
+      console.log('parent',parent)
+  }
 });
 
 Template.showListEvidence.events({

@@ -12,6 +12,29 @@
           <label>Insight Text</label>
           <textarea rows="2" id="text" name="text" placeholder="Insight"></textarea>
         </div>
+        <div class="ui horizontal segments">
+          <div class="ui center aligned segment">
+            <div class="field">
+              <label>Applicability to this Case</label>
+              <div class="ui star rating field" name="applicability" data-rating="0" data-max-rating="5"></div>
+              <label>Not Very...Neutral...Very Applicable</label>
+            </div>
+          </div>
+          <div class="ui center aligned segment">
+            <div class="field">
+              <label>Importance Outside this Case</label>
+              <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
+              <label>Specific to this case...Generally useful</label>
+            </div>
+          </div>
+          <div class="ui center aligned segment">
+            <div class="field">
+              <label>Strength of Evidence</label>
+              <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
+              <label>Anecdotal...Strong Evidence</label>
+            </div>
+          </div>
+        </div>
         <div class="ui field focus">
           <label>Author Notes</label>
           <textarea rows="2" name="note" placeholder=""></textarea>

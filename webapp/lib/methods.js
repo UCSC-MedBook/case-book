@@ -1,7 +1,6 @@
 Meteor.methods({
   createCase(newCase) {
     var user = MedBook.ensureUser(Meteor.userId());
-
     newCase.createdAt = new Date();
     if ( typeof Meteor.userId === "function") {
       newCase.userId = Meteor.userId();
