@@ -27,3 +27,8 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push medbook/case-book:$CIRCLE_TAG
+  staging:
+    branch: master
+    codedeploy:
+      case-book:
+        deployment_group: my-deployment-group
