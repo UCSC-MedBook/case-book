@@ -59,7 +59,7 @@
   <div class="ui fluid raised card" data-tab="case1">
     <div class="content">
       <div class="header">
-        {{caseLabel}}<i class="empty star icon"></i>
+        {{caseLabel}} status:{{status}}<i class="empty star icon"></i> 
         <a href={{pathFor "tags"}} class="ui item"> </a>
 
         A {{getAge}} {{gender}} presented with <a class="ui {{getStageColor}} label">{{getStage}}</a> {{histology}} <a class="ui blue label">{{cancer_type}}</a> cancer with the following biomarkers .
@@ -86,16 +86,6 @@
     <div class="eleven wide column">
     <div class="ui raised segment">
       <div class="ui primary basic button blankPost">Add </div>
-      <button class="ui floated right basic button">
-        All
-      </button>
-      <button class="ui basic button">
-        Insights (2)
-      </button>
-      <button class="ui left labeled icon basic button">
-        Created
-        <i class="angle up left icon"></i>
-      </button>
     </div>
     <div class="ui cards">
       {{#if Template.subscriptionsReady}}

@@ -15,6 +15,18 @@ FlowRouter.route("/chart", sameNameAndAction("lineChart"));
 
 FlowRouter.route("/cases", sameNameAndAction("cases"));
 
+///var manage = FlowRouter.group({prefix: "/manage"})
+///manage.route("/:collectionSlug?/:selected?",
+///    sameNameAndAction("manageObjects"))
+//manage.route("/:caseId?/:tabSlug?",
+
+//    action: function(params ) {
+//      BlazeLayout.render("appBody", { content: "showCase", params });
+//    }
+//manage.route("/:collectionSlug?/:selected?",
+//    sameNameAndAction("manageObjects"));
+
+
 FlowRouter.route("/cases/:caseId", {
     name: "showCase",
     subscriptions: function(params, queryParams) {
@@ -71,3 +83,8 @@ FlowRouter.route( "/apps/OrderIHC", {
 });
 
 FlowRouter.route("/insights", sameNameAndAction("insights"));
+FlowRouter.route("/import",  {
+  action: function(params, queryParams) {
+    console.log('import params', params, 'query', queryParams)
+  }
+});

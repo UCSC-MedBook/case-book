@@ -1,0 +1,89 @@
+<template name="newPatientCaseModal">
+  {{! shows up when creating a new case by the patient}}
+  <div class="create-case ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      New Patient Case
+    </div>
+
+    <div class="content">
+      <form class="new-case ui form">
+        <div class="ui segment">
+          <h3>Organization Information</h3>
+          <p>
+            This private information will only be seen within your organization and will be encrypted on 
+          </p>
+
+          <div class="three fields">
+            <div class="field">
+              <label>Patient First Name</label>
+              <input type="text" name="firstName" placeholder="First Name" >
+            </div>
+
+            <div class="field">
+              <label>Patient Last Name</label>
+              <input type="text" name="lastName" placeholder="Last Name" >
+            </div>
+
+            <div class="required field">
+              <label>Case ID </label>
+              <input type="text" name="caseLabel" placeholder="Enter Case ID">
+            </div>
+            <div class="field">
+              <label>Gender</label>
+              <input type="text" name="gender" placeholder="Enter gender">
+            </div>
+          </div>
+
+          <div class="fields">
+
+            <div class="six wide field">
+              <label>Attachments</label>
+              <div style="min-height: 37px; border: 2px dashed #AAA;">
+                <p style="text-align: center; padding-top: 6px;">
+                  <u>Drag and drop attachments here</u>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui segment">
+          <h3>Case Information</h3>
+          <p>
+            Do not include patient identifiable information in the
+            case narrative.
+          </p>
+          <p><b>Sammple Narrative:</b><br>[gender: male/female] [age: number] [cancer_type: Lung/Breast/Liver/etc] [stage: roman numeral] [histology: Adenomcarinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]
+          </p>
+          <div class="required field">
+            <label>Narrative</label>
+            <textarea name="fullNarrative" placeholder="[gender: male/female] [age: number] [cancer_type: Lung/Breast/Liver/etc] [stage: roman numeral] [histology: Adenomcarinoma/small cell/non small cell/etc] [mets: count] [mutations: Gene1,Gene2,Gene3...] [amplification: Gene1,Gene2,Gene3...] [deletions: Gene1,Gene2,Gene3...] [tests: description] [treatment1: DrugX,dosage_or_duration] [response1: progression_or_respsonse] [treatment2: DrugX,dosage_or_duration] [response2: progression_or_respsonse]"> </textarea>
+          </div>
+
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox">
+              <label>Allow this case information to be anonymized,
+                peer reviewed, and published to NanoPub
+                (this cannot be undone).
+                <a target="_blank" href="http://nanopub.org/wordpress">
+                  Learn about the NanoPub process
+                </a>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+
+    <div class="actions">
+      <div class="ui button cancel">Cancel</div>
+      <div class="ui secondary button ok createCase">Create Case</div>
+      <div class="ui primary button ok createCaseAndSearch">
+        Create Case and Search
+      </div>
+    </div>
+  </div>
+</template>

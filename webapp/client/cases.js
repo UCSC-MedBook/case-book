@@ -34,6 +34,9 @@ Template.cases.onRendered(function () {
   if (query.stage) {
     instance.$('.ui.dropdown.stage').dropdown('set exactly', query.stage['$in'])
   }
+  if (query.status) {
+    instance.$('.ui.dropdown.status').dropdown('set exactly', query.status['$in'])
+  }
   // instance.$(".ui.dropdown.stage").dropdown("set exactly", ["II", "0"])
   if (query.cancer_type) {
     instance.$('.ui.dropdown.cancer_type').dropdown('set exactly', query.cancer_type['$in'])
@@ -66,8 +69,6 @@ Template.cases.events({
   },
   'click .go-to-case-page'(event, instance) {
     var c = instance.$('.caseid .selected')
-    console.log('show case', c)
-
     FlowRouter.go('showCase')
   }
 })
@@ -127,11 +128,25 @@ Template.caseSearchFields.events({
     console.log('setting query:', query)
     Session.set('caseQuery', query)
   },
-  'change #genelist': function (evt, tmpl) {
+  'change .status'(event, instance) {
+    var val = $('.status').dropdown('get value')
+    let query = JSON.parse(JSON.stringify(Session.get('caseQuery')))
+    if (!val) {
+      delete query.status
+    } else {
+      // query.status = val
+      if (!query) {
+        query = {}
+      }
+      query.status = {$in: val}
+    }
+    console.log('setting query:', query)
+    Session.set('caseQuery', query)
+  },
+  'change #genelist'(event, instance) {
     let query = JSON.parse(JSON.stringify(Session.get('caseQuery')))
     var $genelist = $('#genelist')
     var val = $genelist.select2('val')
-    console.log('change mut ', val)
     if (!val || val.length == 0) {
       delete query.mutations
     } else {
@@ -162,8 +177,8 @@ function initializeJQuerySelect2 (document) {
     $genelist.val(document.genelist.join(' '))
   else
     $genelist.val('')
-  var httpGenesUrl = '/genes'
-  var httpGeneListPreciseUrl = '/geneListPrecise'
+  var httpGenesUrl = '/genes/'
+  var httpGeneListPreciseUrl = '/genes'
   $genelist.select2({
     initSelection: function (element, callback) {
       var prev = document
@@ -183,7 +198,9 @@ function initializeJQuerySelect2 (document) {
         }
         return qp
       },
-      results: function (data, page, query) { return { results: data.items }; },
+      results: function (data, page, query) {
+        return { results: data.items };
+      },
       cache: true
     },
 

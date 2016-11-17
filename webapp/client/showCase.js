@@ -119,13 +119,13 @@ Template.showCaseDetails.helpers({
   },
   getStageColor: function () {
     if (this.stage) {
-      if (this.stage == 'IV')
+      if (this.stage == '4')
         return 'red';
-      if (this.stage == 'III')
+      if (this.stage == '3')
         return 'yellow';
-      if (this.stage == 'II')
+      if (this.stage == '2')
         return 'blue';
-      if (this.stage == 'I')
+      if (this.stage == '1')
         return 'green';
     }
     return ;

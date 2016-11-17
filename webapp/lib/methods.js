@@ -85,6 +85,11 @@ Meteor.methods({
       Insights.update({_id:insightId},{$set:{insight:text, insightStatus:"approved"}});
     }
   },
+  deletePost(id) {
+    var user = MedBook.ensureUser(Meteor.userId());
+    var post = Posts.findOne({_id:id});
+    console.log('user', user._id ,'trying to delete',post)
+  },
   invite(newInvite) {
     console.log('invite', newInvite);
   },
@@ -110,5 +115,140 @@ Meteor.methods({
     console.log('parsed text',JSON.stringify(cases));
     return JSON.stringify(cases);
     });
+  },
+  newSampleLabel(sampleDefinition) {
+    check(sampleDefinition, new SimpleSchema({
+      study_label: { type: String },
+      uq_sample_label: { type: String },
+    }));
+
+    let { uq_sample_label, study_label } = sampleDefinition;
+
+    let user = MedBook.ensureUser(Meteor.userId());
+    user.ensureAccess(Studies.findOne({ study_label }));
+
+    let sample_label = study_label + "/" + uq_sample_label;
+    if (!sample_label.match(MedBook.sampleLabelRegex)) {
+      throw new Meteor.Error("invalid-sample-label");
+    }
+
+    Studies.update({ study_label }, {
+      $addToSet: {
+        sample_labels: sample_label
+      }
+    });
+  },
+
+  studyLabelTaken(study_label) {
+    check(study_label, String);
+
+    let user = MedBook.ensureUser(Meteor.userId());
+
+    return !!Studies.findOne({ study_label });
+  },
+  insertStudy(newStudy) {
+    check(newStudy, Studies.simpleSchema().pick([
+      "name",
+      "description",
+      "study_label",
+    ]));
+
+    let user = MedBook.ensureUser(Meteor.userId());
+
+    newStudy.collaborations = [ user.personalCollaboration() ];
+
+    // must be unique
+    if (Meteor.call("studyLabelTaken", newStudy.study_label)) {
+      console.log("throw it out");
+      throw new Meteor.Error("study-label-not-unique");
+    }
+
+    return Studies.insert(newStudy);
+  },
+  newProjectLabel(projectDefinition) {
+    check(caseDefinition, new SimpleSchema({
+      project_label: { type: String },
+      uq_case_label: { type: String },
+    }));
+
+    let { uq_case_label, project_label } = caseDefinition;
+
+    let user = MedBook.ensureUser(Meteor.userId());
+    user.ensureAccess(Projects.findOne({ project_label }));
+
+    let case_label = project_label + "/" + uq_case_label;
+    if (!case_label.match(MedBook.sampleLabelRegex)) {
+      throw new Meteor.Error("invalid-case-label");
+    }
+
+    Projects.update({ case_label }, {
+      $addToSet: {
+        case_labels: case_label
+      }
+    });
+  },
+
+  projectLabelTaken(project_label) {
+    check(project_label, String);
+
+    let user = MedBook.ensureUser(Meteor.userId());
+
+    return !!Projects.findOne({ project_label });
+  },
+  insertProject(newProject) {
+    check(newProject, Projects.simpleSchema().pick([
+      "name",
+      "description",
+      "project_label",
+    ]));
+
+    let user = MedBook.ensureUser(Meteor.userId());
+
+    newProject.collaborations = [ user.personalCollaboration() ];
+
+    // must be unique
+    if (Meteor.call("projectLabelTaken", newProject.project_label)) {
+      console.log("throw it out");
+      throw new Meteor.Error("project-label-not-unique");
+    }
+
+    return Projects.insert(newProject);
+  },
+  // shareAndDeleteButtons
+removeObject(collection_name, mongo_id) {
+  check([collection_name, mongo_id], [String]);
+
+  let user = MedBook.ensureUser(Meteor.userId());
+  let object = MedBook.collections[collection_name].findOne(mongo_id);
+  user.ensureAccess(object);
+
+  let removeAllowedCollections = [
+    "Jobs",
+    "DataSets",
+    "SampleGroups",
+    "Forms",
+    "GeneSets",
+    "GeneSetGroups",
+    "Studies",
+  ];
+  if (removeAllowedCollections.indexOf(collection_name) === -1) {
+    throw new Meteor.Error("permission-denied");
   }
+
+  // do some collection-specific checking before actually removing the object
+  if (collection_name === "Jobs") {
+    let deleteableJobs = [
+      "RunLimmaGSEA",
+      "TumorMapOverlay",
+      "UpDownGenes",
+    ];
+
+    if (deleteableJobs.indexOf(object.name) === -1) {
+      throw new Meteor.Error("permission-denied");
+    }
+  }
+
+  // remove original object
+  MedBook.collections[collection_name].remove(mongo_id);
+}
 });

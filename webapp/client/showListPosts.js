@@ -151,7 +151,26 @@ Template.showListEvidence.helpers({
 });
 
 Template.postCard.events({
+  "click .createReply"(event, instance) {
+    var f = instance.$(".new-reply.ui.form").form("get values");
+    console.log("#reply2 detail",f,instance.data)
 
+    f.caseId = instance.data.caseId;
+    f.postId = instance.data.postId;
+    for (var reply in f) {
+      if (f[reply]) {
+        if (f[reply].body) {
+          console.log('#createReply',f[reply]);
+          Meteor.call("createReply", f[reply]);
+        }
+      }
+    }
+  },
+  "click .delcard"(event, instance) {
+    var id = instance.data._id
+    console.log('delete post', id)
+    Meteor.call("deletePost", id)
+  },
   "mouseup .textNorm"(event, instance) {
     var selection;
 
@@ -219,7 +238,7 @@ Template.evidenceCard.onRendered(function () {
   let instance = this;
 
   $(".ccard").draggable({
-    revert: true,
+    revert: false,
     helper:'clone' ,
     //scrollSensitivity: 100,
     scroll: false,

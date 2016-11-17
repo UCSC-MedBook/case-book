@@ -65,6 +65,7 @@ Template.newCaseModal.onRendered(function() {
       if (!form_vals.collaboration) {
         form_vals.collaborations = ["ASK"];
       }
+      form_vals.status = 'A'
       console.log('muts ', instance.mutations, 'form_vals',form_vals);
 
       var ctype = "nsclc"; // Will get set by a pulldown to one of the ctype template keys.
