@@ -1,2 +1,3 @@
-#scp -pr -i ~/Documents/cancer\ commons/CancerCommonsEngineering.pem ../build/ ubuntu@casebookdemo.cancercommons.org:/app/case-book/
+#
+scp -pr -i ~/Documents/cancer\ commons/CancerCommonsEngineering.pem ../build/ ubuntu@casebookdemo.cancercommons.org:/app/case-book/
 ssh -i ~/Documents/cancer\ commons/CancerCommonsEngineering.pem ubuntu@casebookdemo.cancercommons.org 'forever stopall ; (cd /app/case-book/build ; rm -rf bundle ; tar xvfz webapp.tar.gz ; cd bundle/programs/server && npm install ) ; cd /var/log/case-book ; rm * ; PORT=3000 MONGO_URL="mongodb://127.0.0.1:27017/MedBook"  ROOT_URL="https://casebookdemo.cancercommons.org" forever start  --minUptime 1000 -l /var/log/case-book/cb.log -e /var/log/case-book/cb.err -o /var/log/case-book/cb.out /app/case-book/build/bundle/main.js [Daemon]'
