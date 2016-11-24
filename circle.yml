@@ -37,5 +37,5 @@ deployment:
     # The content of the METEOR_SESSION_FILE is generated with:
     # 'METEOR_SESSION_FILE=deployment_token.json meteor login'
     commands:
-      - pwd
-      - case-book/config/robert/deploy_galaxy.sh
+      - ls
+      - sh ./config/robert/deploy_galaxy.sh
