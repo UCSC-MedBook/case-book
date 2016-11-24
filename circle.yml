@@ -1,6 +1,6 @@
 machine:
   node:
-   version: 0.10.40
+   version: 0.10.43
   pre:
    # download if meteor isn't already installed in the cache
    - meteor || curl https://install.meteor.com | /bin/sh
@@ -38,5 +38,5 @@ deployment:
     # 'METEOR_SESSION_FILE=deployment_token.json meteor login'
     commands:
       - cd webapp
-      - printf "${METEOR_LOGIN}\n${METEOR_PASSWORD}\n" | meteor login --email
+      - printf "${METEOR_LOGIN}\n${METEOR_PASSWORD}\n" | meteor login 
       - DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy http://casebook.meteorapp.com --settings ../config/settings.json
