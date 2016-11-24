@@ -1,16 +1,21 @@
 machine:
-  services:
-    - docker
+  node:
+   version: 0.10.40
+  pre:
+   # download if meteor isn't already installed in the cache
+   - meteor || curl https://install.meteor.com | /bin/sh
+  post:
+   - meteor --version
 
 dependencies:
-  cache_directories:
-    - "~/docker"
+  #cache_directories:
+  #  - "~/docker"
   override:
-    - docker info
-    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
+    #- docker info
+    #- if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     #TODO figure out how to pass tag in here
-    - docker build -t medbook/case-book:$CIRCLE_TAG .
-    - mkdir -p ~/docker; docker save medbook/case-book:$CIRCLE_TAG > ~/docker/image.tar
+    #- docker build -t medbook/case-book:$CIRCLE_TAG .
+    #- mkdir -p ~/docker; docker save medbook/case-book:$CIRCLE_TAG > ~/docker/image.tar
 
 test:
   override:
@@ -22,13 +27,13 @@ checkout:
     - git submodule update --init --recursive
 
 deployment:
-  hub:
-    tag: /v[0-9]+(\.[0-9]+)*/
-    commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push medbook/case-book:$CIRCLE_TAG
+  #hub:
+  #  tag: /v[0-9]+(\.[0-9]+)*/
+  #  commands:
+  #    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  #    - docker push medbook/case-book:$CIRCLE_TAG
   staging:
     branch: master
-    codedeploy:
-      case-book:
-        deployment_group: my-deployment-group
+    # The content of the METEOR_SESSION_FILE is generated with:
+    # 'METEOR_SESSION_FILE=deployment_token.json meteor login'
+    - DEPLOY_HOSTNAME=galaxy.meteor.com METEOR_SESSION_FILE=deployment_token.json meteor deploy $METEOR_TARGET --settings settings.json
