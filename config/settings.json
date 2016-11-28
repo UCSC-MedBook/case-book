@@ -1,7 +1,7 @@
 {
   "galaxy.meteor.com": {
     "env": {
-      "MONGO_URL": "mongodb://${MONGO_LOGIN}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DATABASE}",
+      "MONGO_URL": "mongodb://${MONGO_LOGIN}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/medbook",
       "ROOT_URL": "http://casebook.meteorapp.com"
     }
   }
