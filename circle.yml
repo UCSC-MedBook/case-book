@@ -1,9 +1,6 @@
 machine:
   node:
    version: 0.10.43
-  pre:
-   # download if meteor isn't already installed in the cache
-   - meteor || curl https://install.meteor.com | /bin/sh
   post:
    - meteor --version
 
@@ -11,6 +8,8 @@ dependencies:
   cache_directories:
     - "~/.meteor"
   override:
+    # download if meteor isn't already installed in the cache
+    - meteor || curl https://install.meteor.com | /bin/sh
     #- docker info
     #- if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     #TODO figure out how to pass tag in here
