@@ -9,7 +9,7 @@ machine:
 
 dependencies:
   cache_directories:
-    - "~/.meteor , ~/docker"
+    - "~/.meteor"
   override:
     #- docker info
     #- if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
