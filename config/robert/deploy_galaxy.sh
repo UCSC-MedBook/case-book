@@ -12,8 +12,8 @@ echo $METEOR_TOKEN > deployment_token.json
 echo "database name ${MONGO_DATABASE} port ${MONGO_PORT}"
 echo "Deploying server at ${METEOR_TARGET}"
 echo '{ "galaxy.meteor.com": { "env": {' > settings.json
-echo ' "MONGO_URL": "mongodb://${MONGO_LOGIN}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/medbook",' >> setings.json
-echo ' "ROOT_URL": "https://casebook.meteorapp.com"' >> settings.json
+echo '"MONGO_URL": "mongodb://'${MONGO_LOGIN}':'${MONGO_PASSWORD}'@'${MONGO_HOSTNAME}':'${MONGO_PORT}'/medbook",' >> setings.json
+echo "ROOT_URL": "https://casebook.meteorapp.com" >> settings.json
 echo '  } } }' >> settings.json
 cat settings.json
 DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com ; METEOR_SESSION_FILE=deployment_token.json meteor deploy ${METEOR_TARGET} --settings settings.json 
