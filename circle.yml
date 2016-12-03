@@ -7,7 +7,7 @@ dependencies:
     - "~/.meteor"
   override:
     # download if meteor isn't already installed in the cache
-    - meteor || curl https://install.meteor.com | /bin/sh
+    - METEOR_PRETTY_OUTPUT=0 meteor || curl https://install.meteor.com | /bin/sh
     #- docker info
     #- if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     #TODO figure out how to pass tag in here

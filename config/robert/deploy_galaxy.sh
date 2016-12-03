@@ -15,4 +15,4 @@ echo '{ "galaxy.meteor.com": { "env": {' > settings.json
 echo '"MONGO_URL": "mongodb://'${MONGO_LOGIN}':'${MONGO_PASSWORD}'@'${MONGO_HOSTNAME}':'${MONGO_PORT}'/medbook",' >> settings.json
 echo '"ROOT_URL": "'${METEOR_TARGET}'"' >> settings.json
 echo '  } } }' >> settings.json
-DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com ; METEOR_SESSION_FILE=deployment_token.json meteor deploy ${METEOR_TARGET} --settings settings.json 
+METEOR_PRETTY_OUTPUT=0 ; DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com ; METEOR_SESSION_FILE=deployment_token.json meteor deploy ${METEOR_TARGET} --settings settings.json 
