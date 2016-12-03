@@ -1,0 +1,203 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<style>
+th, td { padding: 10px; }
+</style>
+</head>
+<body>
+<title>TTA->BACH</title>
+<h2>TTA->BACH</h2>
+<hr><p><hr>
+<h3>Step 1: Targeted Therapy Ranking</h3>
+<h4>Select a treatment framework:</h4>
+<form>
+ <input type="radio" name="chooseone" value="apponly"> Only FDA treatments approved for this diagnosis<a href=http://thelist.com target=_blank> [see the list]</a><br>
+ <input type="radio" name="chooseone" value="apponlyplus"> Only FDA treatments approved for this diagnosis plus any in phase 2 or 3 trials for this diagnosis<a href=http://thelist.com target=_blank> [see the list]</a><br>
+ <input type="radio" name="chooseone" value="allapp"> All FDA approved treatments<a href=http://thelist.com target=_blank> [see the list]</a><br>
+ <input type="radio" name="chooseone" value="allappplus"> All FDA approved treatments plus any in phase 2 or 3 trials<a href=http://thelist.com target=_blank> [see the list]</a><br>
+ <input type="radio" name="chooseone" value="alltx"> All possible regardless of approval status<a href=http://thelist.com target=_blank> [see the list]</a><br>
+ <input type="radio" name="chooseone" value="custom"> Create a custom treatment list<a href=http://thelist.com target=_blank> [see the list]</a><br>
+</form>
+
+<h4>Tests that help rank treatments in the framework selected above:</h4>
+
+<table class="table table-responsive" border=1>
+     <thead>
+         <tr>
+             <th>Test</th>
+             <th>Concordant</th>
+             <th>Discordant</th>
+             <th>Inconclusive, Unknown, or not tested</th>
+         </tr>
+     </thead>
+     <tbody>
+     <form>
+         <tr>
+             <td>
+             <div class="radiotext">
+                 <label for='regular'>BRAF V600E mutation <a target=_blank href=http://theranos.com> [see labs]</a></label>
+             </div>
+             </td>
+             <td>
+                 <div class="radio">
+                     <label><input type="radio" id='regular' name="optradio">Yes</label>
+                 </div>
+             </td>
+             <td>
+                 <div class="radio">
+                     <label><input type="radio" id='regular' name="optradio">No</label>
+                 </div>
+             </td>
+             <td>
+                 <div class="radio">
+                     <label><input type="radio" id='regular' name="optradio">Unknown</label>
+                 </div>
+             </td>
+         </tr>
+         <tr>
+             <td>
+             <div class="radiotext">
+                 <label for='regular'>Some protein by some test <a target=_blank href=http://theranos.com> [see labs]</a></label>
+             </div>
+             </td>
+             <td>
+                 <div class="radio">
+                     <label><input type="radio" id='regular' name="optradio">Yes</label>
+                 </div>
+             </td>
+             <td>
+                 <div class="radio">
+                     <label><input type="radio" id='regular' name="optradio">No</label>
+                 </div>
+             </td>
+             <td>
+                 <div class="radio">
+                     <label><input type="radio" id='regular' name="optradio">Unknown</label>
+                 </div>
+             </td>
+         </tr>
+         </form>
+         </tbody>
+</table>
+
+<h4>Ranking of treatment hypotheses based on the test profile provided above:</h4>
+
+<table border=1>
+<tr><th>Treatment</th><th>P Value</th><th>Click for Details</th></tr>
+<tr><td>Gleevec</td><td>0.006</td><td><a target=_blank href=http://details.com>[Click for Details]</a></td></tr>
+<tr><td>Rapamycin</td><td>0.045</td><td><a target=_blank href=http://details.com>[Click for Details]</a></td></tr>
+</table>
+
+<hr><p><hr>
+
+<h3>Step 2: Bayesian Analysis of Competing Hypotheses</h3>
+
+<table border=1 cellpadding="10">
+<tr><th>  </th> <th colspan=5><center>Peer Reviewed Evidence</center> </th> <th colspan=2><center>Non-Peer Reviewed Evidence</center> </th> </tr>
+<tr><th> Treatment (p) </th> <th> Meta Analyses </th> <th> Randomized Trials </th> <th> Case Series </th> <th> Individual Cases </th> <th> Preclinical </th> <th> Unpublished cases </th> <th> Unpublished Opinion </th> </tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>Gleevec (0.006)</td>
+<td>
+<table>
+<tr><td><a href=http://up.com target=_blank>^</td></tr>
+<tr><td><a href=http://down.com target=_blank>v</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>Rapamycin (0.045)</td>
+<td>
+<table>
+<tr><td><a href=http://up.com target=_blank>^</td></tr>
+<tr><td><a href=http://down.com target=_blank>v</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</td><td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+<td><table border=1>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://plus.com>+10</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://con.com>-7</a></td></tr>
+<tr><td style="padding: 0px 0px 0px 0px;"><a target=_blank href=http://neutral.com>?:100</a></td>
+</table></td>
+</tr>
+</table>
+
+
+
+
+</body>
+</html>
