@@ -1,1 +1,1 @@
-Genes = new Mongo.Collection("genes");
+//Genes = new Mongo.Collection("genes");

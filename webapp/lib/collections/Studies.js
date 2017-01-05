@@ -1,4 +1,4 @@
-Studies = new Meteor.Collection("studies");
+Studies = new Meteor.Collection("studies2");
 
 SimpleSchema.messages({
   "studyLabelNotUnique": "Sample label is taken",
